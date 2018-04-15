@@ -1,9 +1,9 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-use Philo\Blade\Blade;
+use Illuminate\Database\Capsule\Manager as DB;
 
-class Contoh extends CI_Controller {
+class Contoh extends MY_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -22,16 +22,14 @@ class Contoh extends CI_Controller {
 	 */
 	public function index()
 	{
-		$views = 'application/views';
-		$cache = 'application/cache';
-		$blade = new Blade($views, $cache);
-		echo $blade->view()->make('index')->render();
+		return $this->view('index', ["ayam"=>"goreng"]);
 	}
 	public function tabel()
 	{
-		$views = 'application/views';
-		$cache = 'application/cache';
-		$blade = new Blade($views, $cache);
-		echo $blade->view()->make('tabel')->render();
+		return $this->view('tabel');
+	}
+	public function api(){
+		$data = DB::table('tb_user')->get();
+		echo json_encode($data);
 	}
 }

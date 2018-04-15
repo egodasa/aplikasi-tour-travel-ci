@@ -8,6 +8,7 @@
 		@include('template.listProduct')
 		@include('template.listProduct')
 		<?php
+		echo $ayam;
 		$a = [
 			["nama" => "ayam"],
 			["nama" => "ayam"],

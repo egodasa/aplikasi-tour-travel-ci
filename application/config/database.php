@@ -70,15 +70,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
+
+
+
 $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
+	'username' => 'root',
+	'password' => 'qwe123*iop',
+	'database' => 'dbmevit',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -94,3 +97,27 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+//~ use Illuminate\Database\Capsule\Manager as Capsule;
+
+//~ $capsule = new Capsule;
+ 
+//~ $capsule->addConnection([
+    //~ 'driver'    => 'mysql',
+    //~ 'host'      => '127.0.0.1',
+    //~ 'database'  => 'dbmevit',
+    //~ 'username'  => 'root',
+    //~ 'password'  => 'qwe123*iop'
+    //~ 'charset'   => 'utf8',
+    //~ 'collation' => 'utf8_unicode_ci',
+    //~ 'prefix'    => ''
+//~ ]);
+ 
+//~ $capsule->setAsGlobal();
+//~ $capsule->bootEloquent();
+
+/**
+* Setup a new app instance container
+* 
+* @var Illuminate\Container\Container
+*/
+
