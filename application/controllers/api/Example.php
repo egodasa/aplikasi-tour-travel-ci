@@ -31,7 +31,7 @@ class Example extends \Restserver\Libraries\REST_Controller {
         $this->methods['users_delete']['limit'] = 50; // 50 requests per hour per user/key
     }
 
-    public function users_get()
+    public function index_get()
     {
         // Users from a data store e.g. database
         $users = [

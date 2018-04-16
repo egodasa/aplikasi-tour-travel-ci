@@ -1,7 +1,6 @@
 <?php
 use Philo\Blade\Blade; // Register blade template engine
 use Illuminate\Database\Capsule\Manager as DB; //register eloquent
-require APPPATH . '/libraries/REST_Controller.php';
 
 class MY_Controller extends CI_Controller {
 	protected $views = 'application/views'; //Lokasi views

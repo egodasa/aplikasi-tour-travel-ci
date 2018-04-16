@@ -4,6 +4,7 @@ namespace Restserver\Libraries;
 use Exception;
 use stdClass;
 use Restserver\Libraries\Format;
+use Illuminate\Database\Capsule\Manager as DB; //register eloquent
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -24,7 +25,8 @@ abstract class REST_Controller extends \CI_Controller {
     // Note: Only the widely used HTTP status codes are documented
 
     // Informational
-
+	protected $capsule;
+	protected $db;
     const HTTP_CONTINUE = 100;
     const HTTP_SWITCHING_PROTOCOLS = 101;
     const HTTP_PROCESSING = 102;            // RFC2518
@@ -385,6 +387,20 @@ abstract class REST_Controller extends \CI_Controller {
     {
         parent::__construct();
 
+		$this->capsule = new DB;
+		$this->capsule->addConnection([ //pengaturan database
+		    'driver'    => 'mysql',
+		    'host'      => '127.0.0.1',
+		    'database'  => 'dbcat',
+		    'username'  => 'root',
+		    'password'  => 'qwe123*iop',
+		    'charset'   => 'utf8',
+		    'collation' => 'utf8_unicode_ci',
+		    'prefix'    => ''
+		]);
+		$this->capsule->setAsGlobal();
+		$this->capsule->bootEloquent();
+		
         $this->preflight_checks();
 
         // Set the default value of global xss filtering. Same approach as CodeIgniter 3

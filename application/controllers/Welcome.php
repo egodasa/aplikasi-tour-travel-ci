@@ -1,7 +1,5 @@
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
-use Philo\Blade\Blade;
 
 class Welcome extends CI_Controller {
 
@@ -22,16 +20,6 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$views = 'application/views';
-		$cache = 'application/cache';
-		$blade = new Blade($views, $cache);
-		echo $blade->view()->make('index')->render();
-	}
-	public function tabel()
-	{
-		$views = 'application/views';
-		$cache = 'application/cache';
-		$blade = new Blade($views, $cache);
-		echo $blade->view()->make('tabel')->render();
+		$this->load->view('welcome_message');
 	}
 }
