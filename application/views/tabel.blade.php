@@ -22,6 +22,8 @@
     <div class="box">
 		<div class="box-body">
 			@include('template.tabel', ['fields' => $fields, 'data' => $data])
+			<h4>Form</h4>
+			@include('template.form.input', ['data' => ['placeholder' => 'Placeholder', 'type' => 'text', 'min' => '10', 'max' => '15', 'readonly' => 'true', 'class' => 'form-control']])
 		</div>
 	</div>
 @endsection

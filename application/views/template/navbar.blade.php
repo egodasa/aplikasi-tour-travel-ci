@@ -1,5 +1,4 @@
 <div class="navbar-header">
-
                 <a class="navbar-brand home" href="index.html" data-animate-hover="bounce">
                     <img src="{{ base_url() }}assets/img/logo.png" alt="Obaju logo" class="hidden-xs">
                     <img src="{{ base_url() }}assets/img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
@@ -26,7 +25,7 @@
                     <li class="active"><a href="">Beranda</a>
                     </li>
                     <li class="dropdown yamm-fw">
-                        <a href="{{ base_url() }}contoh" class="dropdown-toggle">Artikel</a>
+                        <a href="{{ base_url() }}contoh" class="dropdown-toggle">API</a>
                     </li>
 
                     <li class="dropdown yamm-fw">
