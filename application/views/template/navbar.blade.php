@@ -37,7 +37,7 @@
                     </li>
 
                     <li class="dropdown yamm-fw">
-                        <a href="/kontak.php" class="dropdown-toggle">Kontak</a>
+                        <a href="{{ base_url() }}pwa" class="dropdown-toggle">VueJS with PWA</a>
                     </li>
                     <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">Menu <b class="caret"></b></a>
 	                  <ul class="dropdown-menu">
