@@ -82,7 +82,7 @@ export const dataMix = {
 			},
 			getDataDetail (id){
 				let model = Object.keys(this.form.model);
-				axios.get(this.url_get+'/'+id)
+				this.$axios.get(this.url_get+'/'+id)
 					.then(res=>{
 						this.toggleForm()
 						this.resetModelError()
@@ -108,7 +108,7 @@ export const dataMix = {
 						url = this.url_get+'/'+this.form.pkValue
 						method = 'put'
 					}
-					axios[method](url, this.form.model)
+					this.$axios[method](url, this.form.model)
 						.then(res=>{
 							this.toggleForm()
 							this.refreshTable()
@@ -130,7 +130,7 @@ export const dataMix = {
 			},
 			deleteData (id){
 				if(confirm("Apakah Anda yakin menghapus data "+id+"?") == true){
-					axios.delete(this.url_get+'/'+id)
+					this.$axios.delete(this.url_get+'/'+id)
 					.then(res=>{
 						this.refreshTable()
 					})
