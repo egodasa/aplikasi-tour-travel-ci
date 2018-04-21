@@ -115,7 +115,7 @@ export const dataMix = {
 						})
 						.catch(err=>{
 							if(err.response.status == 422){
-								let errors = err.response.data.error // isi error mentah
+								let errors = err.response.data.errors // isi error mentah
 								let error = Object.keys(errors) // daftar field yang error
 								for(let x = 0; x < error.length; x++){
 									this.$set(this.form.error, error[x], errors[error[x]])
