@@ -19,7 +19,7 @@ class MY_Controller extends CI_Controller {
 		    'host'      => '127.0.0.1',
 		    'database'  => 'dbmevit',
 		    'username'  => 'root',
-		    'password'  => 'qwe123*iop',
+		    'password'  => '',
 		    'charset'   => 'utf8',
 		    'collation' => 'utf8_unicode_ci',
 		    'prefix'    => ''
