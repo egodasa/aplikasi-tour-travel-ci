@@ -28,6 +28,6 @@ class MY_Controller extends CI_Controller {
 		$this->capsule->bootEloquent();
     }
     public function view($name, $data = []){
-		echo $this->blade->view()->make($name, $data)->render();
+		return $this->blade->view()->make($name, $data)->render();
 	}
 }
