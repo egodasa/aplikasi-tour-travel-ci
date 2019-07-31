@@ -53,6 +53,19 @@ $route['default_controller'] = 'contoh';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+
+// Route admin
+
+// Kelola Data program
+$route['admin/program']['GET'] = 'admin/KelolaProgram/daftar';                // Lihat Data
+$route['admin/program/tambah']['GET'] = 'admin/KelolaProgram/tambah';         // Tambah Data
+$route['admin/program/tambah']['POST'] = 'admin/KelolaProgram/prosesTambah';  // Proses Tambah Data
+$route['admin/program/edit']['GET'] = 'admin/KelolaProgram/edit';             // Edit Data
+$route['admin/program/edit']['POST'] = 'admin/KelolaProgram/prosesEdit';             // Proses Edit Data
+$route['admin/program/hapus']['GET'] = 'admin/KelolaProgram/prosesHapus';     // Hapus Data
+// EOF Kelola Data program
+
+// EOF Route admin
 /*
 | -------------------------------------------------------------------------
 | Sample REST API Routes

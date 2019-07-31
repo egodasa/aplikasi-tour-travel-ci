@@ -1,6 +1,4 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-use Illuminate\Database\Capsule\Manager as DB;
-require APPPATH . '/libraries/REST_Controller.php';
 
 class Dosen extends \Restserver\Libraries\REST_Controller
 {
