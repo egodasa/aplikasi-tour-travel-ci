@@ -39,9 +39,11 @@ class KelolaProgram extends MY_Controller {
   // Method untuk memproses data yang akan diedit
   public function prosesEdit()
   {
-    $this->db->update($this->table, [
+    $this->db->update($this->table, 
+    [
       "nama_program"  =>  $this->input->post("nama_program") // Proses data diedit
-    ],[
+    ],
+    [
       "id_program" => $this->input->post("id_program") // ID data yang akan diedit
     ]);
     header("Location: ".site_url("admin/program")); // Arahkan user kembali ke halaman daftar
