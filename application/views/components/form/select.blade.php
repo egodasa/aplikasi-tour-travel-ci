@@ -2,22 +2,22 @@
 <label>{{ isset($_data['label']) ? $_data['label'] : null }}</label>
 <select  
 <?php
-  if(isset($data['placeholder'])){
-    echo "placeholder='".$data['placeholder']."' "; 
+  if(isset($_data['placeholder'])){
+    echo "placeholder='".$_data['placeholder']."' "; 
   }
-  if(isset($data['class'])){
-    echo "class='".$data['class']."' "; 
+  if(isset($_data['class'])){
+    echo "class='".$_data['class']."' "; 
   }
-  if(isset($data['name'])){
-    echo "name='".$data['name']."' "; 
+  if(isset($_data['name'])){
+    echo "name='".$_data['name']."' "; 
   }
-  if(isset($data['id'])){
-    echo "id='".$data['id']."' "; 
+  if(isset($_data['id'])){
+    echo "id='".$_data['id']."' "; 
   }
-  if(isset($data['disabled'])){
+  if(isset($_data['disabled'])){
     echo "disabled "; 
   }
-  if(isset($data['readonly'])){
+  if(isset($_data['readonly'])){
     echo "readonly "; 
   }
 ?> >

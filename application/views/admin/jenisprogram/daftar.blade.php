@@ -14,5 +14,26 @@
 @section('content_title', 'Kelola Data Jenis Program')
 
 @section('content')
-    @include('components.table', ['fields' => $fields, 'data' => $data])
+  <a href="{{ site_url('admin/jenisprogram/tambah') }}" class="btn btn-primary">Tambah Data</a>
+  <table class="table table-bordered table-stripped">
+    <tr>
+      <th>No</th>
+      <th>Nama Jenis Program</th>
+      <th>Program</th>
+      <th>Harga</th>
+      <th>Aksi</th>
+    </tr>
+    @foreach($data_list as $nomor => $data)
+      <tr>
+        <td>{{ ($nomor+1) }}</td>
+        <td>{{ $data['nm_jenis'] }}</td>
+        <td>{{ $data['nama_program'] }}</td>
+        <td>{{ rupiah($data['harga']) }}</td>
+        <td>
+          <a href="<?=site_url("admin/jenisprogram/edit?id_jenis=".$data['id_jenis'])?>" class="btn btn-success">Edit</a>
+          <a href="<?=site_url("admin/jenisprogram/hapus?id_jenis=".$data['id_jenis'])?>" class="btn btn-danger">Hapus</a>
+        </td>
+      </tr>
+    @endforeach
+  </table>
 @endsection

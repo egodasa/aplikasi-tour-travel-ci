@@ -17,6 +17,7 @@
     <!-- Custom Theme Style -->
     <link href="{{ base_url() }}assets/css/custom.min.css" rel="stylesheet">
     
+    <link href="{{ base_url() }}assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
     @section('head')
       <!-- Custom Head -->
     @show
@@ -29,20 +30,15 @@
         
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-home"></i> <span>@yield('sidebar_title')</span></a>
+            <div class="navbar nav_title" style="border: 0;padding: 10px;">
+              <img src="{{ base_url() }}assets/images/logo2.png" class="img-responsive">
             </div>
         
             <div class="clearfix"></div>
         
             <!-- menu profile quick info -->
             <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="{{ base_url() }}assets/@yield('user_image')" alt="..." class="img-circle profile_img">
-              </div>
               <div class="profile_info">
-                <span>Selamat Datang, </span>
-                <h2>@yield('username')</h2>
               </div>
               <div class="clearfix"></div>
             </div>
@@ -56,13 +52,13 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                   @section('sidebar_menu')
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>
-                      <li><a href="index2.html">Dashboard2</a></li>
-                      <li><a href="index3.html">Dashboard3</a></li>
-                    </ul>
-                  </li>
+                    <li><a href="{{ site_url('admin/program') }}"><i class="fa fa-home"></i> Kelola Program</a></li>
+                    <li><a href="{{ site_url('admin/jenisprogram') }}"><i class="fa fa-home"></i> Kelola Jenis Program</a></li>
+                    <li><a href="{{ site_url('admin/pengguna') }}"><i class="fa fa-home"></i> Kelola Pengguna</a></li>
+                    <li><a href="{{ site_url('admin/pelanggan') }}"><i class="fa fa-home"></i> Kelola Pelanggan</a></li>
+                    <li><a href="{{ site_url('admin/jadwalkeberangkatan') }}"><i class="fa fa-home"></i> Kelola Jadwal</a></li>
+                    <li><a href="{{ site_url('admin/transaksi') }}"><i class="fa fa-home"></i> Kelola Transaksi</a></li>
+                    <li><a href="{{ site_url('admin/angsuran') }}"><i class="fa fa-home"></i> Kelola Angsuran</a></li>
                   @show
                 </ul>
               </div>
@@ -143,9 +139,19 @@
     
     <!-- Custom Theme Scripts -->
     <script src="{{ base_url() }}assets/js/custom.min.js"></script>
+    
+    
+    <script src="{{ base_url() }}assets/js/jquery.dataTables.min.js"></script>
+    <script src="{{ base_url() }}assets/js/dataTables.bootstrap.min.js"></script>
+    <script src="{{ base_url() }}assets/js/dataTables.responsive.min.js"></script>
+    
     @section('script')
       <!-- Custom Script -->
     @show
+    
+    <script>
+      $('.table').DataTable();
+    </script>
     
   </body>
 </html>
