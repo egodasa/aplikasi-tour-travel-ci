@@ -9,14 +9,15 @@ class KelolaJadwalKeberangkatan extends MY_Controller {
   //  Method untuk menampilkan data
 	public function daftar()
 	{
-    $this->_dts['data_list'] = $this->db->select($this->table, "*");  // Proses pengambilan data dari database
+    $this->_dts['data_list'] = $this->db->query("SELECT a.*, b.nm_jenis, c.nama_program FROM tb_jadwalkeberangkatan a JOIN tb_jenisprogram b ON a.id_jenis = b.id_jenis JOIN tb_program c ON b.id_program = c.id_program")->fetchAll(PDO::FETCH_ASSOC);  // Proses pengambilan data dari database
 		$this->view('admin.jadwalkeberangkatan.daftar', $this->_dts); // Oper data dari database ke view
 	}
   
   // Method untuk menampilkan form tambah data
   public function tambah()
   {
-    $this->view('admin.jadwalkeberangkatan.tambah'); // Langsung tampilkan view tambah data
+    $this->_dts['data_program'] = $this->db->query("SELECT a.nama_program, b.* FROM tb_program a JOIN tb_jenisprogram b ON a.id_program = b.id_program");
+    $this->view('admin.jadwalkeberangkatan.tambah', $this->_dts); // Langsung tampilkan view tambah data
   }
   
   // Method untuk memproses penambahan data
@@ -35,6 +36,7 @@ class KelolaJadwalKeberangkatan extends MY_Controller {
   // Method untuk menampilkan form edit
   public function edit()
   {
+    $this->_dts['data_program'] = $this->db->query("SELECT a.nama_program, b.* FROM tb_program a JOIN tb_jenisprogram b ON a.id_program = b.id_program");
     $this->_dts['detail'] = $this->db->get($this->table, "*", ['id_jadwal' => $this->input->get('id_jadwal')]); // Ambil data yang akan diedit berdasarkan ID
     $this->view('admin.jadwalkeberangkatan.edit', $this->_dts); // Oper data ke view
   }

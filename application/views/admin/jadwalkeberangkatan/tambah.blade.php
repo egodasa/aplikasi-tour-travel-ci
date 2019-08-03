@@ -19,7 +19,14 @@
 	
     @include('components.form.input', ['_data' => ['type' => 'date', 'name' => 'tgl_berangkat', 'class' => 'form-control', 'max' => 10, 'label' => 'Tanggal berangkat']])
     @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'nama_maskapai', 'class' => 'form-control', 'max' => 50, 'label' => 'Nama Maskapai']])
-	@include('components.form.select', ['_data' => [ 'name' => 'id_jenis', 'value' => '','val' => 'id_jenis', 'caption' => 'jenis_program','label' => 'Nama Program', 'options' => []]])
+    <div class="form-group">
+      <label>Program</label>
+      <select name="id_jenis" class="form-control">
+        <?php foreach($data_program as $no => $d): ?>
+          <option value="<?=$d['id_jenis']?>"><?=$d['nama_program']." ".$d['nm_jenis']?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
     @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'status', 'class' => 'form-control', 'max' => 20, 'label' => 'Status']])
 	
 	
