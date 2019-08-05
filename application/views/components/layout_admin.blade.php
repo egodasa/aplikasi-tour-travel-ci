@@ -49,16 +49,28 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General</h3>
+                <h3>Menu</h3>
                 <ul class="nav side-menu">
                   @section('sidebar_menu')
-                    <li><a href="{{ site_url('admin/program') }}"><i class="fa fa-home"></i> Kelola Program</a></li>
-                    <li><a href="{{ site_url('admin/jenisprogram') }}"><i class="fa fa-home"></i> Kelola Jenis Program</a></li>
-                    <li><a href="{{ site_url('admin/pengguna') }}"><i class="fa fa-home"></i> Kelola Pengguna</a></li>
-                    <li><a href="{{ site_url('admin/pelanggan') }}"><i class="fa fa-home"></i> Kelola Pelanggan</a></li>
-                    <li><a href="{{ site_url('admin/jadwalkeberangkatan') }}"><i class="fa fa-home"></i> Kelola Jadwal</a></li>
-                    <li><a href="{{ site_url('admin/transaksi') }}"><i class="fa fa-home"></i> Kelola Transaksi</a></li>
-                    <li><a href="{{ site_url('admin/angsuran') }}"><i class="fa fa-home"></i> Kelola Angsuran</a></li>
+                    <li><a href="{{ site_url('beranda') }}"><i class="fa fa-home"></i> Beranda</a></li>
+                    <?php
+                      if($_SESSION['level'] == "Member")
+                      {
+                    ?>
+                      <li><a href="{{ site_url('transaksi') }}"><i class="fa fa-home"></i> Transaksi</a></li>
+                      <li><a href="{{ site_url('jadwalkeberangkatan') }}"><i class="fa fa-home"></i> Jadwal Keberangkatan</a></li>
+                    <?php
+                      }
+                      else
+                      {
+                    ?>
+                      <li><a href="{{ site_url('program') }}"><i class="fa fa-home"></i> Program</a></li>
+                      <li><a href="{{ site_url('jenisprogram') }}"><i class="fa fa-home"></i> Jenis Program</a></li>
+                      <li><a href="{{ site_url('pengguna') }}"><i class="fa fa-home"></i> Pengguna</a></li>
+                      <li><a href="{{ site_url('pelanggan') }}"><i class="fa fa-home"></i> Pelanggan</a></li>
+                    <?php
+                      }
+                    ?>
                   @show
                 </ul>
               </div>
@@ -80,12 +92,12 @@
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <img src="{{ base_url() }}assets/images/@yield('user_image')" alt="">
-                    @yield('username')
+                    Selamat Datang, <?=$_SESSION['username']?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="javascript:;"> Profil</a></li>
+                    <li><a href="{{ site_url('logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
               </ul>

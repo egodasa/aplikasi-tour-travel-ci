@@ -16,12 +16,11 @@
 @section('content')
     
 	<form method="POST" >
-	
-	@include('components.form.select', ['_data' => [ 'name' => 'id_jenis', 'value' => '','val' => 'id_jenis', 'caption' => 'jenis_program','label' => 'Nama Program', 'options' => []]])
-	@include('components.form.select', ['_data' => [ 'name' => 'id_pelanggan', 'value' => '','val' => 'id_pelanggan', 'caption' => 'nama_lengkap','label' => 'Nama Lengkap', 'options' => []]])
-    @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'status', 'class' => 'form-control', 'max' => 30, 'label' => 'Status']])
-    @include('components.form.input', ['_data' => ['type' => 'number', 'name' => 'dp', 'class' => 'form-control', 'max' => 11, 'label' => 'Dp']])
-	
+    @include('components.form.input', ['_data' => ['type' => 'hidden', 'name' => 'no_registrasi', 'value' => $detail['no_registrasi']]])
+    @include('components.form.select', ['_data' => [ 'readonly' => true, 'class' => 'form-control', 'name' => 'id_jenis', 'value' => $detail['id_jenis'], 'val' => 'id_jenis', 'caption' => 'jenis_program', 'label' => 'Nama Program', 'options' => $data_program, 'val' => 'id_jenis', 'caption' => 'nm_program']])
+	  @include('components.form.select', ['_data' => [ 'class' => 'form-control', 'name' => 'id_pelanggan', 'value' => $detail['id_pelanggan'],'val' => 'id_pelanggan', 'caption' => 'nama_lengkap','label' => 'Nama Lengkap', 'options' => $data_pelanggan]])
+    @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'status', 'class' => 'form-control', 'max' => 30, 'value' => $detail['status'], 'label' => 'Status']])
+    @include('components.form.input', ['_data' => ['readonly' => true, 'type' => 'number', 'name' => 'dp', 'class' => 'form-control', 'label' => 'Dp', 'value' => $detail['dp']]])
 	
     @include('components.form.button', ['_data' => ['type' => 'submit', 'text' => 'Simpan', 'class' => 'btn btn-primary']])
     @include('components.form.button', ['_data' => ['type' => 'reset', 'text' => 'Batal', 'class' => 'btn btn-danger']])

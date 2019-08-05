@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class KelolaProgram extends MY_Controller {
