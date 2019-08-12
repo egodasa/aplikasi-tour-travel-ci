@@ -1,22 +1,26 @@
 <?php
-
+session_start();
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class KelolaJadwalKeberangkatan extends MY_Controller {
-  // Nama Tabel
-  private $table = "tb_jadwalkeberangkatan";
+  public function __construct()
+  {
+    parent::__construct();
+    $this->load->model("ModelJenisProgram", "program");
+    $this->load->model("ModelJadwalKeberangkatan", "jadwal_keberangkatan");
+  }
   
   //  Method untuk menampilkan data
 	public function daftar()
 	{
-    $this->_dts['data_list'] = $this->db->query("SELECT a.*, b.nm_jenis, c.nama_program FROM tb_jadwalkeberangkatan a JOIN tb_jenisprogram b ON a.id_jenis = b.id_jenis JOIN tb_program c ON b.id_program = c.id_program")->fetchAll(PDO::FETCH_ASSOC);  // Proses pengambilan data dari database
+    $this->_dts['data_list'] = $this->jadwal_keberangkatan->data();  // Proses pengambilan data dari database
 		$this->view('admin.jadwalkeberangkatan.daftar', $this->_dts); // Oper data dari database ke view
 	}
   
   // Method untuk menampilkan form tambah data
   public function tambah()
   {
-    $this->_dts['data_program'] = $this->db->query("SELECT a.nama_program, b.* FROM tb_program a JOIN tb_jenisprogram b ON a.id_program = b.id_program");
+    $this->_dts['data_program'] = $this->program->data();
     $this->view('admin.jadwalkeberangkatan.tambah', $this->_dts); // Langsung tampilkan view tambah data
   }
   
@@ -24,43 +28,29 @@ class KelolaJadwalKeberangkatan extends MY_Controller {
   // Method diakses dalam metode POST
   public function prosesTambah()
   {
-    $this->db->insert($this->table, [
-      "tgl_berangkat"  =>  $this->input->post("tgl_berangkat"),  // Proses penambahan data (insert)
-      "nama_maskapai"  =>  $this->input->post("nama_maskapai"),  // Proses penambahan data (insert)
-      "id_jenis"  =>  $this->input->post("id_jenis"),  // Proses penambahan data (insert)
-      "status"  =>  $this->input->post("status")  // Proses penambahan data (insert)
-    ]);
-    header("Location: ".site_url("admin/jadwalkeberangkatan")); // Arahkan kembali user ke halaman daftar
+    $this->jadwal_keberangkatan->tambah($this->input->post(NULL, TRUE));
+    header("Location: ".site_url("jadwalkeberangkatan")); // Arahkan kembali user ke halaman daftar
   }
   
   // Method untuk menampilkan form edit
   public function edit()
   {
-    $this->_dts['data_program'] = $this->db->query("SELECT a.nama_program, b.* FROM tb_program a JOIN tb_jenisprogram b ON a.id_program = b.id_program");
-    $this->_dts['detail'] = $this->db->get($this->table, "*", ['id_jadwal' => $this->input->get('id_jadwal')]); // Ambil data yang akan diedit berdasarkan ID
+    $this->_dts['data_program'] = $this->program->data();
+    $this->_dts['detail'] = $this->jadwal_keberangkatan->data($this->input->get('id_jadwal')); // Ambil data yang akan diedit berdasarkan ID
     $this->view('admin.jadwalkeberangkatan.edit', $this->_dts); // Oper data ke view
   }
   
   // Method untuk memproses data yang akan diedit
   public function prosesEdit()
   {
-    $this->db->update($this->table, 
-    [
-     "tgl_berangkat"  =>  $this->input->post("tgl_berangkat"),  // Proses penambahan data (edit)
-      "nama_maskapai"  =>  $this->input->post("nama_maskapai"),  // Proses penambahan data (insert)
-      "id_jenis"  =>  $this->input->post("id_jenis"),  // Proses penambahan data (insert)
-      "status"  =>  $this->input->post("status")  // Proses penambahan data (insert)
-    ],
-    [
-      "id_jadwal" => $this->input->post("id_jadwal") // ID data yang akan diedit
-    ]);
-    header("Location: ".site_url("admin/jadwalkeberangkatan")); // Arahkan user kembali ke halaman daftar
+    $this->jadwal_keberangkatan->edit($this->input->post("id_jadwal"), $this->input->post(NULL, TRUE));
+    header("Location: ".site_url("jadwalkeberangkatan")); // Arahkan user kembali ke halaman daftar
   }
   
   // Method untuk menghapus data
   public function prosesHapus()
   {
-    $this->db->delete($this->table, ['id_jadwal' => $this->input->get('id_jadwal')]); // Proses hapus data
-    header("Location: ".site_url("admin/jadwalkeberangkatan")); // // Arahkan user kembali ke halaman daftar
+    $this->jadwal_keberangkatan->hapus($this->input->get('id_jadwal')); // Proses hapus data
+    header("Location: ".site_url("jadwalkeberangkatan")); // // Arahkan user kembali ke halaman daftar
   }
 }

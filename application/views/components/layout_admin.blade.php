@@ -1,3 +1,9 @@
+<?php
+  if(!isset($_SESSION['level']))
+  {
+    header("Location: ".site_url("login"));
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -57,17 +63,19 @@
                       if($_SESSION['level'] == "Member")
                       {
                     ?>
-                      <li><a href="{{ site_url('transaksi') }}"><i class="fa fa-home"></i> Transaksi</a></li>
-                      <li><a href="{{ site_url('jadwalkeberangkatan') }}"><i class="fa fa-home"></i> Jadwal Keberangkatan</a></li>
+                      <li><a href="{{ site_url('member/transaksi') }}"><i class="fa fa-home"></i> Transaksi</a></li>
+                      <li><a href="{{ site_url('member/jadwalkeberangkatan') }}"><i class="fa fa-home"></i> Jadwal Keberangkatan</a></li>
                     <?php
                       }
                       else
                       {
                     ?>
-                      <li><a href="{{ site_url('program') }}"><i class="fa fa-home"></i> Program</a></li>
-                      <li><a href="{{ site_url('jenisprogram') }}"><i class="fa fa-home"></i> Jenis Program</a></li>
-                      <li><a href="{{ site_url('pengguna') }}"><i class="fa fa-home"></i> Pengguna</a></li>
-                      <li><a href="{{ site_url('pelanggan') }}"><i class="fa fa-home"></i> Pelanggan</a></li>
+                      <li><a href="{{ site_url('admin/program') }}"><i class="fa fa-home"></i> Program</a></li>
+                      <li><a href="{{ site_url('admin/jenisprogram') }}"><i class="fa fa-home"></i> Jenis Program</a></li>
+                      <li><a href="{{ site_url('admin/pengguna') }}"><i class="fa fa-home"></i> Pengguna</a></li>
+                      <li><a href="{{ site_url('admin/pelanggan') }}"><i class="fa fa-home"></i> Pelanggan</a></li>
+                      <li><a href="{{ site_url('admin/transaksi') }}"><i class="fa fa-home"></i> Transaksi</a></li>
+                      <li><a href="{{ site_url('admin/jadwalkeberangkatan') }}"><i class="fa fa-home"></i> Jadwal Keberangkatan</a></li>
                     <?php
                       }
                     ?>

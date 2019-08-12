@@ -3,11 +3,17 @@ session_start();
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Autentikasi extends MY_Controller {
+  public function __construct()
+  {
+    parent::__construct();
+    $this->load->model("ModelPengguna", "pengguna");
+  }
+  
   public function login()
   {
     if(isset($_SESSION['username']))
     {
-      header('Location: '.site_url('transaksi'));
+      header('Location: '.site_url('beranda'));
     }
     else
     {
@@ -16,7 +22,7 @@ class Autentikasi extends MY_Controller {
   }
   public function prosesLogin()
   {
-    $cek = $this->db->get("tb_pengguna", ['username', 'level', 'email', 'nohp'], ['username' => $this->input->post('username'), 'password' => $this->input->post('password')]);
+    $cek = $this->pengguna->cekLogin($this->input->post('username'), $this->input->post('password'));
     if(empty($cek))
     {
       header('Location: '.site_url('login?salah=true'));
@@ -24,7 +30,7 @@ class Autentikasi extends MY_Controller {
     else
     {
       $_SESSION = $cek;
-      header('Location: '.site_url('transaksi'));
+      header('Location: '.site_url('beranda'));
     }
   }
   public function register()
@@ -40,20 +46,13 @@ class Autentikasi extends MY_Controller {
   }
   public function prosesRegister()
   {
-    $cek = $this->db->get('tb_pengguna', "username", ['username' => $this->input->post('username'), ["OR" => ['email' => $this->input->post('email')]]]);
-    if(!empty($cek))
+    $proses = $this->pengguna->register($this->input->post(NULL, TRUE));
+    if(!$proses)
     {
       header("Location: ".site_url("register?username=false"));
     }
     else
     {
-      $this->db->insert("tb_pengguna", [
-        "username" => $this->input->post('username'),
-        "password" => $this->input->post('password'),
-        "email" => $this->input->post('email'),
-        "nohp" => $this->input->post('nohp'),
-        "level" => "Member"
-      ]);
       header("Location: ".site_url("login?login=true"));
     }
   }

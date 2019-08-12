@@ -1,12 +1,12 @@
 <?php
 use Medoo\Medoo;
 
-class MY_Controller extends CI_Controller {
+class MY_Model extends CI_Model {
 	protected $db;
   function __construct()
   {
     parent::__construct();
-    $this->dbs = new Medoo([
+    $this->db = new Medoo([
       'database_type' => 'mysql',
       'database_name' => 'db_travel',
       'server' => 'localhost',
