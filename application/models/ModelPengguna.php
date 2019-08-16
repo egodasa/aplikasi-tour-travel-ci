@@ -7,8 +7,8 @@ class ModelPengguna extends MY_Model {
   {
     $this->tabel = "tb_pengguna";
     $this->primaryKey = "id";
-    $this->relasi_tabel = null;
-    $this->kolom_bawaan_crud = [
+    $this->relasiTabel = null;
+    $this->kolomBawaanCrud = [
       "username"  =>  $this->data["username"],
       "password"  =>  $this->data["password"],
       "email"  =>  $this->data["email"], 

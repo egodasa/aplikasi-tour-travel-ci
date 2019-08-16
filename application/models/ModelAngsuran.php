@@ -6,12 +6,12 @@ class ModelAngsuran extends MY_Model {
   {
     $this->tabel = "tb_angsuran";
     $this->primaryKey = "id";
-    $this->relasi_tabel = [
+    $this->relasiTabel = [
       "[><]tb_transaksi" => ["id_transaksi" => "id"],
       "[><]tb_peserta" => ["id_peserta" => "id"],
       "[><]tb_pengguna" => ["tb_peserta.id_peserta" => "id"]
     ];
-    $this->kolom_bawaan_crud = [
+    $this->kolomBawaanCrud = [
       "id_transaksi"  =>  $this->["id_transaksi"], 
       "tgl_bayar"  =>  $this->["tgl_bayar"], 
       "juml_bayar"  =>  $this->["juml_bayar"], 

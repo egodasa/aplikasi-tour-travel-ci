@@ -6,11 +6,11 @@ class ModelPeserta extends MY_Model {
   {
     $this->tabel = "tb_peserta";
     $this->primaryKey = "id";
-    $this->relasi_tabel = [
+    $this->relasiTabel = [
       "[><]tb_pengguna" => ["id_pengguna" => "id"],
       "[><]tb_kota" => ["tempat_lahir" => "id"]
     ];
-    $this->kolom_bawaan_crud = [
+    $this->kolomBawaanCrud = [
       "nama_lengkap"  =>  $this->data["nama_lengkap"],  
       "nama_panggilan"  =>  $this->data["nama_panggilan"], 
       "jenis_kelamin"  =>  $this->data["jenis_kelamin"],  

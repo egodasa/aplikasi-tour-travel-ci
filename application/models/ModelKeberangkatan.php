@@ -7,10 +7,10 @@ class ModelKeberangkatan extends MY_Model {
   {
     $this->tabel = "tb_keberangkatan";
     $this->primaryKey = "id";
-    $this->relasi_tabel = [
+    $this->relasiTabel = [
       "[><]tb_jenis_program" => ["id_jenis" => "id"]
     ];
-    $this->kolom_bawaan_crud = [
+    $this->kolomBawaanCrud = [
       "tgl_berangkat"  =>  $this->data["tgl_berangkat"],  // Proses penambahan data (insert)
       "nama_maskapai"  =>  $this->data["nama_maskapai"],  // Proses penambahan data (insert)
       "id_jenis"  =>  $this->data["id_jenis"]

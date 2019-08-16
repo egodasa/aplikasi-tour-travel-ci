@@ -5,8 +5,8 @@ class MY_Model extends CI_Model {
 	protected $db;
   protected $tabel;      // nama tabelnya
   protected $primaryKey; // primary keynya
-  protected $relasi_tabel; // relasi tabel array
-  protected $kolom_bawaan_crud; // kolom bawaan crud array
+  protected $relasiTabel; // relasi tabel array
+  protected $kolomBawaanCrud; // kolom bawaan crud array
   private $data;
   function __construct()
   {
@@ -27,11 +27,11 @@ class MY_Model extends CI_Model {
 	{
     if($id != null)
     {
-      return $this->db->get($this->tabel, $this->relasi_tabel, $kolom, [$this->primaryKey => $id]);
+      return $this->db->get($this->tabel, $this->relasiTabel, $kolom, [$this->primaryKey => $id]);
     }
     else
     {
-      return $this->db->select($this->tabel, $this->relasi_tabel, $kolom);
+      return $this->db->select($this->tabel, $this->relasiTabel, $kolom);
     }
 	}
   
@@ -39,13 +39,13 @@ class MY_Model extends CI_Model {
   // kolom = kolom yang ingin ditampilkan
 	public function ambilDataDenganKondisi($where, $kolom = "*")
 	{
-    return $this->db->select($this->tabel, $this->relasi_tabel, $kolom, $where);
+    return $this->db->select($this->tabel, $this->relasiTabel, $kolom, $where);
 	}
   
   // method untuk menambah data
   public function tambahData($data)
   {
-    $this->db->insert($this->tabel, $this->kolom_bawaan_crud);
+    $this->db->insert($this->tabel, $this->kolomBawaanCrud);
     
     return $this->db->id();
   }
@@ -53,7 +53,7 @@ class MY_Model extends CI_Model {
   // method untuk edit data
   public function ubahData($id, $data)
   {
-    $this->db->update($this->tabel, $this->kolom_bawaan_crud,[$this->primaryKey => $id]);
+    $this->db->update($this->tabel, $this->kolomBawaanCrud,[$this->primaryKey => $id]);
     return true;
   }
   

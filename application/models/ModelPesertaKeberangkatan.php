@@ -6,14 +6,14 @@ class ModelPesertaKeberangkatan extends MY_Model {
   {
     $this->tabel = "tb_peserta_keberangkatan";
     $this->primaryKey = "id";
-    $this->relasi_tabel = [
+    $this->relasiTabel = [
       "[><]tb_transaksi" => ["id_transaksi" => "id"],
       "[><]tb_keberangkatan" => ["id_keberangkatan" => "id"],
       "[><]tb_peserta" => ["tb_transaksi.id_peserta" => "id"],
       "[><]tb_jenis_program" => ["tb_transaksi.id_jenis" => "id"],
       "[><]tb_program" => ["tb_jenis_program.id_program" => "id"]
     ];
-    $this->kolom_bawaan_crud = [
+    $this->kolomBawaanCrud = [
       "tgl_berangkat"  =>  $this->data["tgl_berangkat"],  
       "nama_maskapai"  =>  $this->data["nama_maskapai"],  
       "id_jenis"  =>  $this->data["id_jenis"],  

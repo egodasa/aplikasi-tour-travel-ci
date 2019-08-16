@@ -6,8 +6,8 @@ class ModelProgram extends MY_Model {
   {
     $this->tabel = "tb_jenis_program";
     $this->primaryKey = "id";
-    $this->relasi_tabel = null;
-    $this->kolom_bawaan_crud = [
+    $this->relasiTabel = null;
+    $this->kolomBawaanCrud = [
       "nama_program" => $this->data["nama_program"]
     ];
   }
