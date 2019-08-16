@@ -36,6 +36,7 @@
         <td>{{ $data['status'] }}</td>
         <td>{{ $data['keterangan'] }}</td>
         <td>
+          <a href="<?=site_url("admin/jadwalkeberangkatan/peserta?id_jadwal=".$data['id_jadwal'])?>" class="btn btn-primary">Daftar Peserta</a>
           <a href="<?=site_url("admin/jadwalkeberangkatan/edit?id_jadwal=".$data['id_jadwal'])?>" class="btn btn-success">Edit</a>
           <a href="<?=site_url("admin/jadwalkeberangkatan/hapus?id_jadwal=".$data['id_jadwal'])?>" class="btn btn-danger">Hapus</a>
         </td>

@@ -57,83 +57,86 @@ $route['translate_uri_dashes'] = FALSE;
 // Route admin
 
 // Kelola Data program
-$route['admin/program']['GET'] = 'admin/KelolaProgram/daftar';                // Lihat Data
-$route['admin/program/tambah']['GET'] = 'admin/KelolaProgram/tambah';         // Tambah Data
-$route['admin/program/tambah']['POST'] = 'admin/KelolaProgram/prosesTambah';  // Proses Tambah Data
-$route['admin/program/edit']['GET'] = 'admin/KelolaProgram/edit';             // Edit Data
-$route['admin/program/edit']['POST'] = 'admin/KelolaProgram/prosesEdit';             // Proses Edit Data
-$route['admin/program/hapus']['GET'] = 'admin/KelolaProgram/prosesHapus';     // Hapus Data
+$route['admin/program']['GET'] = 'KelolaProgram/daftar';                // Lihat Data
+$route['admin/program/tambah']['GET'] = 'KelolaProgram/tambah';         // Tambah Data
+$route['admin/program/tambah']['POST'] = 'KelolaProgram/prosesTambah';  // Proses Tambah Data
+$route['admin/program/edit']['GET'] = 'KelolaProgram/edit';             // Edit Data
+$route['admin/program/edit']['POST'] = 'KelolaProgram/prosesEdit';             // Proses Edit Data
+$route['admin/program/hapus']['GET'] = 'KelolaProgram/prosesHapus';     // Hapus Data
 // EOF Kelola Data program
 
 // Kelola Data jenisprogram
-$route['admin/jenisprogram']['GET'] = 'admin/KelolaJenisProgram/daftar';                // Lihat Data
-$route['admin/jenisprogram/tambah']['GET'] = 'admin/KelolaJenisProgram/tambah';         // Tambah Data
-$route['admin/jenisprogram/tambah']['POST'] = 'admin/KelolaJenisProgram/prosesTambah';  // Proses Tambah Data
-$route['admin/jenisprogram/edit']['GET'] = 'admin/KelolaJenisProgram/edit';             // Edit Data
-$route['admin/jenisprogram/edit']['POST'] = 'admin/KelolaJenisProgram/prosesEdit';             // Proses Edit Data
-$route['admin/jenisprogram/hapus']['GET'] = 'admin/KelolaJenisProgram/prosesHapus';     // Hapus Data
+$route['admin/jenisprogram']['GET'] = 'KelolaJenisProgram/daftar';                // Lihat Data
+$route['admin/jenisprogram/tambah']['GET'] = 'KelolaJenisProgram/tambah';         // Tambah Data
+$route['admin/jenisprogram/tambah']['POST'] = 'KelolaJenisProgram/prosesTambah';  // Proses Tambah Data
+$route['admin/jenisprogram/edit']['GET'] = 'KelolaJenisProgram/edit';             // Edit Data
+$route['admin/jenisprogram/edit']['POST'] = 'KelolaJenisProgram/prosesEdit';             // Proses Edit Data
+$route['admin/jenisprogram/hapus']['GET'] = 'KelolaJenisProgram/prosesHapus';     // Hapus Data
 // EOF Kelola Data jenisprogram
 
 // Kelola Data pengguna
-$route['admin/pengguna']['GET'] = 'admin/KelolaPengguna/daftar';                // Lihat Data
-$route['admin/pengguna/tambah']['GET'] = 'admin/KelolaPengguna/tambah';         // Tambah Data
-$route['admin/pengguna/tambah']['POST'] = 'admin/KelolaPengguna/prosesTambah';  // Proses Tambah Data
-$route['admin/pengguna/edit']['GET'] = 'admin/KelolaPengguna/edit';             // Edit Data
-$route['admin/pengguna/edit']['POST'] = 'admin/KelolaPengguna/prosesEdit';             // Proses Edit Data
-$route['admin/pengguna/hapus']['GET'] = 'admin/KelolaPengguna/prosesHapus';     // Hapus Data
+$route['admin/pengguna']['GET'] = 'KelolaPengguna/daftar';                // Lihat Data
+$route['admin/pengguna/tambah']['GET'] = 'KelolaPengguna/tambah';         // Tambah Data
+$route['admin/pengguna/tambah']['POST'] = 'KelolaPengguna/prosesTambah';  // Proses Tambah Data
+$route['admin/pengguna/edit']['GET'] = 'KelolaPengguna/edit';             // Edit Data
+$route['admin/pengguna/edit']['POST'] = 'KelolaPengguna/prosesEdit';             // Proses Edit Data
+$route['admin/pengguna/hapus']['GET'] = 'KelolaPengguna/prosesHapus';     // Hapus Data
 // EOF Kelola Data pengguna
 
 
 // Kelola Data pelanggan
-$route['admin/pelanggan']['GET'] = 'admin/KelolaPelanggan/daftar';                // Lihat Data
-$route['admin/pelanggan/tambah']['GET'] = 'admin/KelolaPelanggan/tambah';         // Tambah Data
-$route['admin/pelanggan/tambah']['POST'] = 'admin/KelolaPelanggan/prosesTambah';  // Proses Tambah Data
-$route['admin/pelanggan/edit']['GET'] = 'admin/KelolaPelanggan/edit';             // Edit Data
-$route['admin/pelanggan/edit']['POST'] = 'admin/KelolaPelanggan/prosesEdit';             // Proses Edit Data
-$route['admin/pelanggan/hapus']['GET'] = 'admin/KelolaPelanggan/prosesHapus';     // Hapus Data
+$route['admin/pelanggan']['GET'] = 'KelolaPelanggan/daftar';                // Lihat Data
+$route['admin/pelanggan/tambah']['GET'] = 'KelolaPelanggan/tambah';         // Tambah Data
+$route['admin/pelanggan/tambah']['POST'] = 'KelolaPelanggan/prosesTambah';  // Proses Tambah Data
+$route['admin/pelanggan/edit']['GET'] = 'KelolaPelanggan/edit';             // Edit Data
+$route['admin/pelanggan/edit']['POST'] = 'KelolaPelanggan/prosesEdit';             // Proses Edit Data
+$route['admin/pelanggan/hapus']['GET'] = 'KelolaPelanggan/prosesHapus';     // Hapus Data
 // EOF Kelola Data pelanggan
 
 
 // Kelola Data jadwalkeberangkatan
-$route['admin/jadwalkeberangkatan']['GET'] = 'admin/KelolaJadwalKeberangkatan/daftar';                // Lihat Data
-$route['admin/jadwalkeberangkatan/tambah']['GET'] = 'admin/KelolaJadwalKeberangkatan/tambah';         // Tambah Data
-$route['admin/jadwalkeberangkatan/tambah']['POST'] = 'admin/KelolaJadwalKeberangkatan/prosesTambah';  // Proses Tambah Data
-$route['admin/jadwalkeberangkatan/edit']['GET'] = 'admin/KelolaJadwalKeberangkatan/edit';             // Edit Data
-$route['admin/jadwalkeberangkatan/edit']['POST'] = 'admin/KelolaJadwalKeberangkatan/prosesEdit';             // Proses Edit Data
-$route['admin/jadwalkeberangkatan/hapus']['GET'] = 'admin/KelolaJadwalKeberangkatan/prosesHapus';     // Hapus Data
+$route['admin/jadwalkeberangkatan']['GET'] = 'KelolaJadwalKeberangkatan/daftar';                // Lihat Data
+$route['admin/jadwalkeberangkatan/tambah']['GET'] = 'KelolaJadwalKeberangkatan/tambah';         // Tambah Data
+$route['admin/jadwalkeberangkatan/tambah']['POST'] = 'KelolaJadwalKeberangkatan/prosesTambah';  // Proses Tambah Data
+$route['admin/jadwalkeberangkatan/edit']['GET'] = 'KelolaJadwalKeberangkatan/edit';             // Edit Data
+$route['admin/jadwalkeberangkatan/edit']['POST'] = 'KelolaJadwalKeberangkatan/prosesEdit';             // Proses Edit Data
+$route['admin/jadwalkeberangkatan/hapus']['GET'] = 'KelolaJadwalKeberangkatan/prosesHapus';     // Hapus Data
+$route['admin/jadwalkeberangkatan/peserta']['GET'] = 'KelolaJadwalKeberangkatan/kelolaPesertaKeberangkatan';     // Hapus Data
+$route['admin/jadwalkeberangkatan/peserta/hapus']['GET'] = 'KelolaJadwalKeberangkatan/hapusPesertaKeberangkatan';     // Hapus Data
 // EOF Kelola Data jadwalkeberangkatan
 
 
 // Kelola Data transaksi
-$route['admin/transaksi']['GET'] = 'admin/KelolaTransaksi/daftar';                // Lihat Data
-$route['admin/transaksi/tambah']['GET'] = 'admin/KelolaTransaksi/tambah';         // Tambah Data
-$route['admin/transaksi/tambah']['POST'] = 'admin/KelolaTransaksi/prosesTambah';  // Proses Tambah Data
-$route['admin/transaksi/edit']['GET'] = 'admin/KelolaTransaksi/edit';             // Edit Data
-$route['admin/transaksi/edit']['POST'] = 'admin/KelolaTransaksi/prosesEdit';             // Proses Edit Data
-$route['admin/transaksi/hapus']['GET'] = 'admin/KelolaTransaksi/prosesHapus';     // Hapus Data
+$route['admin/transaksi']['GET'] = 'KelolaTransaksi/daftar';                // Lihat Data
+$route['admin/transaksi/tambah']['GET'] = 'KelolaTransaksi/tambah';         // Tambah Data
+$route['admin/transaksi/tambah']['POST'] = 'KelolaTransaksi/prosesTambah';  // Proses Tambah Data
+$route['admin/transaksi/edit']['GET'] = 'KelolaTransaksi/edit';             // Edit Data
+$route['admin/transaksi/edit']['POST'] = 'KelolaTransaksi/prosesEdit';             // Proses Edit Data
+$route['admin/transaksi/hapus']['GET'] = 'KelolaTransaksi/prosesHapus';     // Hapus Data
 // EOF Kelola Data transaksi
 
 // Kelola Data angsuran
-$route['admin/angsuran/(:num)']['GET'] = 'admin/KelolaAngsuran/daftar/$1';                // Lihat Data
-$route['admin/angsuran/tambah']['GET'] = 'admin/KelolaAngsuran/tambah';         // Tambah Data
-$route['admin/angsuran/tambah']['POST'] = 'admin/KelolaAngsuran/prosesTambah';  // Proses Tambah Data
-$route['admin/angsuran/edit']['GET'] = 'admin/KelolaAngsuran/edit';             // Edit Data
-$route['admin/angsuran/edit']['POST'] = 'admin/KelolaAngsuran/prosesEdit';             // Proses Edit Data
-$route['admin/angsuran/hapus']['GET'] = 'admin/KelolaAngsuran/prosesHapus';     // Hapus Data
+$route['admin/angsuran/(:num)']['GET'] = 'KelolaAngsuran/daftar/$1';                // Lihat Data
+$route['admin/angsuran/tambah']['GET'] = 'KelolaAngsuran/tambah';         // Tambah Data
+$route['admin/angsuran/tambah']['POST'] = 'KelolaAngsuran/prosesTambah';  // Proses Tambah Data
+$route['admin/angsuran/edit']['GET'] = 'KelolaAngsuran/edit';             // Edit Data
+$route['admin/angsuran/edit']['POST'] = 'KelolaAngsuran/prosesEdit';             // Proses Edit Data
+$route['admin/angsuran/hapus']['GET'] = 'KelolaAngsuran/prosesHapus';     // Hapus Data
 
 // Kelola Data jadwal
-$route['admin/jadwal/(:num)']['GET'] = 'admin/KelolaJadwal/daftar/$1';                // Lihat Data
-$route['admin/jadwal/tambah']['GET'] = 'admin/KelolaJadwal/tambah';         // Tambah Data
-$route['admin/jadwal/tambah']['POST'] = 'admin/KelolaJadwal/prosesTambah';  // Proses Tambah Data
-$route['admin/jadwal/edit']['GET'] = 'admin/KelolaJadwal/edit';             // Edit Data
-$route['admin/jadwal/edit']['POST'] = 'admin/KelolaJadwal/prosesEdit';             // Proses Edit Data
-$route['admin/jadwal/hapus']['GET'] = 'admin/KelolaJadwal/prosesHapus';     // Hapus Data
+$route['admin/jadwal/(:num)']['GET'] = 'KelolaJadwal/daftar/$1';                // Lihat Data
+$route['admin/jadwal/tambah']['GET'] = 'KelolaJadwal/tambah';         // Tambah Data
+$route['admin/jadwal/tambah']['POST'] = 'KelolaJadwal/prosesTambah';  // Proses Tambah Data
+$route['admin/jadwal/edit']['GET'] = 'KelolaJadwal/edit';             // Edit Data
+$route['admin/jadwal/edit']['POST'] = 'KelolaJadwal/prosesEdit';             // Proses Edit Data
+$route['admin/jadwal/hapus']['GET'] = 'KelolaJadwal/prosesHapus';     // Hapus Data
 // EOF Kelola Data angsuran
 
 
 
 // Halaman khusus member
-$route['member/jadwalkeberangkatan']['GET'] = 'admin/KelolaJadwalKeberangkatan/daftar';
+$route['jadwalkeberangkatan']['GET'] = 'KelolaJadwalKeberangkatan/daftarJadwalKeberangkatan';
+$route['jadwalkeberangkatan/peserta']['GET'] = 'KelolaJadwalKeberangkatan/pesertaKeberangkatan';
 // EOF Halaman khusus member
 
 

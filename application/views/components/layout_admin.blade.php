@@ -64,7 +64,7 @@
                       {
                     ?>
                       <li><a href="{{ site_url('member/transaksi') }}"><i class="fa fa-home"></i> Transaksi</a></li>
-                      <li><a href="{{ site_url('member/jadwalkeberangkatan') }}"><i class="fa fa-home"></i> Jadwal Keberangkatan</a></li>
+                      <li><a href="{{ site_url('jadwalkeberangkatan') }}"><i class="fa fa-home"></i> Jadwal Keberangkatan</a></li>
                     <?php
                       }
                       else
