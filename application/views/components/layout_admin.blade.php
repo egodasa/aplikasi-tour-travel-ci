@@ -24,6 +24,11 @@
     <link href="{{ base_url() }}assets/css/custom.min.css" rel="stylesheet">
     
     <link href="{{ base_url() }}assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    
+    <link href="{{ base_url() }}assets/css/pnotify/pnotify.css" rel="stylesheet">
+    <link href="{{ base_url() }}assets/css/pnotify/pnotify.buttons.css" rel="stylesheet">
+    <link href="{{ base_url() }}assets/css/pnotify/pnotify.nonblock.css" rel="stylesheet">
+    
     @section('head')
       <!-- Custom Head -->
     @show
@@ -73,9 +78,9 @@
                       <li><a href="{{ site_url('admin/program') }}"><i class="fa fa-home"></i> Program</a></li>
                       <li><a href="{{ site_url('admin/jenisprogram') }}"><i class="fa fa-home"></i> Jenis Program</a></li>
                       <li><a href="{{ site_url('admin/pengguna') }}"><i class="fa fa-home"></i> Pengguna</a></li>
-                      <li><a href="{{ site_url('admin/pelanggan') }}"><i class="fa fa-home"></i> Pelanggan</a></li>
+                      <li><a href="{{ site_url('admin/peserta') }}"><i class="fa fa-home"></i> Peserta</a></li>
                       <li><a href="{{ site_url('admin/transaksi') }}"><i class="fa fa-home"></i> Transaksi</a></li>
-                      <li><a href="{{ site_url('admin/jadwalkeberangkatan') }}"><i class="fa fa-home"></i> Jadwal Keberangkatan</a></li>
+                      <li><a href="{{ site_url('admin/keberangkatan') }}"><i class="fa fa-home"></i> Keberangkatan</a></li>
                     <?php
                       }
                     ?>
@@ -148,6 +153,26 @@
         
       </div>
     </div>
+    
+    <!-- modal untuk peringatan hapus -->
+    <div class="modal fade hide-modal" id="modal_hapus">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title" id="judul_modal">Peringatan!</h4>
+        </div>
+        <div class="modal-body">
+          <h5>Apakah Anda yakin untuk menghapus data ini?</h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" onclick="hideModal('#modal_hapus')">Batal</button>
+          <a id="url_hapus" href="" class="btn btn-danger">Hapus Data</a>
+        </div>
+      </div>
+    </div>
+  </div>
     <!-- jQuery -->
     <script src="{{ base_url() }}assets/js/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -165,6 +190,35 @@
     <script src="{{ base_url() }}assets/js/dataTables.bootstrap.min.js"></script>
     <script src="{{ base_url() }}assets/js/dataTables.responsive.min.js"></script>
     
+    <script src="{{ base_url() }}assets/js/pnotify/pnotify.js"></script>
+    <script src="{{ base_url() }}assets/js/pnotify/pnotify.buttons.js"></script>
+    <script src="{{ base_url() }}assets/js/pnotify/pnotify.nonblock.js"></script>
+    
+    <script>
+      $('.table').DataTable();
+      function elId(id)
+      {
+        return document.getElementById(id);
+      }
+      function elName(name)
+      {
+        return document.getElementsByName(name);
+      }
+      function showModal(id)
+      {
+        $(id).modal("show");
+      }
+      function hideModal(id)
+      {
+        $(id).modal("hide");
+      }
+      function showConfirmationDelete(url)
+      {
+        document.getElementById("url_hapus").href = url;
+        showModal('#modal_hapus');
+      }
+    </script>
+    
     @section('script')
       <!-- Custom Script -->
     @show
@@ -172,6 +226,10 @@
     <script>
       $('.table').DataTable();
     </script>
+    
+    {{ showNotifikasi() }}
+    
+    
     
   </body>
 </html>

@@ -7,23 +7,22 @@ class KelolaTransaksi extends MY_Controller {
   {
     parent::__construct();
     $this->load->model("ModelJenisProgram", "program");
-    $this->load->model("ModelKota", "kota");
     $this->load->model("ModelTransaksi", "transaksi");
-    $this->load->model("ModelPelanggan", "pelanggan");
   }
   
   //  Method untuk menampilkan data
 	public function daftar()
 	{
-    $this->_dts['data_list'] = $this->transaksi->data();
+    $this->_dts['data_program'] = $this->program->ambilData();
+    $this->_dts['data_list'] = $this->transaksi->ambilData();
 		$this->view('admin.transaksi.daftar', $this->_dts); // Oper data dari database ke view
 	}
   
   // Method untuk menampilkan form tambah data
-  public function tambah()
+  public function tambahData()
   {
-    $this->_dts['data_kota'] = $this->kota->data();
-    $this->_dts['data_program'] = $this->program->data();
+    $this->_dts['data_kota'] = $this->kota->ambilData();
+    $this->_dts['data_program'] = $this->program->ambilData();
     $this->view('admin.transaksi.tambah', $this->_dts); // Langsung tampilkan view tambah data
   }
   
@@ -31,32 +30,21 @@ class KelolaTransaksi extends MY_Controller {
   // Method diakses dalam metode POST
   public function prosesTambah()
   {
-    $this->transaksi->tambahTransaksi($this->input->post(NULL, true));
-    header("Location: ".site_url("transaksi")); // Arahkan kembali user ke halaman daftar
-  }
-  
-  // Method untuk menampilkan form edit
-  public function edit()
-  {
-    $this->_dts['data_kota'] = $this->kota->data();
-    $this->_dts['data_program'] = $this->program->data();
-    $detail_transaksi = $this->transaksi->data($this->input->get('no_registrasi'));
-    $detail_pelanggan = $this->pelanggan->data($detail_transaksi['id_pelanggan']);
-    $this->_dts['detail'] = array_merge($detail_pelanggan, $detail_transaksi);
-    $this->view('admin.transaksi.edit', $this->_dts); // Oper data ke view
+    $this->transaksi->tambahData($this->input->post(NULL, true));
+    header("Location: ".site_url("admin/transaksi")); // Arahkan kembali user ke halaman daftar
   }
   
   // Method untuk memproses data yang akan diedit
   public function prosesEdit()
   {
-    $this->transaksi->editTransaksi($this->input->post("no_registrasi"), $this->input->post(NULL, true));
-    header("Location: ".site_url("transaksi")); // Arahkan user kembali ke halaman daftar
+    $this->transaksi->ubahData($this->input->post("id"), $this->input->post(NULL, true));
+    header("Location: ".site_url("admin/transaksi")); // Arahkan user kembali ke halaman daftar
   }
   
   // Method untuk menghapus data
   public function prosesHapus()
   {
-    $this->transaksi->hapus($this->input->get('no_registrasi')); // Proses hapus data
-    header("Location: ".site_url("transaksi")); // // Arahkan user kembali ke halaman daftar
+    $this->transaksi->hapusData($this->input->get('id')); // Proses hapus data
+    header("Location: ".site_url("admin/transaksi")); // // Arahkan user kembali ke halaman daftar
   }
 }

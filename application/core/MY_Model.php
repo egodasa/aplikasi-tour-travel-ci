@@ -3,21 +3,22 @@ use Medoo\Medoo;
 
 class MY_Model extends CI_Model {
 	protected $db;
-  protected $tabel;      // nama tabelnya
+  public $tabel;      // nama tabelnya
   protected $primaryKey; // primary keynya
   protected $relasiTabel; // relasi tabel array
-  protected $kolomBawaanCrud; // kolom bawaan crud array
-  private $data;
+  public $kolomBawaanCrud; // kolom bawaan crud array
+  public $data = [];
+  public $view = null;
   function __construct()
   {
     parent::__construct();
-      $this->db = new Medoo([
-        'database_type' => 'mysql',
-        'database_name' => 'db_travel',
-        'server' => 'localhost',
-        'username' => 'root',
-        'password' => 'mysql'
-      ]);
+    $this->db = new Medoo([
+      'database_type' => 'mysql',
+      'database_name' => 'db_travel_2',
+      'server' => 'localhost',
+      'username' => 'root',
+      'password' => 'mysql'
+    ]);
   }
   
   
@@ -25,13 +26,17 @@ class MY_Model extends CI_Model {
   // kolom = daftar kolom yang ingin ditampilkan, berupa array
   public function ambilData($id = null, $kolom = "*")
 	{
-    if($id != null)
+    if(!empty($this->view))
     {
-      return $this->db->get($this->tabel, $this->relasiTabel, $kolom, [$this->primaryKey => $id]);
+      $this->tabel = $this->view;
+    }
+    if(!is_null($id))
+    {
+      return $this->db->get($this->tabel, $kolom, [$this->primaryKey => $id]);
     }
     else
     {
-      return $this->db->select($this->tabel, $this->relasiTabel, $kolom);
+      return $this->db->select($this->tabel, $kolom);
     }
 	}
   
@@ -39,21 +44,34 @@ class MY_Model extends CI_Model {
   // kolom = kolom yang ingin ditampilkan
 	public function ambilDataDenganKondisi($where, $kolom = "*")
 	{
-    return $this->db->select($this->tabel, $this->relasiTabel, $kolom, $where);
+    if(!empty($this->view))
+    {
+      $this->table = $this->view;
+    }
+    return $this->db->select($this->tabel, $kolom, $where);
 	}
   
   // method untuk menambah data
   public function tambahData($data)
   {
-    $this->db->insert($this->tabel, $this->kolomBawaanCrud);
-    
+    foreach($this->kolomBawaanCrud as $d)
+    {
+      $this->data[$d] = $data[$d];
+    }
+    $this->db->insert($this->tabel, $this->data);
+    notifikasi("Pesan!", "Data berhasil ditambahkan", "primary");
     return $this->db->id();
   }
   
   // method untuk edit data
   public function ubahData($id, $data)
   {
-    $this->db->update($this->tabel, $this->kolomBawaanCrud,[$this->primaryKey => $id]);
+    foreach($this->kolomBawaanCrud as $d)
+    {
+      $this->data[$d] = $data[$d];
+    }
+    $this->db->update($this->tabel, $this->data, [$this->primaryKey => $id]);
+    notifikasi("Pesan!", "Data berhasil diedit", "primary");
     return true;
   }
   
@@ -61,6 +79,7 @@ class MY_Model extends CI_Model {
   public function hapusData($id)
   {
     $this->db->delete($this->tabel, [$this->primaryKey => $id]);
+    notifikasi("Pesan!", "Data berhasil dihapus", "primary");
     return true;
   }
 }

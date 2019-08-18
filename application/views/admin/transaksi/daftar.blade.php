@@ -14,44 +14,98 @@
 @section('content_title', 'Transaksi')
 
 @section('content')
-  <a href="{{ site_url('admin/transaksi/tambah') }}" class="btn btn-primary">Transaksi Baru</a>
+  <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Data</button>
   <table class="table table-bordered table-stripped">
     <tr>
       <th>No</th>
       <th>No Transaksi</th>
+      <th>Username</th>
       <th>Program</th>
-      <th>Nama</th>
       <th>DP</th>
-      <th>Sisa Pembayaran</th>
       <th>Status</th>
       <th>Aksi</th>
     </tr>
     @foreach($data_list as $nomor => $data)
       <tr>
         <td>{{ ($nomor+1) }}</td>
-        <td>{{ $data['no_registrasi'] }}</td>
+        <td>{{ $data['id'] }}</td>
+        <td>{{ $data['username'] }}</td>
         <td>{{ $data['nama_program'] }}</td>
-        <td>{{ $data['nama_lengkap'] }}</td>
         <td>{{ rupiah($data['dp']) }}</td>
-        <td>{{ rupiah($data['sisa_pembayaran']) }}</td>
+        <td>{{ $data['status_transaksi'] }}</td>
         <td>
-          <?php
-            if($data['sisa_pembayaran'] == 0)
-            {
-              echo "Sudah Lunas";
-            }
-            else
-            {
-              echo "Belum Lunas";
-            }
-          ?>
-        </td>
-        <td>
-          <a href="<?=site_url("admin/transaksi/edit?no_registrasi=".$data['no_registrasi'])?>" class="btn btn-success">Edit</a>
-          <a href="<?=site_url("admin/transaksi/hapus?no_registrasi=".$data['no_registrasi'])?>" class="btn btn-danger">Hapus</a>
-          <a href="<?=site_url("admin/angsuran?no_registrasi=".$data['no_registrasi']."&sisa_pembayaran=".$data['sisa_pembayaran'])?>" class="btn btn-primary">Data Angsuran</a>
+          <button type="button" onclick="showModalEdit({{ $nomor }})" class="btn btn-success">Edit</button>
+          <button type="button" onclick="showConfirmationDelete('<?=site_url("admin/transaksi/hapus?id=".$data['id'])?>')" class="btn btn-danger">Hapus</button>
+          <a href="<?=site_url("admin/angsuran?id=".$data['id'])?>" class="btn btn-primary">Data Peserta</a>
+          <a href="<?=site_url("admin/angsuran?id=".$data['id'])?>" class="btn btn-primary">Data Angsuran</a>
         </td>
       </tr>
     @endforeach
   </table>
+  
+  <script>
+    var data = <?=json_encode($data_list)?>;
+    
+    function resetModal()
+    {
+      elId("form_modal").action = "";
+      elId("judul_modal").innerHTML = "Tambah Data Baru";
+      elName("id")[0].value = "";
+      elName("dp")[0].value = "";
+      elName("id_jenis")[0].value = "";
+      elName("status")[0].value = "";
+    }
+    
+    function closeModal()
+    {
+      resetModal();
+      hideModal("#modal");
+    }
+    
+    function showModalTambah()
+    {
+      resetModal();
+      elId("form_modal").action = "{{ site_url('admin/transaksi/tambah') }}";
+      showModal("#modal");
+    }
+    
+    function showModalEdit(id)
+    {
+      elId("judul_modal").innerHTML = "Edit Data";
+      resetModal();
+      var detail = data[id]; 
+      elId("form_modal").action = "{{ site_url('admin/transaksi/edit') }}";
+      elName("id")[0].value = detail.id;
+      elName("dp")[0].value = detail.dp;
+      elName("id_jenis")[0].value = detail.id_jenis;
+      elName("status")[0].value = detail.status_transaksi;
+      showModal("#modal");
+    }
+  </script>
+  
+  <div class="modal fade hide-modal" id="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title" id="judul_modal">Judul Modal</h4>
+        </div>
+        <div class="modal-body">
+          <form id="form_modal" method="POST" action="{{ site_url('admin/transaksi/tambah') }}">
+            <input type="hidden" name="id">
+            <input type="hidden" name="id_pengguna" value="<?=$_SESSION['id']?>" />
+            @include('components.form.select', ['_data' => [ 'class' => 'form-control', 'name' => 'id_jenis', 'value' => '','val' => 'id', 'caption' => 'jenis_program', 'label' => 'Nama Program', 'options' => $data_program, 'caption' => 'nama_program']])
+            @include('components.form.input', ['_data' => ['type' => 'number', 'name' => 'dp', 'class' => 'form-control', 'label' => 'Dp']])
+            @include('components.form.select', ['_data' => [ 'class' => 'form-control', 'name' => 'status', 'value' => 'val','caption' => 'status', 'label' => 'Status', 'options' => [['val' => 'Aktif'], ['val' => 'Dibatalkan']], 'val' => 'val', 'caption' => 'val']])
+        
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" onclick="closeModal()">Tutup</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+    </div>
+    </div>
+    </form>
+  </div>
 @endsection

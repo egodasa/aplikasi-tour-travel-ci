@@ -486,4 +486,42 @@
     
     //~ var_dump($selisih);
   }
+  
+  // include PNotofy assets
+  // Baca di https://github.com/sciactive/pnotify
+  function notifikasi($judul, $isi, $jenis)
+  {
+    $notifikasi = new StdClass();
+    $notifikasi->title = $judul;
+    $notifikasi->text = $isi;
+    $notifikasi->type = $jenis;
+    $notifikasi->hide = false;
+    $notifikasi->styling = 'bootstrap3';
+    $_SESSION['notifikasi'] = "<script>new PNotify(".json_encode($notifikasi)."); </script>";
+  }
+  
+  function showNotifikasi()
+  {
+    if(isset($_SESSION["notifikasi"]))
+    {
+      echo $_SESSION["notifikasi"];
+    }
+    unset($_SESSION["notifikasi"]);
+  }
+  function cekHakAkses($user, $list_akses)
+  {
+    if(!in_array($user, $list_akses))
+    {
+      ob_end_clean();
+      header("Location: dilarang");
+      exit;
+    }
+  }
+  function cekLogin()
+  {
+    if(isset($_SESSION['username']))
+    {
+      header('Location: '.site_url('beranda'));
+    }
+  }
 ?>
