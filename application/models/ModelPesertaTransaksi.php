@@ -1,24 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ModelTransaksi extends MY_Model {
+class ModelPesertaTransaksi extends MY_Model {
   function __construct()
   {
+    parent::__construct(); 
     $this->tabel = "tb_peserta_transaksi";
     $this->primaryKey = "id";
-    $this->relasiTabel = [
-      "[><]tb_transaksi" => ["id_transaksi" => "id"],
-      "[><]tb_peserta" => ["id_peserta" => "id"]
-    ];
     $this->kolomBawaanCrud = [
-      "id_peserta"  =>  $this->data["id_peserta"], 
-      "id_transaksi"  =>  $this->data["id_transaksi"],  
-      "status"  =>  $this->data["status"],  
-      "keterangan"  =>  $this->data["keterangan"]  
+      "id_peserta"   ,
+      "id_transaksi" ,  
+      "status"       ,
+      "keterangan"  
     ];
-  }
-  public function batalkanTransaksi($idTransaksi)
-  {
-    $this->db->update($this->tabel, ["status" => "Dibatalkan"], [$this->primaryKey => $idTransaksi]);
+    $this->view = "data_peserta_transaksi"; 
   }
 }

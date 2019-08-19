@@ -36,8 +36,8 @@
         <td>
           <button type="button" onclick="showModalEdit({{ $nomor }})" class="btn btn-success">Edit</button>
           <button type="button" onclick="showConfirmationDelete('<?=site_url("admin/transaksi/hapus?id=".$data['id'])?>')" class="btn btn-danger">Hapus</button>
-          <a href="<?=site_url("admin/angsuran?id=".$data['id'])?>" class="btn btn-primary">Data Peserta</a>
-          <a href="<?=site_url("admin/angsuran?id=".$data['id'])?>" class="btn btn-primary">Data Angsuran</a>
+          <a href="<?=site_url("admin/peserta-transaksi?id_transaksi=".$data['id'])?>" class="btn btn-primary">Data Peserta</a>
+          <a href="<?=site_url("admin/angsuran?id_transaksi=".$data['id'])?>" class="btn btn-warning">Data Angsuran</a>
         </td>
       </tr>
     @endforeach

@@ -104,18 +104,21 @@ $route['admin/keberangkatan/peserta/hapus']['GET'] = 'KelolaKeberangkatan/hapusP
 
 // Kelola Data transaksi
 $route['admin/transaksi']['GET'] = 'KelolaTransaksi/daftar';                // Lihat Data
-$route['admin/transaksi/tambah']['GET'] = 'KelolaTransaksi/tambah';         // Tambah Data
 $route['admin/transaksi/tambah']['POST'] = 'KelolaTransaksi/prosesTambah';  // Proses Tambah Data
-$route['admin/transaksi/edit']['GET'] = 'KelolaTransaksi/edit';             // Edit Data
 $route['admin/transaksi/edit']['POST'] = 'KelolaTransaksi/prosesEdit';             // Proses Edit Data
 $route['admin/transaksi/hapus']['GET'] = 'KelolaTransaksi/prosesHapus';     // Hapus Data
 // EOF Kelola Data transaksi
 
+// Kelola Data peserta-transaksi
+$route['admin/peserta-transaksi']['GET'] = 'KelolaPesertaTransaksi/daftar';                // Lihat Data
+$route['admin/peserta-transaksi/tambah']['POST'] = 'KelolaPesertaTransaksi/prosesTambah';  // Proses Tambah Data
+$route['admin/peserta-transaksi/edit']['POST'] = 'KelolaPesertaTransaksi/prosesEdit';             // Proses Edit Data
+$route['admin/peserta-transaksi/hapus']['GET'] = 'KelolaPesertaTransaksi/prosesHapus';     // Hapus Data
+// EOF Kelola Data peserta-transaksi
+
 // Kelola Data angsuran
-$route['admin/angsuran/(:num)']['GET'] = 'KelolaAngsuran/daftar/$1';                // Lihat Data
-$route['admin/angsuran/tambah']['GET'] = 'KelolaAngsuran/tambah';         // Tambah Data
+$route['admin/angsuran']['GET'] = 'KelolaAngsuran/daftar';                // Lihat Data
 $route['admin/angsuran/tambah']['POST'] = 'KelolaAngsuran/prosesTambah';  // Proses Tambah Data
-$route['admin/angsuran/edit']['GET'] = 'KelolaAngsuran/edit';             // Edit Data
 $route['admin/angsuran/edit']['POST'] = 'KelolaAngsuran/prosesEdit';             // Proses Edit Data
 $route['admin/angsuran/hapus']['GET'] = 'KelolaAngsuran/prosesHapus';     // Hapus Data
 

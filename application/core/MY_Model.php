@@ -46,7 +46,7 @@ class MY_Model extends CI_Model {
 	{
     if(!empty($this->view))
     {
-      $this->table = $this->view;
+      $this->tabel = $this->view;
     }
     return $this->db->select($this->tabel, $kolom, $where);
 	}
