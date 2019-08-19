@@ -144,6 +144,15 @@ $route['register']['POST'] = 'Halaman/prosesRegister';
 $route['logout']['GET'] = 'Halaman/prosesLogout'; 
 $route['beranda']['GET'] = 'Halaman/beranda';
 
+
+
+// route untuk frontend
+$route['home'] = 'HalamanFrontend/home';
+$route['haji'] = 'HalamanFrontend/haji';
+$route['umroh'] = 'HalamanFrontend/umroh';
+$route['wisata'] = 'HalamanFrontend/wisata';
+
+
 $route['404']['GET'] = 'Autentikasi/dilarang'; 
 
 
