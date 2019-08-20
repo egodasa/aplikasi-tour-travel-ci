@@ -12,17 +12,44 @@ class HalamanFrontend extends MY_Controller {
   {
     $this->view("frontend.index");
   }
-  public function haji()
+  public function caraHaji()
   {
-    $this->view("frontend.haji");
+    $this->view("frontend.carahaji");
   }
-  public function umroh()
+  public function caraUmroh()
   {
-    $this->view("frontend.umroh");
+    $this->view("frontend.caraumroh");
   }
-  public function wisata()
+  
+  public function infoWisata()
   {
-    $this->view("frontend.wisata");
+    $this->view("frontend.infowisata");
+  }
+  
+  public function persyaratanHaji()
+  {
+    $this->view("frontend.persyaratanhaji");
+  }
+  public function persyaratanUmroh()
+  {
+    $this->view("frontend.persyaratanumroh");
+  }
+  public function persyaratanWisata()
+  {
+    $this->view("frontend.persyaratanwisata");
+  }
+  
+  public function pendaftaranHaji()
+  {
+    $this->view("frontend.pendaftaranhaji");
+  }
+  public function pendaftaranUmroh()
+  {
+    $this->view("frontend.pendaftaranumroh");
+  }
+  public function pendaftaranWisata()
+  {
+    $this->view("frontend.pendaftaranwisata");
   }
   
 }

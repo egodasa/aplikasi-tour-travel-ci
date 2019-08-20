@@ -1,86 +1,7 @@
-	<!DOCTYPE html>
-	<html lang="zxx" class="no-js">
-	<head>
-		<!-- Mobile Specific Meta -->
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<!-- Favicon-->
-		<link rel="shortcut icon" href="{{ base_url() }}assets/frontend/img/fav.png">
-		<!-- Author Meta -->
-		<meta name="author" content="colorlib">
-		<!-- Meta Description -->
-		<meta name="description" content="">
-		<!-- Meta Keyword -->
-		<meta name="keywords" content="">
-		<!-- meta character set -->
-		<meta charset="UTF-8">
-		<!-- Site Title -->
-		<title>Aisyah Tour and Travel</title>
+@extends('frontend.layout')
+@section('judul', 'AISYAH TOUR AND TRAVEL BUKITTINGGI')
 
-		<link href="https://fonts.googleapis.com/{{ base_url() }}assets/frontend/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
-			<!--
-			CSS
-			============================================= -->
-			<link rel="stylesheet" href="{{ base_url() }}assets/frontend/css/linearicons.css">
-			<link rel="stylesheet" href="{{ base_url() }}assets/frontend/css/font-awesome.min.css">
-			<link rel="stylesheet" href="{{ base_url() }}assets/frontend/css/bootstrap.css">
-			<link rel="stylesheet" href="{{ base_url() }}assets/frontend/css/owl.carousel.css">
-			<link rel="stylesheet" href="{{ base_url() }}assets/frontend/css/main.css">
-		</head>
-		<body>
-
-			<!-- Start Header Area -->
-			<header class="default-header">
-				<nav class="navbar navbar-expand-lg navbar-light">
-					<div class="container">
-						  <a class="navbar-brand" href="index.html">
-						  	<img src="{{ base_url() }}assets/frontend/img/logo.jpg" alt="">
-						  </a>
-						  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						    <span class="navbar-toggler-icon"></span>
-						  </button>
-
-						  <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
-						    <ul class="navbar-nav">
-								<li><a href="#home">Home</a></li>
-								<li><a href="#news">Info</a></li>
-								<!-- Dropdown -->
-								<li class="dropdown">
-							      <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-							        Haji							      </a>
-							      <div class="dropdown-menu">
-							        <a class="dropdown-item" href="carahaji.html">Tata Cara Haji</a>
-							        <a class="dropdown-item" href="persyaratanhaji.html">Persyaratan Haji</a>
-							        <a class="dropdown-item" href="pendaftaranhaji.html">Pendaftaran Haji</a>
-							      </div>
-							    </li>		
-								<li class="dropdown">
-							      <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-							        Umroh							      </a>
-							      <div class="dropdown-menu">
-							        <a class="dropdown-item" href="caraumroh.html">Tata Cara Umroh</a>
-							        <a class="dropdown-item" href="persyaratanumroh.html">Persyaratan Umroh</a>
-							        <a class="dropdown-item" href="pendaftaranumroh.html">Pendaftaran Umroh</a>
-							      </div>
-							    </li>
-								<li class="dropdown">
-							      <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-							        Wisata Muslim							      </a>
-							      <div class="dropdown-menu">
-							        <a class="dropdown-item" href="infowisata.html">Info Wisata Muslim</a>
-							        <a class="dropdown-item" href="persyaratanwisata.html">Persyaratan Wisata Muslim</a>
-							        <a class="dropdown-item" href="pendaftaranwisata.html">Pendaftaran Wisata Muslim</a>
-							      </div>
-							    </li>
-								<li><a href="#team">Login</a></li>
-								<li><a href="#team">Register</a></li>
-								<li><a href="#team">Tentang Kami</a></li>
-															
-						    </ul>
-						  </div>						
-					</div>
-				</nav>
-			</header>
-			<!-- End Header Area -->
+@section('content')		
 
 			<!-- start banner Area -->
 			<section class="banner-area relative" id="home" data-parallax="scroll" data-image-src="{{ base_url() }}assets/frontend/img/gambar.jpg">
@@ -222,14 +143,4 @@
 			</footer>
 			<!-- End footer Area -->		
 
-			<script src="{{ base_url() }}assets/frontend/js/vendor/jquery-2.2.4.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-			<script src="{{ base_url() }}assets/frontend/js/vendor/bootstrap.min.js"></script>
-			<script src="{{ base_url() }}assets/frontend/js/jquery.ajaxchimp.min.js"></script>
-			<script src="{{ base_url() }}assets/frontend/js/parallax.min.js"></script>			
-			<script src="{{ base_url() }}assets/frontend/js/owl.carousel.min.js"></script>		
-			<script src="{{ base_url() }}assets/frontend/js/jquery.magnific-popup.min.js"></script>				
-			<script src="{{ base_url() }}assets/frontend/js/jquery.sticky.js"></script>
-			<script src="{{ base_url() }}assets/frontend/js/main.js"></script>	
-		</body>
-	</html>
+@endsection

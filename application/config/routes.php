@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'Halaman/login';
+$route['default_controller'] = 'HalamanFrontend/home';
 $route['404_override'] = 'Autentikasi/dilarang';
 $route['translate_uri_dashes'] = FALSE;
 
@@ -124,12 +124,17 @@ $route['logout']['GET'] = 'Halaman/prosesLogout';
 $route['beranda']['GET'] = 'Halaman/beranda';
 
 
+$route['cara-haji'] = 'HalamanFrontend/caraHaji';
+$route['cara-umroh'] = 'HalamanFrontend/caraUmroh';
+$route['info-wisata'] = 'HalamanFrontend/infoWisata';
 
-// route untuk frontend
-$route['home'] = 'HalamanFrontend/home';
-$route['haji'] = 'HalamanFrontend/haji';
-$route['umroh'] = 'HalamanFrontend/umroh';
-$route['wisata'] = 'HalamanFrontend/wisata';
+$route['pendaftaran-haji'] = 'HalamanFrontend/pendaftaranHaji';
+$route['pendaftaran-umroh'] = 'HalamanFrontend/pendaftaranUmroh';
+$route['pendaftaran-wisata'] = 'HalamanFrontend/pendaftaranWisata';
+
+$route['persyaratan-haji'] = 'HalamanFrontend/persyaratanHaji';
+$route['persyaratan-umroh'] = 'HalamanFrontend/persyaratanUmroh';
+$route['persyaratan-wisata'] = 'HalamanFrontend/persyaratanWisata';
 
 
 $route['404']['GET'] = 'Autentikasi/dilarang'; 

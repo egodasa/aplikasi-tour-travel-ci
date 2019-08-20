@@ -59,7 +59,7 @@ class Halaman extends MY_Controller {
   {
     unset($_SESSION['username']);
     notifikasi("Pesan", "Anda berhasil logout", "success");
-    header('Location: '.site_url('login'));
+    header('Location: '.site_url('/'));
   }
   public function dilarang()
   {
