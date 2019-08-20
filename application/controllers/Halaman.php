@@ -46,13 +46,13 @@ class Halaman extends MY_Controller {
     if(count($cek) > 0)
     {
       notifikasi("Registrasi gagal!", "Username atau email sudah pernah digunakan!", "warning");
-      header("Location: ".site_url("admin/register"));
+      header("Location: ".site_url("register"));
     }
     else
     {
       $this->pengguna->register($this->input->post(NULL, TRUE));
       notifikasi("Registrasi berhasil.", "Anda sudah bisa login sekarang.", "success");
-      header("Location: ".site_url("admin/login"));
+      header("Location: ".site_url("login"));
     }
   }
   public function prosesLogout()
