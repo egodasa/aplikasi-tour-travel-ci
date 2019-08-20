@@ -16,7 +16,7 @@
 @section('content')
 
   <?php if($_SESSION['level'] == "Admin"): ?>
-    <a href="{{ site_url('admin/transaksi') }}" class="btn btn-success">< Kembali</a>
+    <a href="{{ site_url('transaksi') }}" class="btn btn-success">< Kembali</a>
     <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Angsuran</button>
   <?php else: ?>
     <a href="{{ site_url('transaksi') }}" class="btn btn-success">< Kembali</a>
@@ -47,7 +47,7 @@
         <?php if($_SESSION['level'] == "Admin"): ?>
           <td>
             <button type="button" onclick="showModalEdit({{ $nomor }})" class="btn btn-success">Edit</button>
-            <button type="button" onclick="showConfirmationDelete('<?=site_url("admin/angsuran/hapus?id=".$data['id'])?>')" class="btn btn-danger">Hapus</button>
+            <button type="button" onclick="showConfirmationDelete('<?=site_url("angsuran/hapus?id=".$data['id'])?>')" class="btn btn-danger">Hapus</button>
           </td>
         <?php endif; ?>
         
@@ -79,7 +79,7 @@
     function showModalTambah()
     {
       resetModal();
-      elId("form_modal").action = "{{ site_url('admin/angsuran/tambah') }}";
+      elId("form_modal").action = "{{ site_url('angsuran/tambah') }}";
       showModal("#modal");
     }
     
@@ -88,7 +88,7 @@
       elId("judul_modal").innerHTML = "Edit Data";
       resetModal();
       var detail = data[id]; 
-      elId("form_modal").action = "{{ site_url('admin/angsuran/edit') }}";
+      elId("form_modal").action = "{{ site_url('angsuran/edit') }}";
       elName("id")[0].value = detail.id;
       elName("tgl_bayar")[0].value = detail.tgl_bayar;
       elName("juml_bayar")[0].value = detail.juml_bayar;
@@ -108,7 +108,7 @@
           <h4 class="modal-title" id="judul_modal">Judul Modal</h4>
         </div>
         <div class="modal-body">
-          <form id="form_modal" method="POST" action="{{ site_url('admin/angsuran/tambah') }}">
+          <form id="form_modal" method="POST" action="{{ site_url('angsuran/tambah') }}">
             <input type="hidden" name="id">
             <input type="hidden" name="id_transaksi" value="<?=$_SESSION['id_transaksi_terpilih']?>">
             @include('components.form.input', ['_data' => ['type' => 'date', 'name' => 'tgl_bayar', 'class' => 'form-control', 'max' => 10, 'label' => 'Tanggal Bayar']])

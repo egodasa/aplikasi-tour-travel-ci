@@ -15,12 +15,12 @@
 
 @section('content')
   <?php if($_SESSION['level'] == "Admin"): ?>
-    <a href="{{ site_url('admin/transaksi') }}" class="btn btn-success">< Kembali</a>
+    <a href="{{ site_url('transaksi') }}" class="btn btn-success">< Kembali</a>
   <?php else: ?>
     <a href="{{ site_url('transaksi') }}" class="btn btn-success">< Kembali</a>
   <?php endif; ?>
   <?php
-    if(count($data_list) <= $data_transaksi['kuota'])
+    if(count($data_list) < $data_transaksi['kuota'])
     {
   ?>
     <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Peserta</button>
@@ -75,7 +75,7 @@
             <td>{{ $data['keterangan'] }}</td>
             <td>
               <button type="button" onclick="showModalEdit({{ $nomor }})" class="btn btn-success">Edit</button>
-              <button type="button" onclick="showConfirmationDelete('<?=site_url("admin/peserta-transaksi/hapus?id_peserta=".$data['id_peserta'])?>')" class="btn btn-danger">Hapus</button>
+              <button type="button" onclick="showConfirmationDelete('<?=site_url("peserta-transaksi/hapus?id_peserta=".$data['id_peserta'])?>')" class="btn btn-danger">Hapus</button>
             </td>
           </tr>
         @endforeach
@@ -126,7 +126,7 @@
     function showModalTambah()
     {
       resetModal();
-      elId("form_modal").action = "{{ site_url('admin/peserta-transaksi/tambah') }}";
+      elId("form_modal").action = "{{ site_url('peserta-transaksi/tambah') }}";
       showModal("#modal");
     }
     
@@ -135,7 +135,7 @@
       elId("judul_modal").innerHTML = "Edit Data";
       resetModal();
       var detail = data[id]; 
-      elId("form_modal").action = "{{ site_url('admin/peserta-transaksi/edit') }}";
+      elId("form_modal").action = "{{ site_url('peserta-transaksi/edit') }}";
       elName("id")[0].value = detail.id;
       elName("id_peserta")[0].value = detail.id_peserta;
       elName("nama_lengkap")[0].value = detail.nama_lengkap;
@@ -175,7 +175,7 @@
           <h4 class="modal-title" id="judul_modal">Judul Modal</h4>
         </div>
         <div class="modal-body">
-          <form id="form_modal" method="POST" action="{{ site_url('admin/peserta-transaksi/tambah') }}">
+          <form id="form_modal" method="POST" action="{{ site_url('peserta-transaksi/tambah') }}">
             <input type="hidden" name="id">
             <input type="hidden" name="id_peserta">
             <input type="hidden" name="id_transaksi" value="<?=$_SESSION['id_transaksi_terpilih']?>">

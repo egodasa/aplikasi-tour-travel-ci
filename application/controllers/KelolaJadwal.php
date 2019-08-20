@@ -13,7 +13,7 @@ class KelolaJadwal extends MY_Controller {
 	public function daftar($id_jadwal)
 	{
     $this->_dts['data_list'] = $this->jadwal->daftarJemaah($id_jadwal); // Proses pengambilan data dari database
-		$this->view('admin.jadwal.daftar', $this->_dts); // Oper data dari database ke view
+		$this->view('jadwal', $this->_dts); // Oper data dari database ke view
 	}
   
   // Method untuk menampilkan form tambah data
@@ -27,7 +27,7 @@ class KelolaJadwal extends MY_Controller {
   public function prosesTambah()
   {
     $this->jadwal->tambahData($this->input->post(NULL, true));
-    header("Location: ".site_url("admin/jadwal")."?id_jadwal=".$this->input->post("id_jadwal")); // Arahkan kembali user ke halaman daftar
+    header("Location: ".site_url("jadwal")."?id_jadwal=".$this->input->post("id_jadwal")); // Arahkan kembali user ke halaman daftar
   }
   
   // Method untuk menampilkan form edit
@@ -41,13 +41,13 @@ class KelolaJadwal extends MY_Controller {
   public function prosesEdit()
   {
     $this->jadwal->ubahData($this->input->post("id_keberangkatan"));
-    header("Location: ".site_url("admin/jadwal")."?id_jadwal=".$this->input->post("id_jadwal")); // Arahkan kembali user ke halaman daftar
+    header("Location: ".site_url("jadwal")."?id_jadwal=".$this->input->post("id_jadwal")); // Arahkan kembali user ke halaman daftar
   }
   
   // Method untuk menghapus data
   public function prosesHapus()
   {
     $this->jadwal->hapusData($this->input->get('id_keberangkatan')); // Proses hapus data
-    header("Location: ".site_url("admin/jadwal")."?id_jadwal=".$this->input->post("id_jadwal")); // Arahkan kembali user ke halaman daftar
+    header("Location: ".site_url("jadwal")."?id_jadwal=".$this->input->post("id_jadwal")); // Arahkan kembali user ke halaman daftar
   }
 }

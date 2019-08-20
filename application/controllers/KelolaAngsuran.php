@@ -25,20 +25,20 @@ class KelolaAngsuran extends MY_Controller {
   public function prosesTambah()
   {
     $this->angsuran->tambahData($this->input->post(NULL, true));
-    header("Location: ".site_url("admin/angsuran")."?no_registrasi=".$this->input->post("no_registrasi")); // Arahkan kembali user ke halaman daftar
+    header("Location: ".site_url("angsuran")."?no_registrasi=".$this->input->post("no_registrasi")); // Arahkan kembali user ke halaman daftar
   }
   
   // Method untuk memproses data yang akan diedit
   public function prosesEdit()
   {
     $this->angsuran->ubahData($this->input->post("id"), $this->input->post(NULL, true));
-    header("Location: ".site_url("admin/angsuran")."?no_registrasi=".$this->input->post("no_registrasi")); // Arahkan kembali user ke halaman daftar
+    header("Location: ".site_url("angsuran")."?no_registrasi=".$this->input->post("no_registrasi")); // Arahkan kembali user ke halaman daftar
   }
   
   // Method untuk menghapus data
   public function prosesHapus()
   {
     $this->angsuran->hapusData($this->input->get('id')); // Proses hapus data
-    header("Location: ".site_url("admin/angsuran")); // // Arahkan user kembali ke halaman daftar
+    header("Location: ".site_url("angsuran")); // // Arahkan user kembali ke halaman daftar
   }
 }

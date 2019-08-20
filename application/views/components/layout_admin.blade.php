@@ -68,19 +68,19 @@
                       if($_SESSION['level'] == "Member")
                       {
                     ?>
-                      <li><a href="{{ site_url('member/transaksi') }}"><i class="fa fa-home"></i> Transaksi</a></li>
-                      <li><a href="{{ site_url('jadwalkeberangkatan') }}"><i class="fa fa-home"></i> Jadwal Keberangkatan</a></li>
+                      <li><a href="{{ site_url('transaksi') }}"><i class="fa fa-home"></i> Transaksi</a></li>
+                      <li><a href="{{ site_url('keberangkatan') }}"><i class="fa fa-home"></i> Jadwal Keberangkatan</a></li>
                     <?php
                       }
                       else
                       {
                     ?>
-                      <li><a href="{{ site_url('admin/program') }}"><i class="fa fa-home"></i> Program</a></li>
-                      <li><a href="{{ site_url('admin/jenisprogram') }}"><i class="fa fa-home"></i> Jenis Program</a></li>
-                      <li><a href="{{ site_url('admin/pengguna') }}"><i class="fa fa-home"></i> Pengguna</a></li>
-                      <li><a href="{{ site_url('admin/peserta') }}"><i class="fa fa-home"></i> Peserta</a></li>
-                      <li><a href="{{ site_url('admin/transaksi') }}"><i class="fa fa-home"></i> Transaksi</a></li>
-                      <li><a href="{{ site_url('admin/keberangkatan') }}"><i class="fa fa-home"></i> Keberangkatan</a></li>
+                      <li><a href="{{ site_url('program') }}"><i class="fa fa-home"></i> Program</a></li>
+                      <li><a href="{{ site_url('jenisprogram') }}"><i class="fa fa-home"></i> Jenis Program</a></li>
+                      <li><a href="{{ site_url('pengguna') }}"><i class="fa fa-home"></i> Pengguna</a></li>
+                      <li><a href="{{ site_url('peserta') }}"><i class="fa fa-home"></i> Peserta</a></li>
+                      <li><a href="{{ site_url('transaksi') }}"><i class="fa fa-home"></i> Transaksi</a></li>
+                      <li><a href="{{ site_url('keberangkatan') }}"><i class="fa fa-home"></i> Keberangkatan</a></li>
                     <?php
                       }
                     ?>

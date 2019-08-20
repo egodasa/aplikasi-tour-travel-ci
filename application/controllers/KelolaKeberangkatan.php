@@ -15,70 +15,28 @@ class KelolaKeberangkatan extends MY_Controller {
 	{
     $this->_dts['data_list'] = $this->keberangkatan->ambilData();  // Proses pengambilan data dari database
     $this->_dts['data_program'] = $this->program->ambilData();
-		$this->view('admin.keberangkatan.daftar', $this->_dts); // Oper data dari database ke view
+		$this->view('keberangkatan', $this->_dts); // Oper data dari database ke view
 	}
-  
-  public function daftarJadwalKeberangkatan()
-  {
-    $this->_dts['data_list'] = $this->keberangkatan->ambilData();  // Proses pengambilan data dari database
-    $this->_dts['data_program'] = $this->program->ambilData();
-		$this->view('member.keberangkatan.daftar', $this->_dts); // Oper data dari database ke view
-  }
-  
-  // Method untuk menampilkan form tambah data
-  public function tambahData()
-  {
-    $this->_dts['data_program'] = $this->program->ambilData();
-    $this->view('admin.keberangkatan.tambah', $this->_dts); // Langsung tampilkan view tambah data
-  }
   
   // Method untuk memproses penambahan data
   // Method diakses dalam metode POST
   public function prosesTambah()
   {
     $this->keberangkatan->tambahData($this->input->post(NULL, TRUE));
-    header("Location: ".site_url("admin/keberangkatan")); // Arahkan kembali user ke halaman daftar
-  }
-  
-  // Method untuk menampilkan form edit
-  public function ubahData()
-  {
-    $this->_dts['data_program'] = $this->program->ambilData();
-    $this->_dts['detail'] = $this->keberangkatan->ambilData($this->input->get('id')); // Ambil data yang akan diedit berdasarkan ID
-    $this->view('admin.keberangkatan.edit', $this->_dts); // Oper data ke view
+    header("Location: ".site_url("keberangkatan")); // Arahkan kembali user ke halaman daftar
   }
   
   // Method untuk memproses data yang akan diedit
   public function prosesEdit()
   {
     $this->keberangkatan->ubahData($this->input->post("id"), $this->input->post(NULL, TRUE));
-    header("Location: ".site_url("admin/keberangkatan")); // Arahkan user kembali ke halaman daftar
+    header("Location: ".site_url("keberangkatan")); // Arahkan user kembali ke halaman daftar
   }
   
   // Method untuk menghapus data
   public function prosesHapus()
   {
     $this->keberangkatan->hapusData($this->input->get('id')); // Proses hapus data
-    header("Location: ".site_url("admin/keberangkatan")); // // Arahkan user kembali ke halaman daftar
-  }
-  
-  public function pesertaKeberangkatan()
-  {
-    $this->_dts['detail_jadwal'] = $this->keberangkatan->ambilData($this->input->get('id')); // Proses hapus data
-    $this->_dts['data_list'] = $this->jadwal->pesertaKeberangkatan($this->input->get('id')); // Proses hapus data
-    $this->view('member.keberangkatan.pesertakeberangkatan', $this->_dts);
-  }
-  
-  public function kelolaPesertaKeberangkatan()
-  {
-    $this->_dts['detail_jadwal'] = $this->keberangkatan->ambilData($this->input->get('id')); // Proses hapus data
-    $this->_dts['data_list'] = $this->jadwal->pesertaKeberangkatan($this->input->get('id')); // Proses hapus data
-    $this->view('admin.keberangkatan.pesertakeberangkatan', $this->_dts);
-  }
-  
-  public function hapusPesertaKeberangkatan()
-  {
-    $this->jadwal->hapusData($this->input->get('keberangkatan_keberangkatan'));
-    header("Location: ".site_url("admin/keberangkatan/peserta?id=".$this->input->get('id')));
+    header("Location: ".site_url("keberangkatan")); // // Arahkan user kembali ke halaman daftar
   }
 }

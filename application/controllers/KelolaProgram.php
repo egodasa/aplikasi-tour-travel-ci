@@ -14,7 +14,7 @@ class KelolaProgram extends MY_Controller {
 	public function daftar()
 	{
     $this->_dts['data_list'] = $this->program->ambilData();  // Proses pengambilan data dari database
-		$this->view('admin.program.daftar', $this->_dts); // Oper data dari database ke view
+		$this->view('program', $this->_dts); // Oper data dari database ke view
 	}
   
   // Method untuk memproses penambahan data
@@ -23,7 +23,7 @@ class KelolaProgram extends MY_Controller {
   {
     $this->program->tambahData($this->input->post(NULL, TRUE));
     
-    header("Location: ".site_url("admin/program")); // Arahkan kembali user ke halaman daftar
+    header("Location: ".site_url("program")); // Arahkan kembali user ke halaman daftar
   }
   
   
@@ -32,7 +32,7 @@ class KelolaProgram extends MY_Controller {
   {
     $this->program->ubahData($this->input->post("id"), $this->input->post(NULL, TRUE));
     
-    header("Location: ".site_url("admin/program")); // Arahkan user kembali ke halaman daftar
+    header("Location: ".site_url("program")); // Arahkan user kembali ke halaman daftar
   }
   
   // Method untuk menghapus data
@@ -40,6 +40,6 @@ class KelolaProgram extends MY_Controller {
   {
     $this->program->hapusData($this->input->get('id')); // Proses hapus data
     
-    header("Location: ".site_url("admin/program")); // // Arahkan user kembali ke halaman daftar
+    header("Location: ".site_url("program")); // // Arahkan user kembali ke halaman daftar
   }
 }

@@ -36,7 +36,7 @@ class KelolaJadwalKeberangkatan extends MY_Controller {
   public function prosesTambah()
   {
     $this->jadwal_keberangkatan->tambahData($this->input->post(NULL, TRUE));
-    header("Location: ".site_url("admin/jadwalkeberangkatan")); // Arahkan kembali user ke halaman daftar
+    header("Location: ".site_url("jadwalkeberangkatan")); // Arahkan kembali user ke halaman daftar
   }
   
   // Method untuk menampilkan form edit
@@ -51,14 +51,14 @@ class KelolaJadwalKeberangkatan extends MY_Controller {
   public function prosesEdit()
   {
     $this->jadwal_keberangkatan->ubahData($this->input->post("id_jadwal"), $this->input->post(NULL, TRUE));
-    header("Location: ".site_url("admin/jadwalkeberangkatan")); // Arahkan user kembali ke halaman daftar
+    header("Location: ".site_url("jadwalkeberangkatan")); // Arahkan user kembali ke halaman daftar
   }
   
   // Method untuk menghapus data
   public function prosesHapus()
   {
     $this->jadwal_keberangkatan->hapusData($this->input->get('id_jadwal')); // Proses hapus data
-    header("Location: ".site_url("admin/jadwalkeberangkatan")); // // Arahkan user kembali ke halaman daftar
+    header("Location: ".site_url("jadwalkeberangkatan")); // // Arahkan user kembali ke halaman daftar
   }
   
   public function pesertaKeberangkatan()
@@ -78,6 +78,6 @@ class KelolaJadwalKeberangkatan extends MY_Controller {
   public function hapusPesertaKeberangkatan()
   {
     $this->jadwal->hapusData($this->input->get('id_keberangkatan'));
-    header("Location: ".site_url("admin/jadwalkeberangkatan/peserta?id_jadwal=".$this->input->get('id_jadwal')));
+    header("Location: ".site_url("jadwalkeberangkatan/peserta?id_jadwal=".$this->input->get('id_jadwal')));
   }
 }

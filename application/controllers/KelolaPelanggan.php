@@ -33,7 +33,7 @@ class KelolaPeserta extends MY_Controller {
   public function prosesTambah()
   {
     $this->pelanggan->tambahData($this->input->post(NULL, TRUE));
-    header("Location: ".site_url("admin/peserta")); // Arahkan kembali user ke halaman daftar
+    header("Location: ".site_url("peserta")); // Arahkan kembali user ke halaman daftar
   }
   
   // Method untuk menampilkan form edit
@@ -49,13 +49,13 @@ class KelolaPeserta extends MY_Controller {
   public function prosesEdit()
   {
     $this->pelanggan->ubahData($this->input->post("id"), $this->input->post(NULL, TRUE));
-    header("Location: ".site_url("admin/peserta")); // Arahkan user kembali ke halaman daftar
+    header("Location: ".site_url("peserta")); // Arahkan user kembali ke halaman daftar
   }
   
   // Method untuk menghapus data
   public function prosesHapus()
   {
     $this->pelanggan->hapusData($this->input->get('id')); // Proses hapus data
-    header("Location: ".site_url("admin/peserta")); // // Arahkan user kembali ke halaman daftar
+    header("Location: ".site_url("peserta")); // // Arahkan user kembali ke halaman daftar
   }
 }

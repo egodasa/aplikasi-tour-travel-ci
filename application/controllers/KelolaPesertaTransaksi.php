@@ -34,7 +34,7 @@ class KelolaPesertaTransaksi extends MY_Controller {
     $id_peserta = $this->peserta->tambahData($data);
     $data['id_peserta'] = $id_peserta;
     $this->peserta_transaksi->tambahData($data);
-    header("Location: ".site_url("admin/peserta-transaksi")); // Arahkan kembali user ke halaman daftar
+    header("Location: ".site_url("peserta-transaksi")); // Arahkan kembali user ke halaman daftar
   }
   
   // Method untuk memproses data yang akan diedit
@@ -42,13 +42,13 @@ class KelolaPesertaTransaksi extends MY_Controller {
   {
     $this->peserta->ubahData($this->input->post("id_peserta"), $this->input->post(NULL, TRUE));
     $this->peserta_transaksi->ubahData($this->input->post("id"), $this->input->post(NULL, TRUE));
-    header("Location: ".site_url("admin/peserta-transaksi")); // Arahkan user kembali ke halaman daftar
+    header("Location: ".site_url("peserta-transaksi")); // Arahkan user kembali ke halaman daftar
   }
   
   // Method untuk menghapus data
   public function prosesHapus()
   {
     $this->peserta->hapusData($this->input->get('id_peserta')); // Proses hapus data
-    header("Location: ".site_url("admin/peserta-transaksi")); // // Arahkan user kembali ke halaman daftar
+    header("Location: ".site_url("peserta-transaksi")); // // Arahkan user kembali ke halaman daftar
   }
 }
