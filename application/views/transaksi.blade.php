@@ -37,12 +37,12 @@
         @if($_SESSION['level'] == "Admin")
           <td>{{ $data['username'] }}</td>
         @endif
-        <td>{{ $data['nama_program'] }}</td>
+        <td>{{ $data['nama_program']." ".$data['nm_jenis'] }}</td>
         <td>{{ $data['total_peserta'] }}</td>
         <td>{{ rupiah($data['dp']) }}</td>
         <td>{{ rupiah($data['total_bayar']) }}</td>
         <td>{{ rupiah(($data['total_bayar'] - $data['sudah_dibayar'])) }}</td>
-        <td>{{ $data['status_transaksi'] }}</td>
+        <td>{{ $data['status'] }}</td>
         <td>
           <button type="button" onclick="showModalEdit({{ $nomor }})" class="btn btn-success">Edit</button>
           <button type="button" onclick="showConfirmationDelete('<?=site_url("transaksi/hapus?id=".$data['id'])?>')" class="btn btn-danger">Hapus</button>
@@ -53,8 +53,43 @@
     @endforeach
   </table>
   
+  <div class="modal fade hide-modal" id="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title" id="judul_modal">Judul Modal</h4>
+        </div>
+        <div class="modal-body">
+          <form id="form_modal" method="POST" action="{{ site_url('transaksi/tambah') }}">
+            <input type="hidden" name="id">
+            <input type="hidden" name="id_pengguna" value="<?=$_SESSION['id']?>" />
+            @include('components.form.select', ['_data' => [ 'class' => 'form-control', 'name' => 'id_jenis', 'value' => '','val' => 'id', 'caption' => 'jenis_program', 'label' => 'Nama Program', 'options' => $data_program, 'caption' => 'nama_program']])
+            @include('components.form.input', ['_data' => ['type' => 'number', 'name' => 'dp', 'class' => 'form-control', 'label' => 'Dp', 'readonly' => 'readonly']])
+            @if($_SESSION['level'] == "Admin")
+              @include('components.form.select', ['_data' => [ 'class' => 'form-control', 'name' => 'status', 'value' => 'val','caption' => 'status', 'label' => 'Status', 'options' => [['val' => 'Aktif'], ['val' => 'Dibatalkan']], 'val' => 'val', 'caption' => 'val']])
+            @else
+              <input type="hidden" name="status" value="Aktif" />
+            @endif
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" onclick="closeModal()">Tutup</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+    </div>
+    </div>
+    </form>
+  </div>
   <script>
     var data = <?=json_encode($data_list)?>;
+    var data_program = <?=json_encode($data_program)?>;
+    
+    function tampilkanHargaDp()
+    {
+      var program_terpilih = document.getElementsByName("id_jenis")[0].selectedIndex;
+      document.getElementsByName("dp")[0].value = data_program[program_terpilih].dp;
+    }
     
     function resetModal()
     {
@@ -92,37 +127,10 @@
       elName("id")[0].value = detail.id;
       elName("dp")[0].value = detail.dp;
       elName("id_jenis")[0].value = detail.id_jenis;
-      elName("status")[0].value = detail.status_transaksi;
+      elName("status")[0].value = detail.status;
       showModal("#modal");
     }
+    
+    document.getElementsByName("id_jenis")[0].addEventListener("change", tampilkanHargaDp);
   </script>
-  
-  <div class="modal fade hide-modal" id="modal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-          </button>
-          <h4 class="modal-title" id="judul_modal">Judul Modal</h4>
-        </div>
-        <div class="modal-body">
-          <form id="form_modal" method="POST" action="{{ site_url('transaksi/tambah') }}">
-            <input type="hidden" name="id">
-            <input type="hidden" name="id_pengguna" value="<?=$_SESSION['id']?>" />
-            @include('components.form.select', ['_data' => [ 'class' => 'form-control', 'name' => 'id_jenis', 'value' => '','val' => 'id', 'caption' => 'jenis_program', 'label' => 'Nama Program', 'options' => $data_program, 'caption' => 'nama_program']])
-            @include('components.form.input', ['_data' => ['type' => 'number', 'name' => 'dp', 'class' => 'form-control', 'label' => 'Dp']])
-            @if($_SESSION['level'] == "Admin")
-              @include('components.form.select', ['_data' => [ 'class' => 'form-control', 'name' => 'status', 'value' => 'val','caption' => 'status', 'label' => 'Status', 'options' => [['val' => 'Aktif'], ['val' => 'Dibatalkan']], 'val' => 'val', 'caption' => 'val']])
-            @else
-              <input type="hidden" name="status" value="Aktif" />
-            @endif
-      </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-default" onclick="closeModal()">Tutup</button>
-          <button type="submit" class="btn btn-primary">Simpan</button>
-        </div>
-    </div>
-    </div>
-    </form>
-  </div>
 @endsection

@@ -7,7 +7,7 @@ class ModelJenisProgram extends MY_Model {
     parent::__construct();
     $this->tabel = "tb_jenis_program";
     $this->primaryKey = "id";
-    $this->kolomBawaanCrud = ["nm_jenis", "id_program", "harga"];
+    $this->kolomBawaanCrud = ["nm_jenis", "id_program", "harga", "kuota", "dp"];
     $this->view = "data_jenis_program";
   }
 }

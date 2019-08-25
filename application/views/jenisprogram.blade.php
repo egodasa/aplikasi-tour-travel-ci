@@ -20,7 +20,9 @@
       <th>No</th>
       <th>Nama Jenis Program</th>
       <th>Program</th>
+      <th>Kuota</th>
       <th>Harga</th>
+      <th>DP</th>
       <th>Aksi</th>
     </tr>
     @foreach($data_list as $nomor => $data)
@@ -28,7 +30,9 @@
         <td>{{ ($nomor+1) }}</td>
         <td>{{ $data['nm_jenis'] }}</td>
         <td>{{ $data['nama_program'] }}</td>
+        <td>{{ $data['kuota'] }}</td>
         <td>{{ rupiah($data['harga']) }}</td>
+        <td>{{ rupiah($data['dp']) }}</td>
         <td>
           <button type="button" onclick="showModalEdit({{ $nomor }})" class="btn btn-success">Edit</button>
           <button type="button" onclick="showConfirmationDelete('<?=site_url("jenisprogram/hapus?id=".$data['id'])?>')" class="btn btn-danger">Hapus</button>
@@ -48,6 +52,8 @@
       elName("id_program")[0].value = "";
       elName("harga")[0].value = 0;
       elName("nm_jenis")[0].value = "";
+      elName("kuota")[0].value = "";
+      elName("dp")[0].value = "";
     }
     
     function closeModal()
@@ -73,6 +79,8 @@
       elName("id_program")[0].value = detail.id_program;
       elName("harga")[0].value = detail.harga;
       elName("nm_jenis")[0].value = detail.nm_jenis;
+      elName("kuota")[0].value = detail.kuota;
+      elName("dp")[0].value = detail.dp;
       showModal("#modal");
     }
   </script>
@@ -91,6 +99,8 @@
             @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'nm_jenis', 'class' => 'form-control', 'max' => 50, 'label' => 'Nama Jenis Program']])
             @include('components.form.select', ['_data' => [ 'name' => 'id_program', 'class' => 'form-control', 'val' => 'id', 'caption' => 'nama_program','label' => 'Nama Program', 'options' => $data_program]])
             @include('components.form.input', ['_data' => ['type' => 'number', 'name' => 'harga', 'class' => 'form-control', 'label' => 'Harga']])
+            @include('components.form.input', ['_data' => ['type' => 'number', 'name' => 'kuota', 'class' => 'form-control', 'label' => 'Kuota']])
+            @include('components.form.input', ['_data' => ['type' => 'number', 'name' => 'dp', 'class' => 'form-control', 'label' => 'DP']])
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" onclick="closeModal()">Tutup</button>

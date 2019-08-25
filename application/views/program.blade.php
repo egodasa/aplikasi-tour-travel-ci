@@ -19,14 +19,12 @@
     <tr>
       <th>No</th>
       <th>Nama Program</th>
-      <th>Kuota Peserta</th>
       <th>Aksi</th>
     </tr>
     @foreach($data_list as $nomor => $data)
       <tr>
         <td>{{ ($nomor+1) }}</td>
         <td>{{ $data['nama_program'] }}</td>
-        <td>{{ $data['kuota'] }} Peserta</td>
         <td>
           <button type="button" onclick="showModalEdit({{ $nomor }})" class="btn btn-success">Edit</button>
           <button type="button" onclick="showConfirmationDelete('<?=site_url("program/hapus?id=".$data['id'])?>')" class="btn btn-danger">Hapus</button>
@@ -44,7 +42,6 @@
       elId("judul_modal").innerHTML = "Tambah Data Baru";
       elName("id")[0].value = "";
       elName("nama_program")[0].value = "";
-      elName("kuota")[0].value = 0;
     }
     
     function closeModal()
@@ -68,7 +65,6 @@
       elId("form_modal").action = "{{ site_url('program/edit') }}";
       elName("id")[0].value = detail.id;
       elName("nama_program")[0].value = detail.nama_program;
-      elName("kuota")[0].value = detail.kuota;
       showModal("#modal");
     }
   </script>

@@ -8,6 +8,6 @@ class ModelProgram extends MY_Model {
     $this->tabel = "tb_program";
     $this->primaryKey = "id";
     $this->relasiTabel = null;
-    $this->kolomBawaanCrud = ["nama_program", "kuota"];
+    $this->kolomBawaanCrud = ["nama_program"];
   }
 }

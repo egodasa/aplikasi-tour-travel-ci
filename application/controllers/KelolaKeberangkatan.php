@@ -8,6 +8,7 @@ class KelolaKeberangkatan extends MY_Controller {
     parent::__construct();
     $this->load->model("ModelJenisProgram", "program");
     $this->load->model("ModelKeberangkatan", "keberangkatan");
+    $this->load->model("ModelPesertaKeberangkatan", "peserta_keberangkatan");
   }
   
   //  Method untuk menampilkan data
@@ -38,5 +39,35 @@ class KelolaKeberangkatan extends MY_Controller {
   {
     $this->keberangkatan->hapusData($this->input->get('id')); // Proses hapus data
     header("Location: ".site_url("keberangkatan")); // // Arahkan user kembali ke halaman daftar
+  }
+  public function daftarPesertaKeberangkatan()
+  {
+    $id_keberangkatan = $this->input->get('id_keberangkatan');
+    $this->_dts['data_list'] = $this->peserta_keberangkatan->ambilDataDenganKondisi(["id_keberangkatan" => $id_keberangkatan]);
+    $this->_dts['detail_keberangkatan'] = $this->keberangkatan->ambilData($id_keberangkatan);
+    $this->_dts['data_peserta'] = $this->peserta_keberangkatan->dataPesertaBelumBerangkat($this->_dts['detail_keberangkatan']['id_jenis']);
+    $this->view('pesertakeberangkatan', $this->_dts); // Oper data dari database ke view
+  }
+  
+  public function tambahDataPesertaKeberangkatan()
+  {
+    $data = $this->input->post(NULL, true);
+    foreach($data['id_peserta_transaksi'] AS $id)
+    {
+      $this->peserta_keberangkatan->tambahData([
+        "id_peserta_transaksi" => $id,
+        "id_keberangkatan" => $data['id_keberangkatan']
+      ]);
+    }
+    notifikasi("Pesan", "Data peserta berhasil ditambahkan", "success");
+    header("Location: ".site_url("peserta-keberangkatan?id_keberangkatan=".$data['id_keberangkatan']));
+  }
+  public function hapusPesertaKeberangkatan()
+  {
+    $data = $this->input->get(NULL, true);
+    $this->peserta_keberangkatan->hapusData($data['id']);
+    notifikasi("Pesan", "Data peserta berhasil dihapus", "success");
+    header("Location: ".site_url("peserta-keberangkatan?id_keberangkatan=".$data['id_keberangkatan']));
+    
   }
 }

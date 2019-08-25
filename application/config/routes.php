@@ -108,6 +108,10 @@ $route['peserta-transaksi/edit']['POST'] = 'KelolaPesertaTransaksi/prosesEdit'; 
 $route['peserta-transaksi/hapus']['GET'] = 'KelolaPesertaTransaksi/prosesHapus';     // Hapus Data
 // EOF Kelola Data peserta-transaksi
 
+$route['peserta-keberangkatan']['GET'] = 'KelolaKeberangkatan/daftarPesertaKeberangkatan';                // Lihat Data
+$route['peserta-keberangkatan']['POST'] = 'KelolaKeberangkatan/tambahDataPesertaKeberangkatan';                // Lihat Data
+$route['peserta-keberangkatan/hapus']['GET'] = 'KelolaKeberangkatan/hapusPesertaKeberangkatan';                // Lihat Data
+
 // Kelola Data angsuran
 $route['angsuran']['GET'] = 'KelolaAngsuran/daftar';                // Lihat Data
 $route['angsuran/tambah']['POST'] = 'KelolaAngsuran/prosesTambah';  // Proses Tambah Data

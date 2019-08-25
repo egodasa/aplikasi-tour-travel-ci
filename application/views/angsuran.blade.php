@@ -28,7 +28,6 @@
       <th>Tanggal Bayar</th>
       <th>Jumlah Bayar</th>
       <th>Jenis Pembayaran</th>
-      <th>Status</th>
       <th>Keterangan</th>
       <?php if($_SESSION['level'] == "Admin"): ?>
         <th>Aksi</th>
@@ -42,7 +41,6 @@
         <td>{{ TanggalIndo($data['tgl_bayar']) }}</td>
         <td>{{ rupiah($data['juml_bayar']) }}</td>
         <td>{{ $data['jenis_pembayaran'] }}</td>
-        <td>{{ $data['status_pembayaran'] }}</td>
         <td>{{ $data['keterangan'] }}</td>
         <?php if($_SESSION['level'] == "Admin"): ?>
           <td>
@@ -64,7 +62,6 @@
       elId("judul_modal").innerHTML = "Tambah Data Baru";
       elName("tgl_bayar")[0].value = "";
       elName("juml_bayar")[0].value = "";
-      elName("status_pembayaran")[0].value = "";
       elName("jenis_pembayaran")[0].value = "";
       elName("keterangan")[0].value = "";
       
@@ -92,7 +89,6 @@
       elName("id")[0].value = detail.id;
       elName("tgl_bayar")[0].value = detail.tgl_bayar;
       elName("juml_bayar")[0].value = detail.juml_bayar;
-      elName("status_pembayaran")[0].value = detail.status_pembayaran;
       elName("jenis_pembayaran")[0].value = detail.jenis_pembayaran;
       elName("keterangan")[0].value = detail.keterangan;
       showModal("#modal");
@@ -113,7 +109,6 @@
             <input type="hidden" name="id_transaksi" value="<?=$_SESSION['id_transaksi_terpilih']?>">
             @include('components.form.input', ['_data' => ['type' => 'date', 'name' => 'tgl_bayar', 'class' => 'form-control', 'max' => 10, 'label' => 'Tanggal Bayar']])
             @include('components.form.input', ['_data' => ['type' => 'number', 'name' => 'juml_bayar', 'class' => 'form-control', 'label' => 'Jumlah Bayar']])
-            @include('components.form.select', ['_data' => ['name' => 'status_pembayaran', 'class' => 'form-control', 'label' => 'Status Pembayaran', 'val' => 'val', 'caption' => 'val', 'options' => [['val' => 'Sedang Diproses'], ['val' => 'Sudah Bayar'], ['val' => 'Ditolak']]]])
             @include('components.form.select', ['_data' => ['name' => 'jenis_pembayaran', 'class' => 'form-control', 'label' => 'Jenis Pembayaran', 'val' => 'val', 'caption' => 'val', 'options' => [['val' => 'DP'], ['val' => 'Angsuran']]]])
             @include('components.form.textarea', ['_data' => ['name' => 'keterangan', 'class' => 'form-control', 'label' => 'Keterangan']])
       </div>

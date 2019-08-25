@@ -12,8 +12,7 @@ class ModelAngsuran extends MY_Model {
       "tgl_bayar"        ,
       "juml_bayar"       ,
       "jenis_pembayaran" ,
-      "keterangan"       ,
-      "status_pembayaran"
+      "keterangan"       
     ];
     $this->view = "data_angsuran";
   }

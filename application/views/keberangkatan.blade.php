@@ -106,7 +106,7 @@
               <label>Program</label>
               <select name="id_jenis" class="form-control">
                 <?php foreach($data_program as $no => $d): ?>
-                  <option value="<?=$d['id']?>"><?=$d['nama_program']." ".$d['nm_jenis']?></option>
+                  <option value="<?=$d['id']?>"><?=$d['nama_program']?></option>
                 <?php endforeach; ?>
               </select>
             </div>
