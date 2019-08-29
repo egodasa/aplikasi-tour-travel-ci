@@ -51,26 +51,6 @@
 									<p>catt : Paling lambat 4 bulan sebelum jadwal keberangkatan</p>
 								</ul>
 								<br/>
-								<h3 class="about-title mb-30">Syarat Pengurusan VFS Tasheel</h3>
-								<ul>
-									<li>Lembaran Janji Temu</li>
-									<li>Paspor Asli</li>
-									<li>KTP Asli</li>
-									<li>Biaya Rp 120.000</li>
-									<p>catt : Berlaku 6 bulan setelah terbit</p>
-								</ul>
-								<br/>
-								
-								<h3 class="about-title mb-30">Syarat Suntik Meningitis</h3>
-								<ul>
-									<li>Lembaran Janji Temu</li>
-									<li>FC Paspor</li>
-									<li>FC KTP</li>
-									<li>Pas Photo 4x6 = 1 lembar</li>
-									<li>Biaya Rp 305.000</li>
-									<p>catt : Paling lambat 1.5 bulan sebelum jadwal keberangkatan</p>
-								</ul>
-								<br/>
 								
 								<h3 class="about-title mb-30">Syarat Pengurusan Visa</h3>
 								<ul>
