@@ -16,6 +16,11 @@
     
     <!-- Custom Theme Style -->
     <link href="{{ base_url() }}assets/css/custom.min.css" rel="stylesheet">
+    
+    <link href="{{ base_url() }}assets/css/pnotify/pnotify.css" rel="stylesheet">
+    <link href="{{ base_url() }}assets/css/pnotify/pnotify.buttons.css" rel="stylesheet">
+    <link href="{{ base_url() }}assets/css/pnotify/pnotify.nonblock.css" rel="stylesheet">
+    
   </head>
 
   <body class="login">
@@ -67,5 +72,10 @@
         </div>
       </div>
     </div>
+    <script src="{{ base_url() }}assets/js/jquery.min.js"></script>
+    <script src="{{ base_url() }}assets/js/pnotify/pnotify.js"></script>
+    <script src="{{ base_url() }}assets/js/pnotify/pnotify.buttons.js"></script>
+    <script src="{{ base_url() }}assets/js/pnotify/pnotify.nonblock.js"></script>
+    {{ showNotifikasi() }}
   </body>
 </html>
