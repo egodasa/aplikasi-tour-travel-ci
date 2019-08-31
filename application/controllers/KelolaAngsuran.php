@@ -7,11 +7,13 @@ class KelolaAngsuran extends MY_Controller {
   {
     parent::__construct();
     $this->load->model("ModelAngsuran", "angsuran");
+    $this->load->model("ModelProgram", "program");
   }
   
   //  Method untuk menampilkan data
 	public function daftar()
 	{
+    $this->_dts['data_program'] = $this->program->ambilData();
     if(!empty($this->input->get("id_transaksi")))
     {
       $_SESSION['id_transaksi_terpilih'] = $this->input->get("id_transaksi");

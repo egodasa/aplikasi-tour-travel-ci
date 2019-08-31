@@ -6,6 +6,7 @@ class KelolaKeberangkatan extends MY_Controller {
   public function __construct()
   {
     parent::__construct();
+    $this->load->model("ModelProgram", "master_program");
     $this->load->model("ModelJenisProgram", "program");
     $this->load->model("ModelKeberangkatan", "keberangkatan");
     $this->load->model("ModelPesertaKeberangkatan", "peserta_keberangkatan");
@@ -15,6 +16,7 @@ class KelolaKeberangkatan extends MY_Controller {
 	public function daftar()
 	{
     $this->_dts['data_list'] = $this->keberangkatan->ambilData();  // Proses pengambilan data dari database
+    $this->_dts['data_master_program'] = $this->master_program->ambilData();
     $this->_dts['data_program'] = $this->program->ambilData();
 		$this->view('keberangkatan', $this->_dts); // Oper data dari database ke view
 	}

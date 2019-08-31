@@ -14,13 +14,20 @@
 @section('content_title', 'Data Angsuran')
 
 @section('content')
-
-  <?php if($_SESSION['level'] == "Admin"): ?>
-    <a href="{{ site_url('transaksi') }}" class="btn btn-success">< Kembali</a>
-    <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Angsuran</button>
-  <?php else: ?>
-    <a href="{{ site_url('transaksi') }}" class="btn btn-success">< Kembali</a>
-  <?php endif; ?>
+  
+  <div class="row">
+    <div class="col-sm-2 col-xs-12">
+      <a href="{{ site_url('transaksi') }}" class="btn btn-success">< Kembali</a>
+    </div>
+    <?php if($_SESSION['level'] == "Admin"): ?>
+      <div class="col-sm-2 col-xs-12">
+        <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Angsuran</button>
+      </div>
+    <?php endif; ?>
+      <div class="col-sm-2 col-xs-12">
+        <a href="{{ site_url('bukti-angsuran?id_transaksi='.$_GET['id_transaksi']) }}" class="btn btn-success dropdown-toggle" >Cetak Bukti Angsuran</a>
+      </div>
+  </div>
   <table class="table table-bordered table-stripped">
     <tr>
       <th>No</th>

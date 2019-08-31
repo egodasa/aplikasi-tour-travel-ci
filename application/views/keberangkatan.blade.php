@@ -15,7 +15,22 @@
 
 @section('content')
   @if($_SESSION['level'] == "Admin")
-    <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Keberangkatan</button>
+    <div class="row">
+      <div class="col-sm-2 col-xs-12">
+        <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Peserta</button>
+      </div>
+      <div class="col-sm-2 col-xs-12">
+        <div class="dropdown">
+          <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Cetak Laporan
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            @foreach($data_master_program as $d)
+              <li><a href="{{ site_url('laporan/peserta-keberangkatan?id_program='.$d['id']) }}" target="_blank">{{ $d['nama_program'] }}</a></li>
+            @endforeach
+          </ul>
+        </div>
+      </div>
+    </div>
   @endif
   <table class="table table-bordered table-stripped">
     <tr>

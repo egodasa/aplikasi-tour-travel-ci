@@ -47,7 +47,9 @@
       <th>Jenis Kelamin</th>
       <th>Asal</th>
       <th>Ukuran Baju</th>
+      @if($_SESSION['level'] == "Admin")
       <th>Aksi</th>
+      @endif
     </tr>
     @foreach($data_list as $nomor => $data)
       <tr>
@@ -59,9 +61,11 @@
         <td>{{ $data['jenis_kelamin'] }}</td>
         <td>{{ $data['nm_kota'] }}</td>
         <td>{{ $data['ukuran_baju'] }}</td>
+        @if($_SESSION['level'] == "Admin")
         <td>
           <a href="{{ site_url('peserta-keberangkatan/hapus/?id='.$data['id'].'&id_keberangkatan='.$data['id_keberangkatan']) }}" class="btn btn-danger">Hapus Peserta</a>
         </td>
+        @endif
       </tr>
     @endforeach
   </table>
