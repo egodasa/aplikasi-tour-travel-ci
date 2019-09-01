@@ -1,5 +1,6 @@
 <?php
 session_start();
+use Dompdf\Dompdf;
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Laporan extends MY_Controller {
@@ -23,7 +24,18 @@ class Laporan extends MY_Controller {
     {
       $this->_dts['data_list'] = $this->peserta_keberangkatan->ambilData();
     }
-		$this->view('laporan_peserta_keberangkatan', $this->_dts); // Oper data dari database ke view
+    
+    $content = $this->renderView('laporan_peserta_keberangkatan', $this->_dts);
+    $dompdf = new Dompdf();
+    $dompdf->loadHtml($content);
+    // (Optional) Setup the paper size and orientation
+    $dompdf->setPaper('A4', 'portrait');
+    
+    // Render the HTML as PDF
+    $dompdf->render();
+    
+    $dompdf->stream("laporan_peserta_keberangkatan.pdf", array("Attachment" => false));
+    exit(0);
 	}
 	public function laporanPeserta()
 	{
@@ -37,7 +49,18 @@ class Laporan extends MY_Controller {
       $this->_dts['data_list'] = $this->peserta_transaksi->ambilData();
     }
      
-		$this->view('laporan_peserta', $this->_dts); // Oper data dari database ke view
+    $content = $this->renderView('laporan_peserta', $this->_dts);
+    $dompdf = new Dompdf();
+    $dompdf->loadHtml($content);
+    // (Optional) Setup the paper size and orientation
+    $dompdf->setPaper('A4', 'portrait');
+    
+    // Render the HTML as PDF
+    $dompdf->render();
+    
+    $dompdf->stream("laporan_peserta.pdf", array("Attachment" => false));
+    exit(0);
+    
 	}
 	public function laporanTransaksi()
 	{
@@ -50,14 +73,36 @@ class Laporan extends MY_Controller {
     {
       $this->_dts['data_list'] = $this->transaksi->ambilData();
     }
-     
-		$this->view('laporan_transaksi', $this->_dts); // Oper data dari database ke view
+    
+    $content = $this->renderView('laporan_transaksi', $this->_dts);
+    $dompdf = new Dompdf();
+    $dompdf->loadHtml($content);
+    // (Optional) Setup the paper size and orientation
+    $dompdf->setPaper('A4', 'portrait');
+    
+    // Render the HTML as PDF
+    $dompdf->render();
+    
+    $dompdf->stream("laporan_transaksi.pdf", array("Attachment" => false));
+    exit(0);
+    
 	}
   public function buktiAngsuran()
   {
     $id_transaksi = $this->input->get("id_transaksi");
     $this->_dts['detail_transaksi'] = $this->transaksi->ambilData($id_transaksi); 
     $this->_dts['data_list'] = $this->angsuran->ambilDataDenganKondisi(["id_transaksi" => $id_transaksi]); 
-		$this->view('bukti_angsuran', $this->_dts); // Oper data dari database ke view
+    
+    $content = $this->renderView('bukti_angsuran', $this->_dts);
+    $dompdf = new Dompdf();
+    $dompdf->loadHtml($content);
+    // (Optional) Setup the paper size and orientation
+    $dompdf->setPaper('A4', 'portrait');
+    
+    // Render the HTML as PDF
+    $dompdf->render();
+    
+    $dompdf->stream("bukti_angsuran.pdf", array("Attachment" => false));
+    exit(0);
   }
 }

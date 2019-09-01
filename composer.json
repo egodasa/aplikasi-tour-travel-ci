@@ -6,7 +6,8 @@
 	"require": {
 		"php": ">=5.3.7",
 		"philo/laravel-blade": "3.*",
-		"catfan/medoo": "^1.6"
+		"catfan/medoo": "^1.6",
+		"dompdf/dompdf": "^0.8.3"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

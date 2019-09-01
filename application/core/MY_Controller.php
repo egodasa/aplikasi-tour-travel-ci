@@ -25,4 +25,8 @@ class MY_Controller extends CI_Controller {
   {
     echo $this->blade->view()->make($name, $data)->render();
   }
+  public function renderView($name, $data = [])
+  {
+    return $this->blade->view()->make($name, $data)->render();
+  }
 }
