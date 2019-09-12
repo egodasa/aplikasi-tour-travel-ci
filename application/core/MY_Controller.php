@@ -15,14 +15,18 @@ class MY_Controller extends CI_Controller {
     $this->blade = new Blade($this->views, $this->cache);  //buat objek blade
     $this->db = new Medoo([
       'database_type' => 'mysql',
-      'database_name' => 'db_travel',
+      'database_name' => 'mandanon_travel',
       'server' => 'localhost',
-      'username' => 'root',
-      'password' => 'mysql'
+      'username' => 'mandanon_travel',
+      'password' => 'qwe123*IOP'
     ]);
   }
   public function view($name, $data = [])
   {
     echo $this->blade->view()->make($name, $data)->render();
+  }
+  public function renderView($name, $data = [])
+  {
+    return $this->blade->view()->make($name, $data)->render();
   }
 }

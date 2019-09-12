@@ -15,7 +15,22 @@
 
 @section('content')
   @if($_SESSION['level'] == "Admin")
-    <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Keberangkatan</button>
+    <div class="row">
+      <div class="col-sm-2 col-xs-12">
+        <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Peserta</button>
+      </div>
+      <div class="col-sm-2 col-xs-12">
+        <div class="dropdown">
+          <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Cetak Laporan
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            @foreach($data_master_program as $d)
+              <li><a href="{{ site_url('laporan/peserta-keberangkatan?id_program='.$d['id']) }}" target="_blank">{{ $d['nama_program'] }}</a></li>
+            @endforeach
+          </ul>
+        </div>
+      </div>
+    </div>
   @endif
   <table class="table table-bordered table-stripped">
     <tr>
@@ -26,6 +41,7 @@
       <th>Nama Program</th>
       <th>Status</th>
       <th>Keterangan</th>
+      <th>Kuota</th>
       <th>Aksi</th>
     </tr>
     @foreach($data_list as $nomor => $data)
@@ -37,6 +53,7 @@
         <td>{{ $data['nama_program'] }} {{ $data['nm_jenis'] }}</td>
         <td>{{ $data['status'] }}</td>
         <td>{{ $data['keterangan'] }}</td>
+        <td>{{ $data['kuota'] }} Orang</td>
         <td>
           @if($_SESSION['level'] == "Admin")
             <button type="button" onclick="showModalEdit({{ $nomor }})" class="btn btn-success">Edit</button>
@@ -59,6 +76,7 @@
       elName("nama_maskapai")[0].value = "";
       elName("status")[0].value = "";
       elName("keterangan")[0].value = "";
+      elName("kuota")[0].value = "";
     }
     
     function closeModal()
@@ -85,6 +103,7 @@
       elName("nama_maskapai")[0].value = detail.nama_maskapai;
       elName("status")[0].value = detail.status;
       elName("keterangan")[0].value = detail.keterangan;
+      elName("kuota")[0].value = detail.kuota;
       showModal("#modal");
     }
   </script>
@@ -122,6 +141,7 @@
               </select>
             </div>
             @include('components.form.textarea', ['_data' => ['name' => 'keterangan', 'class' => 'form-control', 'label' => 'Keterangan']])
+      			@include('components.form.input', ['_data' => ['type' => 'number', 'name' => 'kuota', 'class' => 'form-control', 'label' => 'Kuota']])
       </div>
       <div class="modal-footer">
           <button type="button" class="btn btn-default" onclick="closeModal()">Tutup</button>

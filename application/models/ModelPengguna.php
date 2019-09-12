@@ -28,4 +28,9 @@ class ModelPengguna extends MY_Model {
     ]);
     return $this->db->id();
   }
+  public function konfirmasiRegistrasi($username)
+  {
+  	$this->db->update($this->tabel, ["status" => "Aktif"], ["username" => $username]);
+  	return $username;
+  }
 }

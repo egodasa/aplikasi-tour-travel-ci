@@ -6,6 +6,7 @@ class KelolaKeberangkatan extends MY_Controller {
   public function __construct()
   {
     parent::__construct();
+    $this->load->model("ModelProgram", "master_program");
     $this->load->model("ModelJenisProgram", "program");
     $this->load->model("ModelKeberangkatan", "keberangkatan");
     $this->load->model("ModelPesertaKeberangkatan", "peserta_keberangkatan");
@@ -15,6 +16,7 @@ class KelolaKeberangkatan extends MY_Controller {
 	public function daftar()
 	{
     $this->_dts['data_list'] = $this->keberangkatan->ambilData();  // Proses pengambilan data dari database
+    $this->_dts['data_master_program'] = $this->master_program->ambilData();
     $this->_dts['data_program'] = $this->program->ambilData();
 		$this->view('keberangkatan', $this->_dts); // Oper data dari database ke view
 	}
@@ -52,14 +54,26 @@ class KelolaKeberangkatan extends MY_Controller {
   public function tambahDataPesertaKeberangkatan()
   {
     $data = $this->input->post(NULL, true);
-    foreach($data['id_peserta_transaksi'] AS $id)
+    $data_keberangkatan = $this->keberangkatan->ambilData($data['id_keberangkatan']);
+    $data_peserta_keberangkatan = $this->peserta_keberangkatan->ambilDataDenganKondisi(["id_keberangkatan" => $data['id_keberangkatan']]);
+    $kuota = $data_keberangkatan['kuota'];
+    $total_peserta = count($data_peserta_keberangkatan) + count($data['id_peserta_transaksi']);
+    
+    if($total_peserta > $kuota)
     {
-      $this->peserta_keberangkatan->tambahData([
-        "id_peserta_transaksi" => $id,
-        "id_keberangkatan" => $data['id_keberangkatan']
-      ]);
+    	notifikasi("Peringatan", "Data peserta melebihi kuota keberangkatan", "warning");
     }
-    notifikasi("Pesan", "Data peserta berhasil ditambahkan", "success");
+    else
+    {
+  		foreach($data['id_peserta_transaksi'] AS $id)
+	    {
+	      $this->peserta_keberangkatan->tambahData([
+	        "id_peserta_transaksi" => $id,
+	        "id_keberangkatan" => $data['id_keberangkatan']
+	      ]);
+	    }
+	    notifikasi("Pesan", "Data peserta berhasil ditambahkan", "success");
+    }
     header("Location: ".site_url("peserta-keberangkatan?id_keberangkatan=".$data['id_keberangkatan']));
   }
   public function hapusPesertaKeberangkatan()

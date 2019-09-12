@@ -126,6 +126,12 @@ $route['register']['GET'] = 'Halaman/register';
 $route['register']['POST'] = 'Halaman/prosesRegister'; 
 $route['logout']['GET'] = 'Halaman/prosesLogout'; 
 $route['beranda']['GET'] = 'Halaman/beranda';
+$route['registrasi/konfirmasi']['GET'] = 'Halaman/konfirmasiRegistrasi';
+
+$route['laporan/peserta-keberangkatan'] = 'Laporan/laporanPesertaKeberangkatan';
+$route['laporan/peserta'] = 'Laporan/laporanPeserta';
+$route['laporan/transaksi'] = 'Laporan/laporanTransaksi';
+$route['bukti-angsuran'] = 'Laporan/buktiAngsuran';
 
 
 $route['cara-haji'] = 'HalamanFrontend/caraHaji';

@@ -7,6 +7,7 @@ class KelolaTransaksi extends MY_Controller {
   {
     parent::__construct();
     $this->load->model("ModelJenisProgram", "program");
+    $this->load->model("ModelProgram", "master_program");
     $this->load->model("ModelTransaksi", "transaksi");
   }
   
@@ -14,6 +15,7 @@ class KelolaTransaksi extends MY_Controller {
 	public function daftar()
 	{
     $this->_dts['data_program'] = $this->program->ambilData();
+    $this->_dts['data_master_program'] = $this->master_program->ambilData();
     if($_SESSION['level'] == "Admin")
     {
       $this->_dts['data_list'] = $this->transaksi->ambilData();

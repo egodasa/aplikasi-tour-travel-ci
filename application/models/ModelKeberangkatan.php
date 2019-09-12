@@ -13,7 +13,8 @@ class ModelKeberangkatan extends MY_Model {
       "nama_maskapai"  ,
       "id_jenis"  ,
       "status"  ,
-      "keterangan" 
+      "keterangan",
+      "kuota"
     ];
     $this->view = "data_keberangkatan";
   }
