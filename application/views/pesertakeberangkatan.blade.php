@@ -15,11 +15,13 @@
 
 @section('content')
   <a href="{{ site_url('keberangkatan') }}" class="btn btn-success">Kembali</a>
-  <button class="btn btn-primary" onclick="showModal('#modal-tambah-peserta-keberangkatan')">Tambah Peserta</button>
+  @if($detail_keberangkatan['kuota'] > count($data_list))
+	  <button class="btn btn-primary" onclick="showModal('#modal-tambah-peserta-keberangkatan')">Tambah Peserta</button>
+  @endif
   <h4>Detail Keberangkatan</h4>
   <div class="row" style="font-size: 15px;">
     <div class="col-sm-3 col-xs-6"><b>ID Keberangkatan</b></div>
-    <div class="col-sm-3 col-xs-6">{{ $detail_keberangkatan['id'] }}</div>
+    <div class="col-sm-3 col-xs-6">PK{{ $detail_keberangkatan['id'] }}</div>
     <div class="col-sm-3 col-xs-6"><b>Tanggal Berangkat</b></div>
     <div class="col-sm-3 col-xs-6">{{ TanggalIndo($detail_keberangkatan['tgl_berangkat']) }}</div>
     
@@ -31,7 +33,12 @@
     <div class="col-sm-3 col-xs-6"><b>Status Keberangkatan</b></div>
     <div class="col-sm-3 col-xs-6">{{ $detail_keberangkatan['status'] }}</div>
     <div class="col-sm-3 col-xs-6"><b>Keterangan</b></div>
-    <div class="col-sm-3 col-xs-6">{{ $detail_keberangkatan['keterangan'] }}</div>
+    <div class="col-sm-3 col-xs-6">{{ $detail_keberangkatan['keterangan'] }} &nbsp;</div>
+    
+    <div class="col-sm-3 col-xs-6"><b>Total Peserta</b></div>
+    <div class="col-sm-3 col-xs-6">{{ count($data_list) }} Orang</div>
+    <div class="col-sm-3 col-xs-6"><b>Kuota</b></div>
+    <div class="col-sm-3 col-xs-6">{{ $detail_keberangkatan['kuota'] }} Orang</div>
     
     
   </div>
@@ -40,7 +47,6 @@
   <table class="table table-bordered table-stripped">
     <tr>
       <th>No</th>
-      <th>ID Keberangkatan</th>
       <th>ID Transaksi</th>
       <th>Nama Peserta</th>
       <th>Tanggal Lahir</th>
@@ -54,8 +60,7 @@
     @foreach($data_list as $nomor => $data)
       <tr>
         <td>{{ ($nomor+1) }}</td>
-        <td>{{ $data['id_keberangkatan'] }}</td>
-        <td>{{ $data['id_transaksi'] }}</td>
+        <td>T{{ $data['id_transaksi'] }}</td>
         <td>{{ $data['nama_lengkap'] }}</td>
         <td>{{ TanggalIndo($data['tgl_lahir']) }}</td>
         <td>{{ $data['jenis_kelamin'] }}</td>
