@@ -15,9 +15,11 @@
 
 @section('content')
   <div class="row">
-    <div class="col-sm-2 col-xs-12">
-      <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Peserta</button>
-    </div>
+  	@if($_SESSION['level'] != "Direktur")
+	    <div class="col-sm-2 col-xs-12">
+	      <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Peserta</button>
+	    </div>
+    @endif
     <div class="col-sm-2 col-xs-12">
       <div class="dropdown">
         <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Cetak Laporan
@@ -48,7 +50,7 @@
     @foreach($data_list as $nomor => $data)
       <tr>
         <td>{{ ($nomor+1) }}</td>
-        <td>{{ $data['id'] }}</td>
+        <td>T{{ $data['id'] }}</td>
         @if($_SESSION['level'] == "Admin")
           <td>{{ $data['username'] }}</td>
         @endif
@@ -59,10 +61,12 @@
         <td>{{ rupiah(($data['total_bayar'] - $data['sudah_dibayar'])) }}</td>
         <td>{{ $data['status'] }}</td>
         <td>
-          <button type="button" onclick="showModalEdit({{ $nomor }})" class="btn btn-success">Edit</button>
-          <button type="button" onclick="showConfirmationDelete('<?=site_url("transaksi/hapus?id=".$data['id'])?>')" class="btn btn-danger">Hapus</button>
+        	@if($_SESSION['level'] != "Direktur")
+        		<button type="button" onclick="showModalEdit({{ $nomor }})" class="btn btn-success">Edit</button>
+	          <button type="button" onclick="showConfirmationDelete('<?=site_url("transaksi/hapus?id=".$data['id'])?>')" class="btn btn-danger">Hapus</button>
+          	<a href="<?=site_url("angsuran?id_transaksi=".$data['id'])?>" class="btn btn-warning">Data Angsuran</a>
+        	@endif
           <a href="<?=site_url("peserta-transaksi?id_transaksi=".$data['id'])?>" class="btn btn-primary">Data Peserta</a>
-          <a href="<?=site_url("angsuran?id_transaksi=".$data['id'])?>" class="btn btn-warning">Data Angsuran</a>
         </td>
       </tr>
     @endforeach

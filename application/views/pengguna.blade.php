@@ -103,6 +103,7 @@
       <select class="form-control" name="level">
         <option value="Admin">Admin</option>
         <option value="Member">Member</option>
+        <option value="Direktur">Direktur</option>
       </select>
     </div>
         </div>

@@ -31,6 +31,20 @@
         </div>
       </div>
     </div>
+  @elseif($_SESSION['level'] == "Direktur")
+  	<div class="row">
+      <div class="col-sm-2 col-xs-12">
+        <div class="dropdown">
+          <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Cetak Laporan
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            @foreach($data_master_program as $d)
+              <li><a href="{{ site_url('laporan/peserta-keberangkatan?id_program='.$d['id']) }}" target="_blank">{{ $d['nama_program'] }}</a></li>
+            @endforeach
+          </ul>
+        </div>
+      </div>
+    </div>
   @endif
   <table class="table table-bordered table-stripped">
     <tr>
@@ -47,7 +61,7 @@
     @foreach($data_list as $nomor => $data)
       <tr>
         <td>{{ ($nomor+1) }}</td>
-        <td>{{ $data['id'] }}</td>
+        <td>K{{ $data['id'] }}</td>
         <td>{{ TanggalIndo($data['tgl_berangkat']) }}</td>
         <td>{{ $data['nama_maskapai'] }}</td>
         <td>{{ $data['nama_program'] }} {{ $data['nm_jenis'] }}</td>

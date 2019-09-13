@@ -75,6 +75,7 @@ class Laporan extends MY_Controller {
     }
     
     $content = $this->renderView('laporan_transaksi', $this->_dts);
+    
     $dompdf = new Dompdf();
     $dompdf->loadHtml($content);
     // (Optional) Setup the paper size and orientation

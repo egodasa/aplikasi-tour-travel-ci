@@ -72,7 +72,7 @@
                       <li><a href="{{ site_url('keberangkatan') }}"><i class="fa fa-home"></i> Jadwal Keberangkatan</a></li>
                     <?php
                       }
-                      else
+                      elseif($_SESSION['level'] == "Admin")
                       {
                     ?>
                       <li><a href="{{ site_url('program') }}"><i class="fa fa-home"></i> Program</a></li>
@@ -81,6 +81,14 @@
                       <li><a href="{{ site_url('peserta') }}"><i class="fa fa-home"></i> Peserta</a></li>
                       <li><a href="{{ site_url('transaksi') }}"><i class="fa fa-home"></i> Transaksi</a></li>
                       <li><a href="{{ site_url('keberangkatan') }}"><i class="fa fa-home"></i> Keberangkatan</a></li>
+                    <?php
+                      }
+                      else
+                      {
+                    ?>
+                    		<li><a href="{{ site_url('peserta') }}"><i class="fa fa-home"></i> Peserta</a></li>
+	                      <li><a href="{{ site_url('transaksi') }}"><i class="fa fa-home"></i> Transaksi</a></li>
+	                      <li><a href="{{ site_url('keberangkatan') }}"><i class="fa fa-home"></i> Keberangkatan</a></li>
                     <?php
                       }
                     ?>
@@ -109,7 +117,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profil</a></li>
+                    <!--<li><a href="javascript:;"> Profil</a></li>-->
                     <li><a href="{{ site_url('logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
@@ -133,7 +141,12 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
+                  	
+                  	
                     @yield('content')
+                    
+                    
+                    
                   </div>
                 </div>
               </div>

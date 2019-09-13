@@ -15,9 +15,12 @@
 
 @section('content')
   <a href="{{ site_url('keberangkatan') }}" class="btn btn-success">Kembali</a>
-  @if($detail_keberangkatan['kuota'] > count($data_list))
-	  <button class="btn btn-primary" onclick="showModal('#modal-tambah-peserta-keberangkatan')">Tambah Peserta</button>
+  @if($_SESSION['level'] != "Direktur")
+  	@if($detail_keberangkatan['kuota'] > count($data_list))
+		  <button class="btn btn-primary" onclick="showModal('#modal-tambah-peserta-keberangkatan')">Tambah Peserta</button>
+	  @endif
   @endif
+  
   <h4>Detail Keberangkatan</h4>
   <div class="row" style="font-size: 15px;">
     <div class="col-sm-3 col-xs-6"><b>ID Keberangkatan</b></div>
@@ -68,7 +71,9 @@
         <td>{{ $data['ukuran_baju'] }}</td>
         @if($_SESSION['level'] == "Admin")
         <td>
-          <a href="{{ site_url('peserta-keberangkatan/hapus/?id='.$data['id'].'&id_keberangkatan='.$data['id_keberangkatan']) }}" class="btn btn-danger">Hapus Peserta</a>
+        	@if($_SESSION['level'] != "Direktur")
+        		<a href="{{ site_url('peserta-keberangkatan/hapus/?id='.$data['id'].'&id_keberangkatan='.$data['id_keberangkatan']) }}" class="btn btn-danger">Hapus Peserta</a>
+        	@endif
         </td>
         @endif
       </tr>

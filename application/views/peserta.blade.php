@@ -8,31 +8,49 @@
    --}}
 
 @section('title', 'Pelanggan')
-@section('sidebar_title', 'Pelanggan')
+@section('sidebar_title', 'Peserta')
 @section('user_image', 'images/img.jpg')
 @section('username', 'Mandan')
-@section('content_title', 'Pelanggan')
+@section('content_title', 'Peserta')
 
 @section('content')
-  <div class="row">
-    <div class="col-sm-2 col-xs-12">
-      <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Peserta</button>
-    </div>
-    <div class="col-sm-2 col-xs-12">
-      <div class="dropdown">
-        <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Cetak Laporan
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          @foreach($data_program as $d)
-            <li><a href="{{ site_url('laporan/peserta?id_program='.$d['id']) }}" target="_blank">{{ $d['nama_program'] }}</a></li>
-          @endforeach
-        </ul>
-      </div>
-    </div>
-  </div>
+	@if($_SESSION['level'] == "Admin")
+		<div class="row">
+	    <div class="col-sm-2 col-xs-12">
+	      <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Peserta</button>
+	    </div>
+	    <div class="col-sm-2 col-xs-12">
+	      <div class="dropdown">
+	        <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Cetak Laporan
+	        <span class="caret"></span></button>
+	        <ul class="dropdown-menu">
+	          @foreach($data_program as $d)
+	            <li><a href="{{ site_url('laporan/peserta?id_program='.$d['id']) }}" target="_blank">{{ $d['nama_program'] }}</a></li>
+	          @endforeach
+	        </ul>
+	      </div>
+	    </div>
+	  </div>
+	@else
+		<div class="row">
+	    <div class="col-sm-2 col-xs-12">
+	      <div class="dropdown">
+	        <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Cetak Laporan
+	        <span class="caret"></span></button>
+	        <ul class="dropdown-menu">
+	          @foreach($data_program as $d)
+	            <li><a href="{{ site_url('laporan/peserta?id_program='.$d['id']) }}" target="_blank">{{ $d['nama_program'] }}</a></li>
+	          @endforeach
+	        </ul>
+	      </div>
+	    </div>
+	  </div>
+	@endif
+  
   <div class="table-responsive">
     <div style="overflow:auto; max-height:650px; margin:0px 0 0px 0;">
       <table class="table table-bordered table-stripped">
+      	<thead>
         <tr>
           <th>No</th>
           <th>Nama Lengkap</th>
@@ -51,8 +69,12 @@
           <th>Ukuran Baju</th>
           <th>Ahli Waris</th>
           <th>Jenis Kelamin Ahli Waris</th>
+          @if($_SESSION['level'] == "Admin")
           <th>Aksi</th>
+          @endif
         </tr>
+        </thead>
+        <tbody>
         @foreach($data_list as $nomor => $data)
           <tr>
             <td>{{ ($nomor+1) }}</td>
@@ -72,12 +94,15 @@
             <td>{{ $data['ukuran_baju'] }}</td>
             <td>{{ $data['nama_ahliwaris'] }} ({{ $data['hubungan_ahliwaris'] }})</td>
             <td>{{ $data['jk_ahliwaris'] }}</td>
+            @if($_SESSION['level'] == "Admin")
             <td>
               <button type="button" onclick="showModalEdit({{ $nomor }})" class="btn btn-success">Edit</button>
               <button type="button" onclick="showConfirmationDelete('<?=site_url("peserta/hapus?id=".$data['id'])?>')" class="btn btn-danger">Hapus</button>
             </td>
+            @endif
           </tr>
         @endforeach
+        </tbody>
       </table>
     </div>
   </div>
