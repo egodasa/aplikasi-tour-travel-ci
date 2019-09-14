@@ -29,6 +29,7 @@
       </div>
   </div>
   <table class="table table-bordered table-stripped">
+  	<thead>
     <tr>
       <th>No</th>
       <th>ID Angsuran</th>
@@ -41,6 +42,8 @@
       <?php endif; ?>
       
     </tr>
+    </thead>
+    <tbody>
     @foreach($data_list as $nomor => $data)
       <tr>
         <td>{{ ($nomor+1) }}</td>
@@ -58,6 +61,7 @@
         
       </tr>
     @endforeach
+    </tbody>
   </table>
   
   <script>

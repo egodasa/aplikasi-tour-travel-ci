@@ -16,6 +16,7 @@
 @section('content')
   <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Pengguna</button>
   <table class="table table-bordered table-stripped">
+  	<thead>
     <tr>
       <th>No</th>
       <th>Username</th>
@@ -24,6 +25,8 @@
       <th>Level</th>
       <th>Aksi</th>
     </tr>
+    </thead>
+    <tbody>
     @foreach($data_list as $nomor => $data)
       <tr>
         <td>{{ ($nomor+1) }}</td>
@@ -37,6 +40,7 @@
         </td>
       </tr>
     @endforeach
+    </tbody>
   </table>
   
   <script>

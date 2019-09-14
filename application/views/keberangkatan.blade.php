@@ -47,6 +47,7 @@
     </div>
   @endif
   <table class="table table-bordered table-stripped">
+  	<thead>
     <tr>
       <th>No</th>
       <th>ID Keberangkatan</th>
@@ -58,6 +59,8 @@
       <th>Kuota</th>
       <th>Aksi</th>
     </tr>
+    </thead>
+    <tbody>
     @foreach($data_list as $nomor => $data)
       <tr>
         <td>{{ ($nomor+1) }}</td>
@@ -77,6 +80,7 @@
         </td>
       </tr>
     @endforeach
+    </tbody>
   </table>
   
   <script>

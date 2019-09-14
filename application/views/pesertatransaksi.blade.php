@@ -30,6 +30,7 @@
   <div class="table-responsive">
     <div style="overflow:auto; max-height:650px; margin:0px 0 0px 0;">
       <table class="table table-bordered table-stripped">
+      	<thead>
         <tr>
           <th>No</th>
           <th>Nama Lengkap</th>
@@ -52,6 +53,8 @@
           <th>Keterangan</th>
           <th>Aksi</th>
         </tr>
+        </thead>
+        <tbody>
         @foreach($data_list as $nomor => $data)
           <tr>
             <td>{{ ($nomor+1) }}</td>
@@ -79,6 +82,7 @@
             </td>
           </tr>
         @endforeach
+        </tbody>
       </table>
     </div>
   </div>

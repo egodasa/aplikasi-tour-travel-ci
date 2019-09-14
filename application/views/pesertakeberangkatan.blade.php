@@ -48,6 +48,7 @@
   
   <h4>Daftar Peserta</h4>
   <table class="table table-bordered table-stripped">
+  	<thead>
     <tr>
       <th>No</th>
       <th>ID Transaksi</th>
@@ -60,6 +61,8 @@
       <th>Aksi</th>
       @endif
     </tr>
+    </thead>
+    <tbody>
     @foreach($data_list as $nomor => $data)
       <tr>
         <td>{{ ($nomor+1) }}</td>
@@ -78,6 +81,7 @@
         @endif
       </tr>
     @endforeach
+    </tbody>
   </table>
   @include('modal-tambah-peserta-keberangkatan')
 @endsection
