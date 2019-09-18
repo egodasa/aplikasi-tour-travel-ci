@@ -26,17 +26,18 @@ class MY_Model extends CI_Model {
   // kolom = daftar kolom yang ingin ditampilkan, berupa array
   public function ambilData($id = null, $kolom = "*")
 	{
+		$tabel = $this->tabel;
     if(!empty($this->view))
     {
-      $this->tabel = $this->view;
+    	$tabel = $this->view;
     }
     if(!is_null($id))
     {
-      return $this->db->get($this->tabel, $kolom, [$this->primaryKey => $id]);
+      return $this->db->get($tabel, $kolom, [$this->primaryKey => $id]);
     }
     else
     {
-      return $this->db->select($this->tabel, $kolom);
+      return $this->db->select($tabel, $kolom);
     }
 	}
   
@@ -44,11 +45,12 @@ class MY_Model extends CI_Model {
   // kolom = kolom yang ingin ditampilkan
 	public function ambilDataDenganKondisi($where, $kolom = "*")
 	{
+		$tabel = $this->tabel;
     if(!empty($this->view))
     {
-      $this->tabel = $this->view;
+      $tabel = $this->view;
     }
-    return $this->db->select($this->tabel, $kolom, $where);
+    return $this->db->select($tabel, $kolom, $where);
 	}
   
   // method untuk menambah data

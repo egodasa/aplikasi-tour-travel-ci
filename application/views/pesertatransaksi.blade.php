@@ -198,7 +198,7 @@
       
         @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'no_identitas', 'class' => 'form-control', 'max' => 20, 'label' => 'No Identitas']])
         @include('components.form.select', ['_data' => ['type' => 'text', 'name' => 'tempat_lahir', 'class' => 'form-control', 'label' => 'Tempat Lahir', 'val' => 'id', 'caption' => 'nm_kota', 'options' => $data_kota]])
-        @include('components.form.input', ['_data' => ['type' => 'date', 'name' => 'tgl_lahir', 'class' => 'form-control', 'max' => 10, 'label' => 'Tanggal Lahir']])
+        @include('components.form.input', ['_data' => ['type' => 'text', 'id' => 'tgl_lahir', 'name' => 'tgl_lahir', 'class' => 'form-control', 'max' => 10, 'label' => 'Tanggal Lahir']])
         @include('components.form.textarea', ['_data' => ['type' => 'text', 'name' => 'alamat', 'class' => 'form-control', 'max' => 225, 'label' => 'Alamat']])
         @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'kel', 'class' => 'form-control', 'max' => 11, 'label' => 'Kelurahan']])
         @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'kode_pos', 'class' => 'form-control', 'max' => 20, 'label' => 'Kode Pos']])
@@ -246,4 +246,13 @@
       </div>
     </div>
   </div>
+  <script src="{{ base_url() }}assets/pikaday/pikaday.js"></script>
+  <script>
+  	var batas = new Date(new Date().setDate(new Date().getDate()-1))
+  	var tgl_lahir = new Pikaday({
+            field: document.getElementById('tgl_lahir'),
+            minDate: new Date("1900-01-01"),
+            maxDate: batas
+        });
+  </script>
 @endsection

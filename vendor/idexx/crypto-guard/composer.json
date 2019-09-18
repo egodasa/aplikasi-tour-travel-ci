@@ -1,0 +1,28 @@
+{
+  "name": "coreproc/crypto-guard",
+  "description": "Gives a simple interface for encryption and decryption of keys",
+  "keywords": [
+    "encryption",
+    "decryption"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/CoreProc/crypto-guard",
+  "authors": [
+    {
+      "name": "Chris Bautista",
+      "email": "chris.bautista@coreproc.ph"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "files": [
+      "src/Support/helpers.php"
+    ],
+    "psr-4": {
+      "Coreproc\\CryptoGuard\\": "src"
+    }
+  },
+  "minimum-stability": "stable"
+}

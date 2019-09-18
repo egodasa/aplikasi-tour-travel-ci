@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class ModelPeserta extends MY_Model {
   function __construct()
   {
-    parent::__construct(); 
     $this->tabel = "tb_peserta";
     $this->primaryKey = "id";
     $this->relasiTabel = null;
@@ -33,6 +32,7 @@ class ModelPeserta extends MY_Model {
       "rw"                 
     ];
     $this->view = "data_peserta";
+    parent::__construct();
   }
   
 }

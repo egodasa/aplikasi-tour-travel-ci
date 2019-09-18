@@ -57,6 +57,7 @@
       <th>Status</th>
       <th>Keterangan</th>
       <th>Kuota</th>
+      <th>Sisa Kuota</th>
       <th>Aksi</th>
     </tr>
     </thead>
@@ -71,6 +72,7 @@
         <td>{{ $data['status'] }}</td>
         <td>{{ $data['keterangan'] }}</td>
         <td>{{ $data['kuota'] }} Orang</td>
+        <td>{{ ($data['kuota']-$data['kuota_terpakai']) }} Orang</td>
         <td>
           @if($_SESSION['level'] == "Admin")
             <button type="button" onclick="showModalEdit({{ $nomor }})" class="btn btn-success">Edit</button>

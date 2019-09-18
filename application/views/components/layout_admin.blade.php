@@ -28,11 +28,33 @@
     <link href="{{ base_url() }}assets/css/pnotify/pnotify.css" rel="stylesheet">
     <link href="{{ base_url() }}assets/css/pnotify/pnotify.buttons.css" rel="stylesheet">
     <link href="{{ base_url() }}assets/css/pnotify/pnotify.nonblock.css" rel="stylesheet">
-    
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/pikaday/pikaday.css">
     @section('head')
       <!-- Custom Head -->
     @show
-    
+    <script>
+    	function elId(id)
+      {
+        return document.getElementById(id);
+      }
+      function elName(name)
+      {
+        return document.getElementsByName(name);
+      }
+      function showModal(id)
+      {
+        $(id).modal("show");
+      }
+      function hideModal(id)
+      {
+        $(id).modal("hide");
+      }
+      function showConfirmationDelete(url)
+      {
+        document.getElementById("url_hapus").href = url;
+        showModal('#modal_hapus');
+      }
+    </script>
   </head>
 
   <body class="nav-md">
@@ -209,36 +231,11 @@
     
     <script>
       $('.table').DataTable();
-      function elId(id)
-      {
-        return document.getElementById(id);
-      }
-      function elName(name)
-      {
-        return document.getElementsByName(name);
-      }
-      function showModal(id)
-      {
-        $(id).modal("show");
-      }
-      function hideModal(id)
-      {
-        $(id).modal("hide");
-      }
-      function showConfirmationDelete(url)
-      {
-        document.getElementById("url_hapus").href = url;
-        showModal('#modal_hapus');
-      }
     </script>
     
     @section('script')
       <!-- Custom Script -->
     @show
-    
-    <script>
-      $('.table').DataTable();
-    </script>
     
     {{ showNotifikasi() }}
     

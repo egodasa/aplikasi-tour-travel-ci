@@ -26,7 +26,7 @@
               <input type="checkbox" name="id_peserta_transaksi[]" value="{{ $data['id'] }}" />
             </td>
             <td>{{ ($nomor+1) }}</td>
-            <td>{{ $data['id_transaksi'] }}</td>
+            <td>T{{ $data['id_transaksi'] }}</td>
             <td>{{ $data['nama_lengkap'] }}</td>
             <td>{{ TanggalIndo($data['tgl_lahir']) }}</td>
             <td>{{ $data['jenis_kelamin'] }}</td>

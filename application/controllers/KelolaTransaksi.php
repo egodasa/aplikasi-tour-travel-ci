@@ -16,7 +16,7 @@ class KelolaTransaksi extends MY_Controller {
 	{
     $this->_dts['data_program'] = $this->program->ambilData();
     $this->_dts['data_master_program'] = $this->master_program->ambilData();
-    if($_SESSION['level'] == "Admin")
+    if($_SESSION['level'] == "Admin" || $_SESSION['level'] == "Direktur")
     {
       $this->_dts['data_list'] = $this->transaksi->ambilData();
     }

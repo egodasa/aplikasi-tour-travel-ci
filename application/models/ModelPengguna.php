@@ -5,7 +5,6 @@ class ModelPengguna extends MY_Model {
   
   function __construct()
   {
-    parent::__construct();
     $this->tabel = "tb_pengguna";
     $this->primaryKey = "id";
     $this->relasiTabel = null;
@@ -16,6 +15,7 @@ class ModelPengguna extends MY_Model {
       "nohp" ,
       "level"
     ];
+    parent::__construct();
   }
   public function register($data)
   {

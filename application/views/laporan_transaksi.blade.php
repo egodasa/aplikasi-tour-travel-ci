@@ -41,18 +41,44 @@
         <th class="kolom_tabel_laporan">Total Bayar</th>
         <th class="kolom_tabel_laporan">Sisa Pembayaran</th>
         <th class="kolom_tabel_laporan">Status</th>
+        <th class="kolom_tabel_laporan">Status Pembayaran</th>
       </tr>
-      @foreach($data_list as $no => $data)
+      <?php
+      	$total_dp = 0;
+      	$total_bayar = 0;
+      	$total_sisa_pembayaran = 0;
+      	foreach($data_list as $no => $data)
+      	{
+      		$total_dp += $data['dp'];
+	      	$total_bayar = $data['total_bayar'];
+	      	$total_sisa_pembayaran = ($data['total_bayar'] - $data['sudah_dibayar']);
+      ?>
         <tr>
           <td class="kolom_tabel_laporan">{{ ($no+1) }}</td>
           <td class="kolom_tabel_laporan">{{ $data['username'] }}</td>
           <td class="kolom_tabel_laporan">{{ $data['nama_program']." ".$data['nm_jenis'] }}</td>
           <td class="kolom_tabel_laporan">{{ rupiah($data['dp']) }}</td>
           <td class="kolom_tabel_laporan">{{ rupiah($data['total_bayar']) }}</td>
-          <td class="kolom_tabel_laporan">{{ rupiah($data['total_bayar'] - $data['dp'] - $data['sudah_dibayar']) }}</td>
+          <td class="kolom_tabel_laporan">{{ rupiah($data['total_bayar'] - $data['sudah_dibayar']) }}</td>
           <td class="kolom_tabel_laporan">{{ $data['status'] }}</td>
+          <td>
+	        	@if(($data['total_bayar'] - $data['sudah_dibayar']) == 0)
+	        		Sudah Lunas
+	        	@else
+	        		Belum Lunas
+	        	@endif
+	        </td>
         </tr>
-      @endforeach
+      <?php
+      	}
+      ?>
+      <tr>
+      	<td colspan="3" style="text-align: right;font-weight: bold;" class="kolom_tabel_laporan">TOTAL</td>
+      	<td class="kolom_tabel_laporan"><?=rupiah($total_dp)?></td>
+      	<td class="kolom_tabel_laporan"><?=rupiah($total_bayar)?></td>
+      	<td class="kolom_tabel_laporan"><?=rupiah($total_sisa_pembayaran)?></td>
+      	<td class="kolom_tabel_laporan" colspan="2"></td>
+      </tr>
     </table>
 	</body>
 </html>

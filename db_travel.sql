@@ -1,4 +1,4 @@
--- Adminer 4.7.2 MySQL dump
+-- Adminer 4.7.1 MySQL dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -22,7 +22,7 @@ CREATE TABLE `data_jenis_program` (`nama_program` varchar(101), `kuota` int(11),
 
 
 DROP VIEW IF EXISTS `data_keberangkatan`;
-CREATE TABLE `data_keberangkatan` (`id` int(11), `tgl_berangkat` date, `nama_maskapai` varchar(50), `id_jenis` int(11), `status` varchar(50), `keterangan` text, `nama_program` varchar(50), `nm_jenis` varchar(50), `id_program` int(11));
+CREATE TABLE `data_keberangkatan` (`id` int(11), `tgl_berangkat` date, `nama_maskapai` varchar(50), `id_jenis` int(11), `status` varchar(50), `keterangan` text, `nama_program` varchar(50), `nm_jenis` varchar(50), `id_program` int(11), `kuota` int(11), `kuota_terpakai` bigint(21));
 
 
 DROP VIEW IF EXISTS `data_peserta`;
@@ -34,11 +34,11 @@ CREATE TABLE `data_peserta_keberangkatan` (`id` int(11), `nama_lengkap` varchar(
 
 
 DROP VIEW IF EXISTS `data_peserta_transaksi`;
-CREATE TABLE `data_peserta_transaksi` (`id_program` int(11), `id_jenis` int(11), `total_bayar` bigint(22), `sudah_dibayar` decimal(32,0), `id` int(11), `id_peserta` int(11), `id_transaksi` int(11), `status` varchar(50), `keterangan` varchar(50), `nama_lengkap` varchar(100), `nama_panggilan` varchar(50), `jenis_kelamin` varchar(20), `no_identitas` varchar(20), `tempat_lahir` int(11), `tgl_lahir` date, `alamat` varchar(255), `kel` varchar(100), `tlp_rumah` varchar(20), `tlp_kantor` varchar(20), `nohp` varchar(20), `email` varchar(50), `warga_negara` varchar(50), `pekerjaan` varchar(50), `ukuran_baju` varchar(20), `nama_ahliwaris` varchar(50), `hubungan_ahliwaris` varchar(50), `jk_ahliwaris` varchar(20), `kode_pos` varchar(20), `rt` varchar(10), `rw` varchar(10), `nm_kota` varchar(255), `nama_program` varchar(50), `nm_jenis` varchar(50));
+CREATE TABLE `data_peserta_transaksi` (`id_program` int(11), `id_jenis` int(11), `total_bayar` bigint(21), `sudah_dibayar` decimal(32,0), `id` int(11), `id_peserta` int(11), `id_transaksi` int(11), `status` varchar(50), `keterangan` varchar(50), `nama_lengkap` varchar(100), `nama_panggilan` varchar(50), `jenis_kelamin` varchar(20), `no_identitas` varchar(20), `tempat_lahir` int(11), `tgl_lahir` date, `alamat` varchar(255), `kel` varchar(100), `tlp_rumah` varchar(20), `tlp_kantor` varchar(20), `nohp` varchar(20), `email` varchar(50), `warga_negara` varchar(50), `pekerjaan` varchar(50), `ukuran_baju` varchar(20), `nama_ahliwaris` varchar(50), `hubungan_ahliwaris` varchar(50), `jk_ahliwaris` varchar(20), `kode_pos` varchar(20), `rt` varchar(10), `rw` varchar(10), `nm_kota` varchar(255), `nama_program` varchar(50), `nm_jenis` varchar(50));
 
 
 DROP VIEW IF EXISTS `data_transaksi`;
-CREATE TABLE `data_transaksi` (`id` int(11), `id_jenis` int(11), `dp` int(11), `status` enum('Aktif','Dibatalkan'), `id_pengguna` int(11), `sudah_dibayar` decimal(32,0), `total_peserta` bigint(21), `harga` int(11), `nm_jenis` varchar(50), `kuota` int(11), `nama_program` varchar(50), `username` varchar(20), `email` varchar(50), `nohp` varchar(15), `total_bayar` bigint(22), `id_program` int(11));
+CREATE TABLE `data_transaksi` (`id` int(11), `id_jenis` int(11), `dp` int(11), `status` enum('Aktif','Dibatalkan'), `id_pengguna` int(11), `sudah_dibayar` decimal(32,0), `total_peserta` bigint(21), `harga` int(11), `nm_jenis` varchar(50), `kuota` int(11), `nama_program` varchar(50), `username` varchar(20), `email` varchar(50), `nohp` varchar(15), `total_bayar` bigint(21), `id_program` int(11));
 
 
 DROP TABLE IF EXISTS `tb_angsuran`;
@@ -55,7 +55,10 @@ CREATE TABLE `tb_angsuran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `tb_angsuran` (`id`, `tgl_bayar`, `juml_bayar`, `id_transaksi`, `jenis_pembayaran`, `keterangan`) VALUES
-(10,	'2015-08-10',	20500000,	16,	'Angsuran',	'');
+(11,	'2016-08-17',	5000000,	17,	'DP',	'DP'),
+(12,	'2016-09-19',	10000000,	17,	'Angsuran',	'Angsuran 1'),
+(14,	'2016-11-14',	5500000,	17,	'Angsuran',	'Angsuran 2'),
+(16,	'2016-03-14',	5000000,	19,	'DP',	'DP');
 
 DROP TABLE IF EXISTS `tb_jenis_program`;
 CREATE TABLE `tb_jenis_program` (
@@ -89,13 +92,14 @@ CREATE TABLE `tb_keberangkatan` (
   `id_jenis` int(11) NOT NULL,
   `status` varchar(50) NOT NULL,
   `keterangan` text,
+  `kuota` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_jenis` (`id_jenis`),
   CONSTRAINT `tb_keberangkatan_ibfk_1` FOREIGN KEY (`id_jenis`) REFERENCES `tb_jenis_program` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `tb_keberangkatan` (`id`, `tgl_berangkat`, `nama_maskapai`, `id_jenis`, `status`, `keterangan`) VALUES
-(5,	'2016-12-26',	'Garuda',	7,	'Belum Berangkat',	'');
+INSERT INTO `tb_keberangkatan` (`id`, `tgl_berangkat`, `nama_maskapai`, `id_jenis`, `status`, `keterangan`, `kuota`) VALUES
+(5,	'2016-12-26',	'Garuda',	7,	'Belum Berangkat',	'',	100);
 
 DROP TABLE IF EXISTS `tb_kota`;
 CREATE TABLE `tb_kota` (
@@ -630,13 +634,18 @@ CREATE TABLE `tb_pengguna` (
   `email` varchar(50) NOT NULL,
   `nohp` varchar(15) NOT NULL,
   `level` varchar(20) NOT NULL,
+  `status` enum('Aktif','Tidak Aktif') NOT NULL DEFAULT 'Tidak Aktif',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `tb_pengguna` (`id`, `username`, `password`, `email`, `nohp`, `level`) VALUES
-(1,	'admin',	'admin',	'admin',	'admin',	'Admin'),
-(3,	'mandan',	'qwe123',	'egodasa@gmail.com',	'12345',	'Member'),
-(6,	'rahmi',	'12345',	'rahmi@gmail.com',	'082392212599',	'Member');
+INSERT INTO `tb_pengguna` (`id`, `username`, `password`, `email`, `nohp`, `level`, `status`) VALUES
+(1,	'admin',	'admin',	'admin',	'admin',	'Admin',	'Aktif'),
+(3,	'mandan',	'qwe123',	'egodasa@gmail.com',	'12345',	'Member',	'Aktif'),
+(10,	'egodasa',	'12345',	'egodasa@hotmail.com',	'12345',	'Member',	'Aktif'),
+(11,	'rahmi',	'12345',	'rahmi.p2@gmail.com',	'082392212599',	'Member',	'Aktif'),
+(12,	'direktur',	'12345',	'direktur@gmail.com',	'082312345678',	'Direktur',	'Aktif'),
+(13,	'Jus',	'jus',	'',	'085274650718',	'Member',	'Aktif'),
+(14,	'putri',	'putri',	'putri@gmail.com',	'082334452461',	'Member',	'Aktif');
 
 DROP TABLE IF EXISTS `tb_peserta`;
 CREATE TABLE `tb_peserta` (
@@ -671,7 +680,8 @@ CREATE TABLE `tb_peserta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `tb_peserta` (`id`, `nama_lengkap`, `nama_panggilan`, `jenis_kelamin`, `id_pengguna`, `no_identitas`, `tempat_lahir`, `tgl_lahir`, `alamat`, `kel`, `tlp_rumah`, `tlp_kantor`, `nohp`, `email`, `warga_negara`, `pekerjaan`, `ukuran_baju`, `nama_ahliwaris`, `hubungan_ahliwaris`, `jk_ahliwaris`, `kode_pos`, `rt`, `rw`) VALUES
-(14,	'Jusmaiyar',	'Jus',	'Perempuan',	1,	'1375016007530001',	75,	'1953-07-20',	'JL Lapan Batu ',	'Bukit Apit',	'',	'',	'085274650718',	'',	'Indonesia',	'Pedagang',	'',	'Rosi Hardifnas',	'Anak Kandung',	'Perempuan',	'',	'02',	'03');
+(16,	'Jusmaiyar',	'Jus',	'Perempuan',	13,	'1375016007530001',	75,	'1953-07-20',	'JL Lapan Batu Bukit Apit',	'',	'',	'',	'085274650718',	'',	'Indonesia',	'Pedagang',	'',	'Rosi Hardifnas',	'Anak Kandung',	'Perempuan',	'',	'02',	'03'),
+(17,	'rahmi putri',	'rahmi',	'Perempuan',	11,	'1371067003980007',	75,	'1998-03-30',	'Komp. Pagambiran Permai blok N no 2',	'Pagambiran Ampalu nan XX',	'',	'',	'082392212599',	'rahmi.p2@gmail.com',	'Indonesia',	'mahasiswa',	'm',	'Fani',	'Kakak Kandung',	'Perempuan',	'',	'003',	'010');
 
 DROP TABLE IF EXISTS `tb_peserta_keberangkatan`;
 CREATE TABLE `tb_peserta_keberangkatan` (
@@ -681,12 +691,12 @@ CREATE TABLE `tb_peserta_keberangkatan` (
   PRIMARY KEY (`id`),
   KEY `no_registrasi` (`id_peserta_transaksi`),
   KEY `id_jadwal` (`id_keberangkatan`),
-  CONSTRAINT `tb_peserta_keberangkatan_ibfk_2` FOREIGN KEY (`id_keberangkatan`) REFERENCES `tb_keberangkatan` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `tb_peserta_keberangkatan_ibfk_4` FOREIGN KEY (`id_peserta_transaksi`) REFERENCES `tb_peserta_transaksi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `tb_peserta_keberangkatan_ibfk_4` FOREIGN KEY (`id_peserta_transaksi`) REFERENCES `tb_peserta_transaksi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tb_peserta_keberangkatan_ibfk_5` FOREIGN KEY (`id_keberangkatan`) REFERENCES `tb_keberangkatan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `tb_peserta_keberangkatan` (`id`, `id_peserta_transaksi`, `id_keberangkatan`) VALUES
-(1,	9,	5);
+(1,	18,	5);
 
 DROP TABLE IF EXISTS `tb_peserta_transaksi`;
 CREATE TABLE `tb_peserta_transaksi` (
@@ -702,7 +712,13 @@ INSERT INTO `tb_peserta_transaksi` (`id`, `id_peserta`, `id_transaksi`, `status`
 (9,	14,	16,	'',	''),
 (10,	15,	16,	'',	''),
 (11,	0,	18,	'',	''),
-(12,	16,	18,	'',	'');
+(12,	16,	18,	'',	''),
+(13,	15,	17,	'',	''),
+(14,	0,	19,	'',	''),
+(15,	0,	19,	'',	''),
+(16,	16,	19,	'',	''),
+(17,	0,	17,	'',	''),
+(18,	17,	17,	'',	'');
 
 DROP TABLE IF EXISTS `tb_program`;
 CREATE TABLE `tb_program` (
@@ -774,8 +790,11 @@ CREATE TABLE `tb_transaksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `tb_transaksi` (`id`, `id_jenis`, `dp`, `status`, `id_pengguna`) VALUES
-(16,	7,	5000000,	'Aktif',	1),
-(19,	7,	5000000,	'Aktif',	6);
+(17,	7,	5000000,	'Aktif',	11),
+(19,	7,	5000000,	'Aktif',	13),
+(20,	7,	5000000,	'Aktif',	14),
+(22,	4,	10000000,	'Aktif',	1),
+(23,	7,	5000000,	'Aktif',	1);
 
 DROP TABLE IF EXISTS `angsuran_sudah_dibayar`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `angsuran_sudah_dibayar` AS select `tb_angsuran`.`id_transaksi` AS `id_transaksi`,sum(`tb_angsuran`.`juml_bayar`) AS `sudah_dibayar` from `tb_angsuran` group by `tb_angsuran`.`id_transaksi`;
@@ -790,7 +809,7 @@ DROP TABLE IF EXISTS `data_jenis_program`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_jenis_program` AS select concat(`tb_program`.`nama_program`,' ',`tb_jenis_program`.`nm_jenis`) AS `nama_program`,`tb_jenis_program`.`kuota` AS `kuota`,`tb_jenis_program`.`id` AS `id`,`tb_jenis_program`.`id_program` AS `id_program`,`tb_jenis_program`.`harga` AS `harga`,`tb_jenis_program`.`nm_jenis` AS `nm_jenis`,`tb_jenis_program`.`dp` AS `dp` from (`tb_program` join `tb_jenis_program` on((`tb_jenis_program`.`id_program` = `tb_program`.`id`)));
 
 DROP TABLE IF EXISTS `data_keberangkatan`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_keberangkatan` AS select `tb_keberangkatan`.`id` AS `id`,`tb_keberangkatan`.`tgl_berangkat` AS `tgl_berangkat`,`tb_keberangkatan`.`nama_maskapai` AS `nama_maskapai`,`tb_keberangkatan`.`id_jenis` AS `id_jenis`,`tb_keberangkatan`.`status` AS `status`,`tb_keberangkatan`.`keterangan` AS `keterangan`,`tb_program`.`nama_program` AS `nama_program`,`tb_jenis_program`.`nm_jenis` AS `nm_jenis`,`tb_jenis_program`.`id_program` AS `id_program` from ((`tb_keberangkatan` join `tb_jenis_program` on((`tb_keberangkatan`.`id_jenis` = `tb_jenis_program`.`id`))) join `tb_program` on((`tb_jenis_program`.`id_program` = `tb_program`.`id`)));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_keberangkatan` AS select `tb_keberangkatan`.`id` AS `id`,`tb_keberangkatan`.`tgl_berangkat` AS `tgl_berangkat`,`tb_keberangkatan`.`nama_maskapai` AS `nama_maskapai`,`tb_keberangkatan`.`id_jenis` AS `id_jenis`,`tb_keberangkatan`.`status` AS `status`,`tb_keberangkatan`.`keterangan` AS `keterangan`,`tb_program`.`nama_program` AS `nama_program`,`tb_jenis_program`.`nm_jenis` AS `nm_jenis`,`tb_jenis_program`.`id_program` AS `id_program`,`tb_keberangkatan`.`kuota` AS `kuota`,ifnull(count(`tb_peserta_keberangkatan`.`id`),0) AS `kuota_terpakai` from (((`tb_keberangkatan` join `tb_jenis_program` on((`tb_keberangkatan`.`id_jenis` = `tb_jenis_program`.`id`))) join `tb_program` on((`tb_jenis_program`.`id_program` = `tb_program`.`id`))) left join `tb_peserta_keberangkatan` on((`tb_keberangkatan`.`id` = `tb_peserta_keberangkatan`.`id_keberangkatan`))) group by `tb_keberangkatan`.`id`;
 
 DROP TABLE IF EXISTS `data_peserta`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_peserta` AS select `tb_peserta`.`nama_lengkap` AS `nama_lengkap`,`tb_peserta`.`nama_panggilan` AS `nama_panggilan`,`tb_peserta`.`jenis_kelamin` AS `jenis_kelamin`,`tb_peserta`.`id_pengguna` AS `id_pengguna`,`tb_peserta`.`no_identitas` AS `no_identitas`,`tb_peserta`.`tempat_lahir` AS `tempat_lahir`,`tb_peserta`.`tgl_lahir` AS `tgl_lahir`,`tb_peserta`.`alamat` AS `alamat`,`tb_peserta`.`kel` AS `kel`,`tb_peserta`.`tlp_rumah` AS `tlp_rumah`,`tb_peserta`.`tlp_kantor` AS `tlp_kantor`,`tb_peserta`.`nohp` AS `nohp`,`tb_peserta`.`email` AS `email`,`tb_peserta`.`warga_negara` AS `warga_negara`,`tb_peserta`.`pekerjaan` AS `pekerjaan`,`tb_peserta`.`ukuran_baju` AS `ukuran_baju`,`tb_peserta`.`nama_ahliwaris` AS `nama_ahliwaris`,`tb_peserta`.`hubungan_ahliwaris` AS `hubungan_ahliwaris`,`tb_peserta`.`jk_ahliwaris` AS `jk_ahliwaris`,`tb_peserta`.`kode_pos` AS `kode_pos`,`tb_peserta`.`rt` AS `rt`,`tb_peserta`.`rw` AS `rw`,`tb_kota`.`nm_kota` AS `nm_kota`,`tb_peserta`.`id` AS `id` from (`tb_peserta` join `tb_kota` on((`tb_peserta`.`tempat_lahir` = `tb_kota`.`id`)));
@@ -802,6 +821,6 @@ DROP TABLE IF EXISTS `data_peserta_transaksi`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_peserta_transaksi` AS select `data_transaksi`.`id_program` AS `id_program`,`data_transaksi`.`id_jenis` AS `id_jenis`,`data_transaksi`.`total_bayar` AS `total_bayar`,`data_transaksi`.`sudah_dibayar` AS `sudah_dibayar`,`tb_peserta_transaksi`.`id` AS `id`,`tb_peserta_transaksi`.`id_peserta` AS `id_peserta`,`tb_peserta_transaksi`.`id_transaksi` AS `id_transaksi`,`tb_peserta_transaksi`.`status` AS `status`,`tb_peserta_transaksi`.`keterangan` AS `keterangan`,`tb_peserta`.`nama_lengkap` AS `nama_lengkap`,`tb_peserta`.`nama_panggilan` AS `nama_panggilan`,`tb_peserta`.`jenis_kelamin` AS `jenis_kelamin`,`tb_peserta`.`no_identitas` AS `no_identitas`,`tb_peserta`.`tempat_lahir` AS `tempat_lahir`,`tb_peserta`.`tgl_lahir` AS `tgl_lahir`,`tb_peserta`.`alamat` AS `alamat`,`tb_peserta`.`kel` AS `kel`,`tb_peserta`.`tlp_rumah` AS `tlp_rumah`,`tb_peserta`.`tlp_kantor` AS `tlp_kantor`,`tb_peserta`.`nohp` AS `nohp`,`tb_peserta`.`email` AS `email`,`tb_peserta`.`warga_negara` AS `warga_negara`,`tb_peserta`.`pekerjaan` AS `pekerjaan`,`tb_peserta`.`ukuran_baju` AS `ukuran_baju`,`tb_peserta`.`nama_ahliwaris` AS `nama_ahliwaris`,`tb_peserta`.`hubungan_ahliwaris` AS `hubungan_ahliwaris`,`tb_peserta`.`jk_ahliwaris` AS `jk_ahliwaris`,`tb_peserta`.`kode_pos` AS `kode_pos`,`tb_peserta`.`rt` AS `rt`,`tb_peserta`.`rw` AS `rw`,`tb_kota`.`nm_kota` AS `nm_kota`,`data_transaksi`.`nama_program` AS `nama_program`,`data_transaksi`.`nm_jenis` AS `nm_jenis` from (((`tb_peserta_transaksi` join `tb_peserta` on((`tb_peserta`.`id` = `tb_peserta_transaksi`.`id_peserta`))) join `tb_kota` on((`tb_peserta`.`tempat_lahir` = `tb_kota`.`id`))) join `data_transaksi` on((`tb_peserta_transaksi`.`id_transaksi` = `data_transaksi`.`id`)));
 
 DROP TABLE IF EXISTS `data_transaksi`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_transaksi` AS select `tb_transaksi`.`id` AS `id`,`tb_transaksi`.`id_jenis` AS `id_jenis`,`tb_transaksi`.`dp` AS `dp`,`tb_transaksi`.`status` AS `status`,`tb_transaksi`.`id_pengguna` AS `id_pengguna`,ifnull(`angsuran_sudah_dibayar`.`sudah_dibayar`,0) AS `sudah_dibayar`,ifnull(`banyak_peserta_transaksi`.`banyak_peserta`,0) AS `total_peserta`,`tb_jenis_program`.`harga` AS `harga`,`tb_jenis_program`.`nm_jenis` AS `nm_jenis`,`tb_jenis_program`.`kuota` AS `kuota`,`tb_program`.`nama_program` AS `nama_program`,`tb_pengguna`.`username` AS `username`,`tb_pengguna`.`email` AS `email`,`tb_pengguna`.`nohp` AS `nohp`,((`tb_jenis_program`.`kuota` * `tb_jenis_program`.`harga`) + `tb_transaksi`.`dp`) AS `total_bayar`,`tb_jenis_program`.`id_program` AS `id_program` from (((((`tb_transaksi` left join `angsuran_sudah_dibayar` on((`angsuran_sudah_dibayar`.`id_transaksi` = `tb_transaksi`.`id`))) left join `banyak_peserta_transaksi` on((`banyak_peserta_transaksi`.`id_transaksi` = `tb_transaksi`.`id`))) join `tb_jenis_program` on((`tb_transaksi`.`id_jenis` = `tb_jenis_program`.`id`))) join `tb_program` on((`tb_jenis_program`.`id_program` = `tb_program`.`id`))) join `tb_pengguna` on((`tb_transaksi`.`id_pengguna` = `tb_pengguna`.`id`)));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_transaksi` AS select `tb_transaksi`.`id` AS `id`,`tb_transaksi`.`id_jenis` AS `id_jenis`,`tb_transaksi`.`dp` AS `dp`,`tb_transaksi`.`status` AS `status`,`tb_transaksi`.`id_pengguna` AS `id_pengguna`,ifnull(`angsuran_sudah_dibayar`.`sudah_dibayar`,0) AS `sudah_dibayar`,ifnull(`banyak_peserta_transaksi`.`banyak_peserta`,0) AS `total_peserta`,`tb_jenis_program`.`harga` AS `harga`,`tb_jenis_program`.`nm_jenis` AS `nm_jenis`,`tb_jenis_program`.`kuota` AS `kuota`,`tb_program`.`nama_program` AS `nama_program`,`tb_pengguna`.`username` AS `username`,`tb_pengguna`.`email` AS `email`,`tb_pengguna`.`nohp` AS `nohp`,(`tb_jenis_program`.`kuota` * `tb_jenis_program`.`harga`) AS `total_bayar`,`tb_jenis_program`.`id_program` AS `id_program` from (((((`tb_transaksi` left join `angsuran_sudah_dibayar` on((`angsuran_sudah_dibayar`.`id_transaksi` = `tb_transaksi`.`id`))) left join `banyak_peserta_transaksi` on((`banyak_peserta_transaksi`.`id_transaksi` = `tb_transaksi`.`id`))) join `tb_jenis_program` on((`tb_transaksi`.`id_jenis` = `tb_jenis_program`.`id`))) join `tb_program` on((`tb_jenis_program`.`id_program` = `tb_program`.`id`))) join `tb_pengguna` on((`tb_transaksi`.`id_pengguna` = `tb_pengguna`.`id`)));
 
--- 2019-08-31 03:51:00
+-- 2019-09-18 09:46:00

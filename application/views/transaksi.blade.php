@@ -46,6 +46,7 @@
       <th>Total Bayar</th>
       <th>Sisa Pembayaran</th>
       <th>Status</th>
+      <th>Status Pembayaran</th>
       <th>Aksi</th>
     </tr>
     </thead>
@@ -63,6 +64,13 @@
         <td>{{ rupiah($data['total_bayar']) }}</td>
         <td>{{ rupiah(($data['total_bayar'] - $data['sudah_dibayar'])) }}</td>
         <td>{{ $data['status'] }}</td>
+        <td>
+        	@if(($data['total_bayar'] - $data['sudah_dibayar']) == 0)
+        		Sudah Lunas
+        	@else
+        		Belum Lunas
+        	@endif
+        </td>
         <td>
         	@if($_SESSION['level'] != "Direktur")
         		<button type="button" onclick="showModalEdit({{ $nomor }})" class="btn btn-success">Edit</button>

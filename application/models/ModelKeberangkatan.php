@@ -5,7 +5,6 @@ class ModelKeberangkatan extends MY_Model {
   
   function __construct()
   {
-    parent::__construct();
     $this->tabel = "tb_keberangkatan";
     $this->primaryKey = "id";
     $this->kolomBawaanCrud = [
@@ -17,5 +16,6 @@ class ModelKeberangkatan extends MY_Model {
       "kuota"
     ];
     $this->view = "data_keberangkatan";
+    parent::__construct();
   }
 }

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class ModelTransaksi extends MY_Model {
   function __construct()
   {
-    parent::__construct();
+    
     $this->tabel = "tb_transaksi";
     $this->primaryKey = "id";
     $this->kolomBawaanCrud = [
@@ -14,6 +14,7 @@ class ModelTransaksi extends MY_Model {
       "status"   
     ];
     $this->view = "data_transaksi";
+    parent::__construct();
   }
   public function batalkanTransaksi($idTransaksi)
   {
