@@ -402,30 +402,7 @@
     return $nama_file;
   }
   
-  /*
-   selisihWaktu($FromDate, $ToDate)
-   $fromdate = tanggal awal
-   $todate = tanggal akhir
-   $hasil = selisihWaktu('1995-10-10', '2019-10-10');
-   echo $hasil['jam'];
-   echo $hasil['minggu'];
-   echo $hasil['hari'];
-   echo $hasil['bulan'];
-   echo $hasil['tahun'];
-  */
-  function selisihWaktu($FromDate, $ToDate) {
-    $FromDate = new DateTime($FromDate);
-    $ToDate   = new DateTime($ToDate);
-    $Interval = $FromDate->diff($ToDate);
   
-    $Difference["jam"] = $Interval->h;
-    $Difference["minggu"] = floor($Interval->d/7);
-    $Difference["hari"] = $Interval->d % 7;
-    $Difference["bulan"] = $Interval->m;
-    $Difference["tahun"] = $Interval->y;
-  
-    return $Difference;
-  }
   // $inputSeconds = selisih 2 waktu dalam detik
   // Output berupa array
   function selisihWaktuSekarang($inputSeconds) {
@@ -523,5 +500,62 @@
     {
       header('Location: '.site_url('beranda'));
     }
+  }
+  function selisihWaktu($FromDate, $ToDate) {
+    $multiply = 1;
+    if(strtotime($FromDate) > strtotime($ToDate))
+    {
+      $multiply = -1;
+    }
+    $FromDate = new DateTime($FromDate);
+    $ToDate   = new DateTime($ToDate);
+    $Interval = $FromDate->diff($ToDate);
+    
+    if($Interval->h != 0)
+    {
+      $Difference["jam"] = $Interval->h * $multiply;
+    }
+    else
+    {
+      $Difference["jam"] = $Interval->h;
+    }
+    
+    
+    if(floor($Interval->d/7) != 0)
+    {
+      $Difference["minggu"] = floor($Interval->d/7) * $multiply;
+    }
+    else
+    {
+      $Difference["minggu"] = floor($Interval->d/7);
+    }
+    
+    
+    if($Interval->d != 0)
+    {
+      $Difference["hari"] = $Interval->d * $multiply;
+    }
+    else
+    {
+      $Difference["hari"] = $Interval->d;
+    }
+    
+    if($Interval->m != 0)
+    {
+      $Difference["bulan"] = $Interval->m * $multiply;
+    }
+    else
+    {
+      $Difference["bulan"] = $Interval->m;
+    }
+    if($Interval->y != 0)
+    {
+      $Difference["tahun"] = $Interval->y * $multiply;
+    }
+    else
+    {
+      $Difference["tahun"] = $Interval->y;
+    }
+    return $Difference;
   }
 ?>

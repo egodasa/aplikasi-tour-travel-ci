@@ -222,17 +222,35 @@
         @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'tlp_kantor', 'class' => 'form-control', 'max' => 20, 'label' => 'Telepon Kantor']])
         @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'nohp', 'class' => 'form-control', 'max' => 20, 'label' => 'No Hp']])
         @include('components.form.input', ['_data' => ['type' => 'email', 'name' => 'email', 'class' => 'form-control', 'max' => 20, 'label' => 'Email']])
-        @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'warga_negara', 'class' => 'form-control', 'max' => 50, 'label' => 'Warga negara', 'val' => 'value', 'caption' => 'caption', 
+        @include('components.form.select', ['_data' => ['type' => 'text', 'name' => 'warga_negara', 'class' => 'form-control', 'max' => 50, 'label' => 'Warga negara', 'val' => 'value', 'caption' => 'name', 
           'options' => [
             ['name' => 'WNI', 'value' => 'WNI'],
             ['name' => 'WNA', 'value' => 'WNA'],
           ]
         ]])
-        @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'pekerjaan', 'class' => 'form-control', 'max' => 50, 'label' => 'Pekerjaan']])
-        @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'ukuran_baju', 'class' => 'form-control', 'max' => 20, 'label' => 'Ukuran Baju']])
-        @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'nama_ahliwaris', 'class' => 'form-control', 'max' => 50, 'label' => 'Nama Ahli Waris']])
-        @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'hubungan_ahliwaris', 'class' => 'form-control', 'max' => 50, 'label' => 'Hubungan Ahli Waris']])
         
+        @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'pekerjaan', 'class' => 'form-control', 'max' => 50, 'label' => 'Pekerjaan']])
+        
+        @include('components.form.select', ['_data' => ['type' => 'text', 'name' => 'ukuran_baju', 'class' => 'form-control', 'label' => 'Ukuran Baju', 'val' => 'value', 'caption' => 'name', 
+          'options' => [
+            ['name' => 'M', 'value' => 'M'],
+            ['name' => 'L', 'value' => 'L'],
+            ['name' => 'XL', 'value' => 'XL'],
+            ['name' => 'XXL', 'value' => 'XXL'],
+            ['name' => 'XXXL', 'value' => 'XXXL']
+          ]
+        ]])
+        
+        @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'nama_ahliwaris', 'class' => 'form-control', 'max' => 50, 'label' => 'Nama Ahli Waris']])
+        @include('components.form.select', ['_data' => ['type' => 'text', 'name' => 'hubungan_ahliwaris', 'class' => 'form-control', 'label' => 'Hubungan Ahli Waris', 'val' => 'value', 'caption' => 'name', 
+          'options' => [
+            ['name' => 'Istri', 'value' => 'Istri'],
+            ['name' => 'Suami', 'value' => 'Suami'],
+            ['name' => 'Anak Kandung', 'value' => 'Anak Kandung'],
+            ['name' => 'Kakak Kandung', 'value' => 'Kakak Kandung'],
+            ['name' => 'Adik Kandung', 'value' => 'Adik Kandung']
+          ]
+        ]]) 
         <div class="form-group">
           <label>Jenis Kelamin Ahli Waris</label>
           <select name="jk_ahliwaris" class="form-control">
@@ -258,7 +276,8 @@
   	var tgl_lahir = new Pikaday({
             field: document.getElementById('tgl_lahir'),
             minDate: new Date("1900-01-01"),
-            maxDate: batas
+            maxDate: batas,
+            format: 'YYYY-MM-DD'
         });
   </script>
 @endsection

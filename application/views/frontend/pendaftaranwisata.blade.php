@@ -49,10 +49,9 @@
 								<br/>
 								<h3 class="about-title mb-30">Syarat Pendaftaran Wisata Muslim</h3>
 								<ul>
+									<li>Paspor</li>
 									<li>FC KTP</li>
-									<li>FC KK</li>
-									<li>FC Akta Kelahiran/Buku Nikah/Ijazah "Jika belum punya paspor"</li>
-									<li>FC paspor "jika sudah ada"</li>
+									<li>Pas Photo 1 lbr</li>
 								</ul>
                                
                             </div>

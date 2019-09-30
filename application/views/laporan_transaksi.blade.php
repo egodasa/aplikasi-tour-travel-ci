@@ -50,8 +50,8 @@
       	foreach($data_list as $no => $data)
       	{
       		$total_dp += $data['dp'];
-	      	$total_bayar = $data['total_bayar'];
-	      	$total_sisa_pembayaran = ($data['total_bayar'] - $data['sudah_dibayar']);
+	      	$total_bayar += $data['total_bayar'];
+	      	$total_sisa_pembayaran += ($data['total_bayar'] - $data['sudah_dibayar']);
       ?>
         <tr>
           <td class="kolom_tabel_laporan">{{ ($no+1) }}</td>
@@ -61,7 +61,7 @@
           <td class="kolom_tabel_laporan">{{ rupiah($data['total_bayar']) }}</td>
           <td class="kolom_tabel_laporan">{{ rupiah($data['total_bayar'] - $data['sudah_dibayar']) }}</td>
           <td class="kolom_tabel_laporan">{{ $data['status'] }}</td>
-          <td>
+          <td class="kolom_tabel_laporan">
 	        	@if(($data['total_bayar'] - $data['sudah_dibayar']) == 0)
 	        		Sudah Lunas
 	        	@else

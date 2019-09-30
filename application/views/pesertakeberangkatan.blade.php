@@ -16,9 +16,11 @@
 @section('content')
   <a href="{{ site_url('keberangkatan') }}" class="btn btn-success">Kembali</a>
   @if($_SESSION['level'] != "Direktur")
+  <?php if($_SESSION['level'] == "Admin"): ?>
   	@if($detail_keberangkatan['kuota'] > count($data_list))
 		  <button class="btn btn-primary" onclick="showModal('#modal-tambah-peserta-keberangkatan')">Tambah Peserta</button>
 	  @endif
+ <?php endif; ?>
   @endif
   
   <h4>Detail Keberangkatan</h4>

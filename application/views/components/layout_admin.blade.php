@@ -32,6 +32,8 @@
     @section('head')
       <!-- Custom Head -->
     @show
+    <script src="{{ base_url() }}assets/js/moment.js"></script>
+    <script src="{{ base_url() }}assets/js/moment-id.js"></script>
     <script>
     	function elId(id)
       {

@@ -17,10 +17,10 @@
   @if($_SESSION['level'] == "Admin")
     <div class="row">
       <div class="col-sm-2 col-xs-12">
-        <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Peserta</button>
+        <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Keberangkatan</button>
       </div>
       <div class="col-sm-2 col-xs-12">
-        <div class="dropdown">
+        <div class="dropdown">&nbsp &nbsp
           <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Cetak Laporan
           <span class="caret"></span></button>
           <ul class="dropdown-menu">

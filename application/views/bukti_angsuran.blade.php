@@ -69,7 +69,7 @@
           <td class="kolom_tabel_laporan">{{ ($no+1) }}</td>
           <td class="kolom_tabel_laporan">{{ TanggalIndo($data['tgl_bayar']) }}</td>
           <td class="kolom_tabel_laporan">{{ rupiah($data['juml_bayar']) }}</td>
-          <td class="kolom_tabel_laporan">{{ $data['jenis_pembayaran'] }}</td>
+          <td class="kolom_tabel_laporan">{{ $data['keterangan'] }}</td>
         </tr>
       @endforeach
     </table>

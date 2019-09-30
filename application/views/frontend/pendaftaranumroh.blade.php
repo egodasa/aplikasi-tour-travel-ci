@@ -45,6 +45,23 @@
 									<li>12 hari = Rp. 25.500.000</li>
 								</ul>
 								<br/>
+								<h3>Fasilitas :</h3><br/>
+								<h4><img  src="{{ base_url() }}gambar/hotelmakkah.jpg" width="100"> &nbsp Hotel Makkah : Villa Hilton (Hilton Tower)<br/>
+									<br/><img  src="{{ base_url() }}gambar/hotelmadinah.jpg" width="100"> &nbsp Hotel Madinah : Al Shourfah Jadeed/ Al Majeedi <br/>
+									<br/><img  src="{{ base_url() }}gambar/maskapai.jpg" width="100"> &nbsp Maskapai : Maskapai SV/MH transit KL
+								</h4><br/>
+								<h3>Perlengakapan : </h3><br/>
+								<ul>
+									<li>1. Bag Travel 22 inc</li>
+									<li>2. Ransel Trolley</li> 
+									<li>3. Tas Dokumen</li>
+									<li>4. Dasar Seragam</li>
+									<li>5. Buku Panduan</li>
+									<li>6. ID Card</li>
+									<li>7. Syal</li>
+									<li>8. Kain Ihram/Mukena</li>
+								<ul>
+									<br/>
 								<h3 class="about-title mb-30">Syarat Pendaftaran Umroh</h3>
 								<ul>
 									<li>FC KTP</li>

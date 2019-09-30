@@ -17,19 +17,21 @@
   <div class="row">
   	@if($_SESSION['level'] != "Direktur")
 	    <div class="col-sm-2 col-xs-12">
-	      <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Peserta</button>
+	      <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Transaksi</button>
 	    </div>
     @endif
     <div class="col-sm-2 col-xs-12">
-      <div class="dropdown">
-        <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Cetak Laporan
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          @foreach($data_master_program as $d)
-            <li><a href="{{ site_url('laporan/transaksi?id_program='.$d['id']) }}" target="_blank">{{ $d['nama_program'] }}</a></li>
-          @endforeach
-        </ul>
-      </div>
+    	@if($_SESSION['level'] == "Direktur" || $_SESSION['level'] == "Admin")
+	      <div class="dropdown">
+	        <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Cetak Laporan
+	        <span class="caret"></span></button>
+	        <ul class="dropdown-menu">
+	          @foreach($data_master_program as $d)
+	            <li><a href="{{ site_url('laporan/transaksi?id_program='.$d['id']) }}" target="_blank">{{ $d['nama_program'] }}</a></li>
+	          @endforeach
+	        </ul>
+	      </div>
+      @endif
     </div>
   </div>
   <table class="table table-bordered table-stripped">
