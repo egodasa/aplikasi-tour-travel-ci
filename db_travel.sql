@@ -26,19 +26,23 @@ CREATE TABLE `data_keberangkatan` (`id` int(11), `tgl_berangkat` date, `nama_mas
 
 
 DROP VIEW IF EXISTS `data_peserta`;
-CREATE TABLE `data_peserta` (`nama_lengkap` varchar(100), `nama_panggilan` varchar(50), `jenis_kelamin` varchar(20), `id_pengguna` int(11), `no_identitas` varchar(20), `tempat_lahir` int(11), `tgl_lahir` date, `alamat` varchar(255), `kel` varchar(100), `tlp_rumah` varchar(20), `tlp_kantor` varchar(20), `nohp` varchar(20), `email` varchar(50), `warga_negara` varchar(50), `pekerjaan` varchar(50), `ukuran_baju` varchar(20), `nama_ahliwaris` varchar(50), `hubungan_ahliwaris` varchar(50), `jk_ahliwaris` varchar(20), `kode_pos` varchar(20), `rt` varchar(10), `rw` varchar(10), `nm_kota` varchar(255), `id` int(11));
+CREATE TABLE `data_peserta` (`nama_lengkap` varchar(100), `nama_panggilan` varchar(50), `jenis_kelamin` varchar(20), `id_pengguna` int(11), `no_identitas` varchar(20), `tempat_lahir` varchar(255), `tgl_lahir` date, `alamat` varchar(255), `kel` varchar(100), `tlp_rumah` varchar(20), `tlp_kantor` varchar(20), `nohp` varchar(20), `email` varchar(50), `warga_negara` varchar(50), `pekerjaan` varchar(50), `ukuran_baju` varchar(20), `nama_ahliwaris` varchar(50), `hubungan_ahliwaris` varchar(50), `jk_ahliwaris` varchar(20), `kode_pos` varchar(20), `rt` varchar(10), `rw` varchar(10), `nm_kota` varchar(255), `id` int(11));
 
 
 DROP VIEW IF EXISTS `data_peserta_keberangkatan`;
-CREATE TABLE `data_peserta_keberangkatan` (`id` int(11), `nama_lengkap` varchar(100), `nama_panggilan` varchar(50), `jenis_kelamin` varchar(20), `no_identitas` varchar(20), `tempat_lahir` int(11), `tgl_lahir` date, `alamat` varchar(255), `kel` varchar(100), `tlp_rumah` varchar(20), `tlp_kantor` varchar(20), `nohp` varchar(20), `email` varchar(50), `warga_negara` varchar(50), `pekerjaan` varchar(50), `ukuran_baju` varchar(20), `nama_ahliwaris` varchar(50), `hubungan_ahliwaris` varchar(50), `jk_ahliwaris` varchar(20), `kode_pos` varchar(20), `rt` varchar(10), `rw` varchar(10), `nm_kota` varchar(255), `id_keberangkatan` int(11), `id_peserta_transaksi` int(11), `id_program` int(11), `nama_program` varchar(50), `nm_jenis` varchar(50), `id_transaksi` int(11), `tgl_berangkat` date, `nama_maskapai` varchar(50), `status` varchar(50), `keterangan` text);
+CREATE TABLE `data_peserta_keberangkatan` (`id` int(11), `nama_lengkap` varchar(100), `nama_panggilan` varchar(50), `jenis_kelamin` varchar(20), `no_identitas` varchar(20), `tgl_lahir` date, `alamat` varchar(255), `kel` varchar(100), `tlp_rumah` varchar(20), `tlp_kantor` varchar(20), `nohp` varchar(20), `email` varchar(50), `warga_negara` varchar(50), `pekerjaan` varchar(50), `ukuran_baju` varchar(20), `nama_ahliwaris` varchar(50), `hubungan_ahliwaris` varchar(50), `jk_ahliwaris` varchar(20), `kode_pos` varchar(20), `rt` varchar(10), `rw` varchar(10), `nm_kota` varchar(255), `id_keberangkatan` int(11), `id_peserta_transaksi` int(11), `id_program` int(11), `nama_program` varchar(50), `id_jenis` int(11), `nm_jenis` varchar(50), `id_transaksi` int(11), `tgl_berangkat` date, `nama_maskapai` varchar(50), `status` varchar(50), `keterangan` text);
 
 
 DROP VIEW IF EXISTS `data_peserta_transaksi`;
-CREATE TABLE `data_peserta_transaksi` (`id_program` int(11), `id_jenis` int(11), `total_bayar` bigint(21), `sudah_dibayar` decimal(32,0), `id` int(11), `id_peserta` int(11), `id_transaksi` int(11), `status` varchar(50), `keterangan` varchar(50), `nama_lengkap` varchar(100), `nama_panggilan` varchar(50), `jenis_kelamin` varchar(20), `no_identitas` varchar(20), `tempat_lahir` int(11), `tgl_lahir` date, `alamat` varchar(255), `kel` varchar(100), `tlp_rumah` varchar(20), `tlp_kantor` varchar(20), `nohp` varchar(20), `email` varchar(50), `warga_negara` varchar(50), `pekerjaan` varchar(50), `ukuran_baju` varchar(20), `nama_ahliwaris` varchar(50), `hubungan_ahliwaris` varchar(50), `jk_ahliwaris` varchar(20), `kode_pos` varchar(20), `rt` varchar(10), `rw` varchar(10), `nm_kota` varchar(255), `nama_program` varchar(50), `nm_jenis` varchar(50));
+CREATE TABLE `data_peserta_transaksi` (`id_program` int(11), `id_jenis` int(11), `total_bayar` bigint(21), `sudah_dibayar` decimal(32,0), `id` int(11), `id_peserta` int(11), `id_transaksi` int(11), `status` varchar(50), `keterangan` varchar(50), `nama_lengkap` varchar(100), `nama_panggilan` varchar(50), `jenis_kelamin` varchar(20), `no_identitas` varchar(20), `tempat_lahir` varchar(255), `tgl_lahir` date, `alamat` varchar(255), `kel` varchar(100), `tlp_rumah` varchar(20), `tlp_kantor` varchar(20), `nohp` varchar(20), `email` varchar(50), `warga_negara` varchar(50), `pekerjaan` varchar(50), `ukuran_baju` varchar(20), `nama_ahliwaris` varchar(50), `hubungan_ahliwaris` varchar(50), `jk_ahliwaris` varchar(20), `kode_pos` varchar(20), `tgl_daftar` date, `rt` varchar(10), `rw` varchar(10), `nm_kota` varchar(255), `nama_program` varchar(50), `nm_jenis` varchar(50));
 
 
 DROP VIEW IF EXISTS `data_transaksi`;
 CREATE TABLE `data_transaksi` (`id` int(11), `id_jenis` int(11), `dp` int(11), `status` enum('Aktif','Dibatalkan'), `id_pengguna` int(11), `sudah_dibayar` decimal(32,0), `total_peserta` bigint(21), `harga` int(11), `nm_jenis` varchar(50), `kuota` int(11), `nama_program` varchar(50), `username` varchar(20), `email` varchar(50), `nohp` varchar(15), `total_bayar` bigint(21), `id_program` int(11));
+
+
+DROP VIEW IF EXISTS `laporan_data_transaksi`;
+CREATE TABLE `laporan_data_transaksi` (`id` int(11), `id_jenis` int(11), `dp` int(11), `status` enum('Aktif','Dibatalkan'), `id_pengguna` int(11), `sudah_dibayar` decimal(32,0), `total_peserta` bigint(21), `harga` int(11), `nm_jenis` varchar(50), `kuota` int(11), `nama_program` varchar(50), `username` varchar(20), `email` varchar(50), `nohp` varchar(15), `total_bayar` bigint(21), `id_program` int(11), `tgl_bayar` date);
 
 
 DROP TABLE IF EXISTS `tb_angsuran`;
@@ -55,10 +59,44 @@ CREATE TABLE `tb_angsuran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `tb_angsuran` (`id`, `tgl_bayar`, `juml_bayar`, `id_transaksi`, `jenis_pembayaran`, `keterangan`) VALUES
-(11,	'2016-08-17',	5000000,	17,	'DP',	'DP'),
-(12,	'2016-09-19',	10000000,	17,	'Angsuran',	'Angsuran 1'),
-(14,	'2016-11-14',	5500000,	17,	'Angsuran',	'Angsuran 2'),
-(16,	'2016-03-14',	5000000,	19,	'DP',	'DP');
+(16,	'2016-03-14',	5000000,	19,	'DP',	'DP'),
+(17,	'2016-03-28',	5000000,	26,	'DP',	'DP'),
+(18,	'2016-06-01',	5000000,	26,	'Angsuran',	'Angsuran 1'),
+(19,	'2016-08-23',	10500000,	26,	'Angsuran',	'Pelunasan'),
+(20,	'2016-05-27',	10000000,	27,	'DP',	'DP'),
+(21,	'2016-08-30',	10500000,	27,	'Angsuran',	'Pelunasan'),
+(22,	'2016-05-27',	10000000,	28,	'DP',	'DP'),
+(23,	'2016-08-30',	10500000,	28,	'Angsuran',	'Pelunasan'),
+(24,	'2016-05-26',	17000000,	29,	'DP',	'DP'),
+(25,	'2016-09-19',	3500000,	29,	'Angsuran',	'Pelunasan'),
+(26,	'2016-05-12',	5000000,	30,	'DP',	'DP'),
+(27,	'2016-06-20',	3500000,	30,	'Angsuran',	'Angsuran 1'),
+(28,	'2016-10-10',	4000000,	30,	'Angsuran',	'Angsuran 2'),
+(29,	'2016-10-24',	6000000,	30,	'Angsuran',	'Angsuran 3'),
+(30,	'2016-11-09',	2000000,	30,	'Angsuran',	'Pelunasan'),
+(31,	'2016-05-19',	5000000,	31,	'DP',	'DP'),
+(32,	'2016-06-02',	4000000,	31,	'Angsuran',	'Angsuran 1'),
+(33,	'2016-08-05',	11500000,	31,	'Angsuran',	'Pelunasan'),
+(34,	'2016-05-19',	5000000,	32,	'DP',	'DP'),
+(35,	'2016-06-02',	4000000,	32,	'Angsuran',	'Angsuran 1'),
+(36,	'2016-08-05',	11500000,	32,	'Angsuran',	'Pelunasan'),
+(37,	'2016-05-16',	10000000,	33,	'DP',	'DP'),
+(38,	'2016-10-03',	10500000,	33,	'Angsuran',	'Pelunasan'),
+(39,	'2016-05-17',	10000000,	34,	'DP',	'DP'),
+(40,	'2016-09-19',	10500000,	34,	'Angsuran',	'Pelunasan'),
+(41,	'2016-05-23',	5000000,	35,	'DP',	'DP'),
+(42,	'2016-07-03',	5500000,	35,	'Angsuran',	'Angsuran 1'),
+(43,	'2016-10-07',	3000000,	35,	'Angsuran',	'Angsuran 2'),
+(44,	'2016-11-07',	7000000,	35,	'Angsuran',	'Pelunasan'),
+(45,	'2016-05-12',	5000000,	36,	'DP',	'DP\r\n'),
+(46,	'2016-05-31',	3000000,	36,	'Angsuran',	'Angsuran 1'),
+(47,	'2016-09-30',	12500000,	36,	'Angsuran',	'Pelunasan'),
+(48,	'2019-02-12',	30000000,	38,	'DP',	'DP'),
+(49,	'2016-03-02',	35000000,	38,	'Angsuran',	'Pelunasan'),
+(50,	'2019-09-27',	20000000,	42,	'DP',	'DP + Angsuran'),
+(51,	'2019-09-27',	100000000,	43,	'DP',	'DP +Angsuran'),
+(52,	'2019-09-27',	5500000,	42,	'Angsuran',	'Pelunasan'),
+(53,	'2019-09-27',	128950000,	43,	'Angsuran',	'Pelunasan');
 
 DROP TABLE IF EXISTS `tb_jenis_program`;
 CREATE TABLE `tb_jenis_program` (
@@ -99,7 +137,8 @@ CREATE TABLE `tb_keberangkatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `tb_keberangkatan` (`id`, `tgl_berangkat`, `nama_maskapai`, `id_jenis`, `status`, `keterangan`, `kuota`) VALUES
-(5,	'2016-12-26',	'Garuda',	7,	'Belum Berangkat',	'',	100);
+(5,	'2016-12-26',	'Garuda',	7,	'Sudah Kembali',	'',	100),
+(6,	'2019-06-08',	'Garuda',	11,	'Sudah Kembali',	'',	50);
 
 DROP TABLE IF EXISTS `tb_kota`;
 CREATE TABLE `tb_kota` (
@@ -641,21 +680,36 @@ CREATE TABLE `tb_pengguna` (
 INSERT INTO `tb_pengguna` (`id`, `username`, `password`, `email`, `nohp`, `level`, `status`) VALUES
 (1,	'admin',	'admin',	'admin',	'admin',	'Admin',	'Aktif'),
 (3,	'mandan',	'qwe123',	'egodasa@gmail.com',	'12345',	'Member',	'Aktif'),
-(10,	'egodasa',	'12345',	'egodasa@hotmail.com',	'12345',	'Member',	'Aktif'),
-(11,	'rahmi',	'12345',	'rahmi.p2@gmail.com',	'082392212599',	'Member',	'Aktif'),
 (12,	'direktur',	'12345',	'direktur@gmail.com',	'082312345678',	'Direktur',	'Aktif'),
 (13,	'Jus',	'jus',	'',	'085274650718',	'Member',	'Aktif'),
-(14,	'putri',	'putri',	'putri@gmail.com',	'082334452461',	'Member',	'Aktif');
+(15,	'martono',	'martono',	'',	'085363891150',	'Member',	'Tidak Aktif'),
+(16,	'miswardi',	'miswardi',	'',	'081363299939',	'Member',	'Tidak Aktif'),
+(17,	'fauzi',	'fauzi',	'',	'081267446806',	'Member',	'Tidak Aktif'),
+(18,	'tasniwati',	'tasniwati',	'',	'082374757055',	'Member',	'Tidak Aktif'),
+(19,	'asna',	'asna',	'',	'085274650718',	'Member',	'Tidak Aktif'),
+(20,	'ermayulis',	'ermayulis',	'',	'081266825257',	'Member',	'Tidak Aktif'),
+(21,	'husmal',	'husmal',	'',	'08126710572',	'Member',	'Tidak Aktif'),
+(22,	'tarman',	'tarman',	'',	'08126729539',	'Member',	'Tidak Aktif'),
+(23,	'asma',	'asma',	'',	'',	'Member',	'Tidak Aktif'),
+(24,	'arnida',	'arnida',	'',	'081363435421',	'Member',	'Tidak Aktif'),
+(25,	'rosni',	'rosni',	'',	'081267462423',	'Member',	'Tidak Aktif'),
+(27,	'imas',	'imas',	'',	'',	'Member',	'Tidak Aktif'),
+(28,	'sri',	'sri',	'',	'',	'Member',	'Tidak Aktif'),
+(29,	'rahmi',	'rahmi',	'rahmi.p2@gmail.com',	'082392212599',	'Member',	'Aktif'),
+(31,	'fani',	'fani',	'fanindita19@gmail.com',	'09267723',	'Member',	'Tidak Aktif'),
+(32,	'rahmat',	'rahmat',	'ti@pnp.ac.id',	'082392212599',	'Member',	'Tidak Aktif'),
+(33,	'cipto',	'cipto',	'irma.prabowo2006@gmail.com',	'12345678',	'Member',	'Aktif');
 
 DROP TABLE IF EXISTS `tb_peserta`;
 CREATE TABLE `tb_peserta` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tgl_daftar` date DEFAULT NULL,
   `nama_lengkap` varchar(100) NOT NULL,
   `nama_panggilan` varchar(50) NOT NULL,
   `jenis_kelamin` varchar(20) NOT NULL,
   `id_pengguna` int(11) NOT NULL,
   `no_identitas` varchar(20) NOT NULL,
-  `tempat_lahir` int(11) NOT NULL,
+  `tempat_lahir` varchar(255) DEFAULT NULL,
   `tgl_lahir` date NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `kel` varchar(100) NOT NULL,
@@ -674,14 +728,38 @@ CREATE TABLE `tb_peserta` (
   `rw` varchar(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_pengguna` (`id_pengguna`),
-  KEY `tempat_lahir` (`tempat_lahir`),
-  CONSTRAINT `tb_peserta_ibfk_1` FOREIGN KEY (`id_pengguna`) REFERENCES `tb_pengguna` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `tb_peserta_ibfk_2` FOREIGN KEY (`tempat_lahir`) REFERENCES `tb_kota` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `tb_peserta_ibfk_1` FOREIGN KEY (`id_pengguna`) REFERENCES `tb_pengguna` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `tb_peserta` (`id`, `nama_lengkap`, `nama_panggilan`, `jenis_kelamin`, `id_pengguna`, `no_identitas`, `tempat_lahir`, `tgl_lahir`, `alamat`, `kel`, `tlp_rumah`, `tlp_kantor`, `nohp`, `email`, `warga_negara`, `pekerjaan`, `ukuran_baju`, `nama_ahliwaris`, `hubungan_ahliwaris`, `jk_ahliwaris`, `kode_pos`, `rt`, `rw`) VALUES
-(16,	'Jusmaiyar',	'Jus',	'Perempuan',	13,	'1375016007530001',	75,	'1953-07-20',	'JL Lapan Batu Bukit Apit',	'',	'',	'',	'085274650718',	'',	'Indonesia',	'Pedagang',	'',	'Rosi Hardifnas',	'Anak Kandung',	'Perempuan',	'',	'02',	'03'),
-(17,	'rahmi putri',	'rahmi',	'Perempuan',	11,	'1371067003980007',	75,	'1998-03-30',	'Komp. Pagambiran Permai blok N no 2',	'Pagambiran Ampalu nan XX',	'',	'',	'082392212599',	'rahmi.p2@gmail.com',	'Indonesia',	'mahasiswa',	'm',	'Fani',	'Kakak Kandung',	'Perempuan',	'',	'003',	'010');
+INSERT INTO `tb_peserta` (`id`, `tgl_daftar`, `nama_lengkap`, `nama_panggilan`, `jenis_kelamin`, `id_pengguna`, `no_identitas`, `tempat_lahir`, `tgl_lahir`, `alamat`, `kel`, `tlp_rumah`, `tlp_kantor`, `nohp`, `email`, `warga_negara`, `pekerjaan`, `ukuran_baju`, `nama_ahliwaris`, `hubungan_ahliwaris`, `jk_ahliwaris`, `kode_pos`, `rt`, `rw`) VALUES
+(16,	'2016-05-17',	'Jusmaiyar',	'Jus',	'Perempuan',	13,	'1375016007530001',	'KOTA BUKITTINGGI',	'1953-07-20',	'JL Lapan Batu Bukit Apit',	'',	'',	'',	'085274650718',	'',	'Indonesia',	'Pedagang',	'',	'Rosi Hardifnas',	'Anak Kandung',	'Perempuan',	'',	'02',	'03'),
+(19,	'2016-03-28',	'Martono',	'Tono',	'Laki-laki',	15,	'1375021203630005',	'KABUPATEN SRAGEN',	'1963-03-12',	'JL Rajang Jorong Aro Kandikir',	'Gaduik',	'',	'',	'085363891150',	'',	'Indonesia',	'Pedagang',	'XL',	'Anisa Wulan Ramadhani',	'Anak Kandung',	'Perempuan',	'',	'',	''),
+(20,	'2016-05-07',	'Miswardi',	'Mis',	'Perempuan',	16,	'1306087112560003',	'KOTA BUKITTINGGI',	'1956-12-31',	'Koto Malintang Jorong Baso',	'Tabek Pjg',	'',	'',	'081363299939',	'',	'Indonesia',	'IRT',	'',	'Nidia Utari',	'Anak Kandung',	'Perempuan',	'',	'',	''),
+(21,	'2016-05-27',	'Fauzi',	'Fauzi',	'Laki-laki',	17,	'1306080409540801',	'KOTA BUKITTINGGI',	'1954-09-04',	'Koto Malintang Jorong Baso',	'Tabek Pjg',	'',	'',	'081267446806',	'',	'Indonesia',	'Pedagang',	'L',	'Suci Fatihah',	'Anak Kandung',	'Perempuan',	'',	'',	''),
+(22,	'2016-05-26',	'Tasniwati',	'Wati',	'Perempuan',	18,	'1501015103590001',	'90',	'1959-03-11',	'Lempur Tengah',	'Lempur Tengah',	'',	'',	'082374757055',	'',	'Indonesia',	'Petani',	'',	'Selvia Restiga',	'Anak Kandung',	'Perempuan',	'',	'',	''),
+(23,	'2016-05-17',	'Asna',	'Asna',	'Perempuan',	19,	'1304037112430031',	'KOTA BUKITTINGGI',	'1943-12-31',	'Jorong Pasir Jaya Nagari III Koto',	'',	'',	'',	'085274650718',	'',	'Indonesia',	'IRT',	'',	'Maryati',	'Anak Kandung',	'Perempuan',	'',	'',	''),
+(24,	'2016-05-19',	'Ermayulis',	'Ema',	'Perempuan',	20,	'1306144510580002',	'KOTA BUKITTINGGI',	'1958-10-05',	'Ganangan Jorong 100 Janjang',	'Canduang',	'',	'',	'081266825257',	'',	'Indonesia',	'IRT',	'',	'Marini',	'Anak Kandung',	'Perempuan',	'',	'',	''),
+(25,	'2016-05-19',	'Husmal',	'Gindo Tanamih',	'Laki-laki',	21,	'1306140101520006',	'KOTA BUKITTINGGI',	'1952-01-01',	'Ganangan Jorong 100 Janjang',	'Canduang Koto Laweh',	'',	'',	'08126710572',	'',	'Indonesia',	'Wiraswasta',	'XL',	'Lukman',	'Anak Kandung',	'Laki-laki',	'',	'',	''),
+(26,	'2016-05-16',	'Tarman Ranjoe',	'Tarman',	'Laki-laki',	22,	'1375011611630001',	'KOTA PEMATANG SIANTAR',	'1963-11-16',	'Jl Lingkar Bukit Pauh ',	'Puhun Tembok',	'',	'',	'08126729539',	'',	'Indonesia',	'Karyawan Swasta',	'L',	'ElfaJeita',	'Istri',	'Perempuan',	'',	'01',	'06'),
+(27,	'2016-05-12',	'Asma Syarif',	'Ma',	'Perempuan',	23,	'1306074707340001',	'KOTA BUKITTINGGI',	'1934-07-07',	'Kapalo Koto Ampang Gadang',	'Ampang Gadang',	'',	'',	'',	'',	'Indonesia',	'Pensiunan',	'',	'Jon Ulia',	'Anak Kandung',	'Laki-laki',	'',	'',	''),
+(28,	'2016-05-02',	'Arnida Yarni',	'AR',	'Perempuan',	24,	'1304025604690003',	'KABUPATEN TANAH DATAR',	'1969-04-16',	'Jorong Batang Gading',	'Batipuah',	'',	'',	'081363435421',	'',	'Indonesia',	'PNS',	'',	'Arnedi Yarmen',	'Adik Kandung',	'Laki-laki',	'',	'',	''),
+(29,	'2016-05-12',	'Rosni',	'Ros',	'Perempuan',	25,	'1306074310420001',	'KOTA BUKITTINGGI',	'1942-10-03',	'Tangah Jorong Ampang Gadang',	'Ampang Gadang',	'',	'',	'081267462423',	'',	'Indonesia',	'IRT',	'',	'Rajiman',	'Suami',	'Laki-laki',	'',	'',	''),
+(30,	NULL,	'Imas Kurniati',	'Imas',	'Perempuan',	27,	'C2298579',	'KABUPATEN BANDUNG',	'1975-10-25',	'Bekasi',	'',	'',	'',	'',	'',	'Indonesia',	'',	'',	'Gifta Alifa Annurullah',	'Anak Kandung',	'Perempuan',	'',	'',	''),
+(31,	NULL,	'Suratno Marmoyo',	'Suratno',	'Laki-laki',	27,	'C2804873',	'KABUPATEN BANDUNG',	'1970-05-11',	'Bekasi',	'',	'',	'',	'',	'',	'Indonesia',	'',	'',	'Imas Kurniati',	'Istri',	'Perempuan',	'',	'',	''),
+(32,	NULL,	'Gifta Alifa Annurullah',	'Gifta',	'Perempuan',	27,	'C2804855',	'KABUPATEN BANDUNG',	'2000-04-19',	'Bekasi',	'',	'',	'',	'',	'',	'Indonesia',	'',	'',	'Suratno Marmoyo',	'Ayah Kandung',	'Laki-laki',	'',	'',	''),
+(33,	NULL,	'Imas Kurniati',	'Imas',	'Perempuan',	27,	'C2298579',	'KABUPATEN BANDUNG',	'1975-10-25',	'Bekasi',	'',	'',	'',	'',	'',	'Indonesia',	'',	'',	'Gifta Alifa Annurullah',	'Anak Kandung',	'Perempuan',	'',	'',	''),
+(34,	NULL,	'Suratno Marmoyo',	'Suratno',	'Laki-laki',	27,	'C2804873',	'KABUPATEN BANDUNG',	'1970-05-11',	'Bekasi',	'',	'',	'',	'',	'',	'Indonesia',	'',	'',	'Imas Kurniati',	'Istri',	'Perempuan',	'',	'',	''),
+(35,	NULL,	'Gifta Alifa Annurullah',	'Gifta',	'Perempuan',	27,	'C2804855',	'KABUPATEN BANDUNG',	'2000-04-19',	'Bekasi',	'',	'',	'',	'',	'',	'Indonesia',	'',	'',	'Suratno Marmoyo',	'Ayah Kandung',	'Laki-laki',	'',	'',	''),
+(36,	NULL,	'Habib Husain Al Idrus',	'Habib',	'Laki-laki',	27,	'C2804879',	'KABUPATEN BEKASI',	'2004-03-04',	'Bekasi',	'',	'',	'',	'',	'',	'Indonesia',	'',	'',	'Suratno Marmoyo',	'Ayah Kandung',	'Laki-laki',	'',	'',	''),
+(37,	NULL,	'Princes Alima Annurullah',	'Alima',	'Perempuan',	27,	'C2804876',	'KABUPATEN BANDUNG',	'2006-10-18',	'Bekasi',	'',	'',	'',	'',	'',	'Indonesia',	'',	'',	'Suratno Marmoyo',	'Ayah Kandung',	'Laki-laki',	'',	'',	''),
+(38,	NULL,	'Erdalena Mat Lazim',	'Lena',	'Perempuan',	27,	'X436681',	'KABUPATEN LAMPUNG BARAT',	'1971-06-21',	'Jakarta Selatan',	'',	'',	'',	'',	'',	'Indonesia',	'',	'',	'Feryl Success Obama',	'Anak Kandung',	'Laki-laki',	'',	'',	''),
+(39,	NULL,	'Feryl Succes Obama',	'Feryl',	'Laki-laki',	27,	'C0739681',	'KOTA JAKARTA SELATAN',	'2012-09-24',	'Jakarta Selatan',	'',	'',	'',	'',	'',	'Indonesia',	'',	'',	'Erdalena Mat Lazim',	'Ibu Kandung',	'Perempuan',	'',	'',	''),
+(40,	NULL,	'Adhell Hary Akim',	'Adhell',	'Perempuan',	27,	'X197532',	'KOTA MANADO',	'1983-12-23',	'Jakarta Pusat',	'',	'',	'',	'',	'',	'Indonesia',	'',	'',	'Erdalena Mat Lazim',	'Kakak Kandung',	'Perempuan',	'',	'',	''),
+(41,	NULL,	'Hartiningsih',	'ningsih',	'Perempuan',	27,	'C2804877',	'KOTA JAKARTA PUSAT',	'1977-05-03',	'Bekasi',	'',	'',	'',	'',	'',	'Indonesia',	'',	'',	'Wahyudi Widodo',	'Suami',	'Laki-laki',	'',	'',	''),
+(42,	NULL,	'Wahyudi Widodo',	'Wahyudi',	'Laki-laki',	27,	'C2804875',	'KABUPATEN BANYUMAS',	'1969-05-13',	'Bekasi',	'',	'',	'',	'',	'',	'Indonesia',	'',	'',	'Hartiningsih',	'Istri',	'Perempuan',	'',	'',	''),
+(43,	NULL,	'rahmi putri',	'rahmi',	'Perempuan',	29,	'1234567',	'KABUPATEN PADANG PARIAMAN',	'1998-03-30',	'Penggambiran',	'',	'',	'',	'082392212599',	'rahmi.p2@gmail.com',	'Indonesia',	'mahasiswa',	'm',	'Fanindita Putri',	'Kakak Kandung',	'Perempuan',	'',	'',	''),
+(44,	NULL,	'Dsa',	'D',	'Laki-laki',	33,	'1234',	'KOTA PEKALONGAN',	'1900-01-20',	'Ggh',	'Ygg',	'23323',	'77733',	'7777hhhh',	'cipto@pnp.ac.id',	'Wni',	'Jhhh',	'27',	'Hhg',	'Hhg',	'Laki-laki',	'25144',	'1',	'2'),
+(45,	NULL,	'Eum hic aliquip quod',	'Consequatur Dolore ',	'Perempuan',	28,	'Dolor est dolor dol',	'percobaan',	'0000-00-00',	'Nisi nihil mollitia ',	'Enim eum aliquid obc',	'Est sit autem impedi',	'Magna eligendi elige',	'Omnis elit suscipit',	'wujof@mailinator.com',	'WNA',	'Nisi porro pariatur',	'L',	'Eligendi ratione eum',	'Suami',	'Perempuan',	'Praesentium et labor',	'Consectetu',	'Et sit qui');
 
 DROP TABLE IF EXISTS `tb_peserta_keberangkatan`;
 CREATE TABLE `tb_peserta_keberangkatan` (
@@ -696,7 +774,27 @@ CREATE TABLE `tb_peserta_keberangkatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `tb_peserta_keberangkatan` (`id`, `id_peserta_transaksi`, `id_keberangkatan`) VALUES
-(1,	18,	5);
+(2,	19,	5),
+(3,	20,	5),
+(4,	21,	5),
+(5,	22,	5),
+(6,	23,	5),
+(7,	24,	5),
+(8,	25,	5),
+(9,	26,	5),
+(10,	27,	5),
+(11,	28,	5),
+(12,	29,	5),
+(13,	34,	6),
+(14,	35,	6),
+(15,	36,	6),
+(16,	37,	6),
+(17,	38,	6),
+(18,	39,	6),
+(19,	40,	6),
+(20,	41,	6),
+(21,	42,	6),
+(22,	43,	6);
 
 DROP TABLE IF EXISTS `tb_peserta_transaksi`;
 CREATE TABLE `tb_peserta_transaksi` (
@@ -718,7 +816,34 @@ INSERT INTO `tb_peserta_transaksi` (`id`, `id_peserta`, `id_transaksi`, `status`
 (15,	0,	19,	'',	''),
 (16,	16,	19,	'',	''),
 (17,	0,	17,	'',	''),
-(18,	17,	17,	'',	'');
+(18,	17,	17,	'',	''),
+(19,	19,	26,	'',	''),
+(20,	20,	27,	'',	''),
+(21,	21,	28,	'',	''),
+(22,	22,	29,	'',	''),
+(23,	23,	30,	'',	''),
+(24,	24,	31,	'',	''),
+(25,	25,	32,	'',	''),
+(26,	26,	33,	'',	''),
+(27,	27,	34,	'',	''),
+(28,	28,	35,	'',	''),
+(29,	29,	36,	'',	''),
+(30,	30,	37,	'',	''),
+(31,	31,	37,	'',	''),
+(32,	0,	37,	'',	''),
+(33,	32,	37,	'',	''),
+(34,	33,	38,	'',	''),
+(35,	34,	38,	'',	''),
+(36,	35,	38,	'',	''),
+(37,	36,	38,	'',	''),
+(38,	37,	38,	'',	''),
+(39,	38,	38,	'',	''),
+(40,	39,	38,	'',	''),
+(41,	40,	38,	'',	''),
+(42,	41,	38,	'',	''),
+(43,	42,	38,	'',	''),
+(44,	43,	41,	'',	''),
+(45,	44,	43,	'',	'Sddd');
 
 DROP TABLE IF EXISTS `tb_program`;
 CREATE TABLE `tb_program` (
@@ -790,11 +915,25 @@ CREATE TABLE `tb_transaksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `tb_transaksi` (`id`, `id_jenis`, `dp`, `status`, `id_pengguna`) VALUES
-(17,	7,	5000000,	'Aktif',	11),
 (19,	7,	5000000,	'Aktif',	13),
-(20,	7,	5000000,	'Aktif',	14),
-(22,	4,	10000000,	'Aktif',	1),
-(23,	7,	5000000,	'Aktif',	1);
+(26,	7,	5000000,	'Aktif',	15),
+(27,	7,	5000000,	'Aktif',	16),
+(28,	7,	5000000,	'Aktif',	17),
+(29,	7,	5000000,	'Aktif',	18),
+(30,	7,	5000000,	'Aktif',	19),
+(31,	7,	5000000,	'Aktif',	20),
+(32,	7,	5000000,	'Aktif',	21),
+(33,	7,	5000000,	'Aktif',	22),
+(34,	7,	5000000,	'Aktif',	23),
+(35,	7,	5000000,	'Aktif',	24),
+(36,	7,	5000000,	'Aktif',	25),
+(38,	11,	3000000,	'Aktif',	27),
+(39,	8,	5000000,	'Aktif',	29),
+(40,	7,	5000000,	'Aktif',	29),
+(41,	9,	2000000,	'Aktif',	29),
+(42,	8,	5000000,	'Aktif',	33),
+(43,	4,	10000000,	'Aktif',	33),
+(44,	4,	10000000,	'Aktif',	1);
 
 DROP TABLE IF EXISTS `angsuran_sudah_dibayar`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `angsuran_sudah_dibayar` AS select `tb_angsuran`.`id_transaksi` AS `id_transaksi`,sum(`tb_angsuran`.`juml_bayar`) AS `sudah_dibayar` from `tb_angsuran` group by `tb_angsuran`.`id_transaksi`;
@@ -812,15 +951,18 @@ DROP TABLE IF EXISTS `data_keberangkatan`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_keberangkatan` AS select `tb_keberangkatan`.`id` AS `id`,`tb_keberangkatan`.`tgl_berangkat` AS `tgl_berangkat`,`tb_keberangkatan`.`nama_maskapai` AS `nama_maskapai`,`tb_keberangkatan`.`id_jenis` AS `id_jenis`,`tb_keberangkatan`.`status` AS `status`,`tb_keberangkatan`.`keterangan` AS `keterangan`,`tb_program`.`nama_program` AS `nama_program`,`tb_jenis_program`.`nm_jenis` AS `nm_jenis`,`tb_jenis_program`.`id_program` AS `id_program`,`tb_keberangkatan`.`kuota` AS `kuota`,ifnull(count(`tb_peserta_keberangkatan`.`id`),0) AS `kuota_terpakai` from (((`tb_keberangkatan` join `tb_jenis_program` on((`tb_keberangkatan`.`id_jenis` = `tb_jenis_program`.`id`))) join `tb_program` on((`tb_jenis_program`.`id_program` = `tb_program`.`id`))) left join `tb_peserta_keberangkatan` on((`tb_keberangkatan`.`id` = `tb_peserta_keberangkatan`.`id_keberangkatan`))) group by `tb_keberangkatan`.`id`;
 
 DROP TABLE IF EXISTS `data_peserta`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_peserta` AS select `tb_peserta`.`nama_lengkap` AS `nama_lengkap`,`tb_peserta`.`nama_panggilan` AS `nama_panggilan`,`tb_peserta`.`jenis_kelamin` AS `jenis_kelamin`,`tb_peserta`.`id_pengguna` AS `id_pengguna`,`tb_peserta`.`no_identitas` AS `no_identitas`,`tb_peserta`.`tempat_lahir` AS `tempat_lahir`,`tb_peserta`.`tgl_lahir` AS `tgl_lahir`,`tb_peserta`.`alamat` AS `alamat`,`tb_peserta`.`kel` AS `kel`,`tb_peserta`.`tlp_rumah` AS `tlp_rumah`,`tb_peserta`.`tlp_kantor` AS `tlp_kantor`,`tb_peserta`.`nohp` AS `nohp`,`tb_peserta`.`email` AS `email`,`tb_peserta`.`warga_negara` AS `warga_negara`,`tb_peserta`.`pekerjaan` AS `pekerjaan`,`tb_peserta`.`ukuran_baju` AS `ukuran_baju`,`tb_peserta`.`nama_ahliwaris` AS `nama_ahliwaris`,`tb_peserta`.`hubungan_ahliwaris` AS `hubungan_ahliwaris`,`tb_peserta`.`jk_ahliwaris` AS `jk_ahliwaris`,`tb_peserta`.`kode_pos` AS `kode_pos`,`tb_peserta`.`rt` AS `rt`,`tb_peserta`.`rw` AS `rw`,`tb_kota`.`nm_kota` AS `nm_kota`,`tb_peserta`.`id` AS `id` from (`tb_peserta` join `tb_kota` on((`tb_peserta`.`tempat_lahir` = `tb_kota`.`id`)));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_peserta` AS select `tb_peserta`.`nama_lengkap` AS `nama_lengkap`,`tb_peserta`.`nama_panggilan` AS `nama_panggilan`,`tb_peserta`.`jenis_kelamin` AS `jenis_kelamin`,`tb_peserta`.`id_pengguna` AS `id_pengguna`,`tb_peserta`.`no_identitas` AS `no_identitas`,`tb_peserta`.`tempat_lahir` AS `tempat_lahir`,`tb_peserta`.`tgl_lahir` AS `tgl_lahir`,`tb_peserta`.`alamat` AS `alamat`,`tb_peserta`.`kel` AS `kel`,`tb_peserta`.`tlp_rumah` AS `tlp_rumah`,`tb_peserta`.`tlp_kantor` AS `tlp_kantor`,`tb_peserta`.`nohp` AS `nohp`,`tb_peserta`.`email` AS `email`,`tb_peserta`.`warga_negara` AS `warga_negara`,`tb_peserta`.`pekerjaan` AS `pekerjaan`,`tb_peserta`.`ukuran_baju` AS `ukuran_baju`,`tb_peserta`.`nama_ahliwaris` AS `nama_ahliwaris`,`tb_peserta`.`hubungan_ahliwaris` AS `hubungan_ahliwaris`,`tb_peserta`.`jk_ahliwaris` AS `jk_ahliwaris`,`tb_peserta`.`kode_pos` AS `kode_pos`,`tb_peserta`.`rt` AS `rt`,`tb_peserta`.`rw` AS `rw`,`tb_peserta`.`tempat_lahir` AS `nm_kota`,`tb_peserta`.`id` AS `id` from `tb_peserta`;
 
 DROP TABLE IF EXISTS `data_peserta_keberangkatan`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_peserta_keberangkatan` AS select `tb_peserta_keberangkatan`.`id` AS `id`,`data_peserta`.`nama_lengkap` AS `nama_lengkap`,`data_peserta`.`nama_panggilan` AS `nama_panggilan`,`data_peserta`.`jenis_kelamin` AS `jenis_kelamin`,`data_peserta`.`no_identitas` AS `no_identitas`,`data_peserta`.`tempat_lahir` AS `tempat_lahir`,`data_peserta`.`tgl_lahir` AS `tgl_lahir`,`data_peserta`.`alamat` AS `alamat`,`data_peserta`.`kel` AS `kel`,`data_peserta`.`tlp_rumah` AS `tlp_rumah`,`data_peserta`.`tlp_kantor` AS `tlp_kantor`,`data_peserta`.`nohp` AS `nohp`,`data_peserta`.`email` AS `email`,`data_peserta`.`warga_negara` AS `warga_negara`,`data_peserta`.`pekerjaan` AS `pekerjaan`,`data_peserta`.`ukuran_baju` AS `ukuran_baju`,`data_peserta`.`nama_ahliwaris` AS `nama_ahliwaris`,`data_peserta`.`hubungan_ahliwaris` AS `hubungan_ahliwaris`,`data_peserta`.`jk_ahliwaris` AS `jk_ahliwaris`,`data_peserta`.`kode_pos` AS `kode_pos`,`data_peserta`.`rt` AS `rt`,`data_peserta`.`rw` AS `rw`,`data_peserta`.`nm_kota` AS `nm_kota`,`tb_peserta_keberangkatan`.`id_keberangkatan` AS `id_keberangkatan`,`tb_peserta_keberangkatan`.`id_peserta_transaksi` AS `id_peserta_transaksi`,`data_transaksi`.`id_program` AS `id_program`,`data_transaksi`.`nama_program` AS `nama_program`,`data_transaksi`.`nm_jenis` AS `nm_jenis`,`tb_peserta_transaksi`.`id_transaksi` AS `id_transaksi`,`tb_keberangkatan`.`tgl_berangkat` AS `tgl_berangkat`,`tb_keberangkatan`.`nama_maskapai` AS `nama_maskapai`,`tb_keberangkatan`.`status` AS `status`,`tb_keberangkatan`.`keterangan` AS `keterangan` from ((((`tb_peserta_keberangkatan` join `tb_peserta_transaksi` on((`tb_peserta_keberangkatan`.`id_peserta_transaksi` = `tb_peserta_transaksi`.`id`))) join `data_peserta` on((`data_peserta`.`id` = `tb_peserta_transaksi`.`id_peserta`))) join `data_transaksi` on((`data_transaksi`.`id` = `tb_peserta_transaksi`.`id_transaksi`))) join `tb_keberangkatan` on((`tb_peserta_keberangkatan`.`id_keberangkatan` = `tb_keberangkatan`.`id`)));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_peserta_keberangkatan` AS select `tb_peserta_keberangkatan`.`id` AS `id`,`data_peserta`.`nama_lengkap` AS `nama_lengkap`,`data_peserta`.`nama_panggilan` AS `nama_panggilan`,`data_peserta`.`jenis_kelamin` AS `jenis_kelamin`,`data_peserta`.`no_identitas` AS `no_identitas`,`data_peserta`.`tgl_lahir` AS `tgl_lahir`,`data_peserta`.`alamat` AS `alamat`,`data_peserta`.`kel` AS `kel`,`data_peserta`.`tlp_rumah` AS `tlp_rumah`,`data_peserta`.`tlp_kantor` AS `tlp_kantor`,`data_peserta`.`nohp` AS `nohp`,`data_peserta`.`email` AS `email`,`data_peserta`.`warga_negara` AS `warga_negara`,`data_peserta`.`pekerjaan` AS `pekerjaan`,`data_peserta`.`ukuran_baju` AS `ukuran_baju`,`data_peserta`.`nama_ahliwaris` AS `nama_ahliwaris`,`data_peserta`.`hubungan_ahliwaris` AS `hubungan_ahliwaris`,`data_peserta`.`jk_ahliwaris` AS `jk_ahliwaris`,`data_peserta`.`kode_pos` AS `kode_pos`,`data_peserta`.`rt` AS `rt`,`data_peserta`.`rw` AS `rw`,`data_peserta`.`tempat_lahir` AS `nm_kota`,`tb_peserta_keberangkatan`.`id_keberangkatan` AS `id_keberangkatan`,`tb_peserta_keberangkatan`.`id_peserta_transaksi` AS `id_peserta_transaksi`,`data_transaksi`.`id_program` AS `id_program`,`data_transaksi`.`nama_program` AS `nama_program`,`data_transaksi`.`id_jenis` AS `id_jenis`,`data_transaksi`.`nm_jenis` AS `nm_jenis`,`tb_peserta_transaksi`.`id_transaksi` AS `id_transaksi`,`tb_keberangkatan`.`tgl_berangkat` AS `tgl_berangkat`,`tb_keberangkatan`.`nama_maskapai` AS `nama_maskapai`,`tb_keberangkatan`.`status` AS `status`,`tb_keberangkatan`.`keterangan` AS `keterangan` from ((((`tb_peserta_keberangkatan` join `tb_peserta_transaksi` on((`tb_peserta_keberangkatan`.`id_peserta_transaksi` = `tb_peserta_transaksi`.`id`))) join `data_peserta` on((`data_peserta`.`id` = `tb_peserta_transaksi`.`id_peserta`))) join `data_transaksi` on((`data_transaksi`.`id` = `tb_peserta_transaksi`.`id_transaksi`))) join `tb_keberangkatan` on((`tb_peserta_keberangkatan`.`id_keberangkatan` = `tb_keberangkatan`.`id`)));
 
 DROP TABLE IF EXISTS `data_peserta_transaksi`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_peserta_transaksi` AS select `data_transaksi`.`id_program` AS `id_program`,`data_transaksi`.`id_jenis` AS `id_jenis`,`data_transaksi`.`total_bayar` AS `total_bayar`,`data_transaksi`.`sudah_dibayar` AS `sudah_dibayar`,`tb_peserta_transaksi`.`id` AS `id`,`tb_peserta_transaksi`.`id_peserta` AS `id_peserta`,`tb_peserta_transaksi`.`id_transaksi` AS `id_transaksi`,`tb_peserta_transaksi`.`status` AS `status`,`tb_peserta_transaksi`.`keterangan` AS `keterangan`,`tb_peserta`.`nama_lengkap` AS `nama_lengkap`,`tb_peserta`.`nama_panggilan` AS `nama_panggilan`,`tb_peserta`.`jenis_kelamin` AS `jenis_kelamin`,`tb_peserta`.`no_identitas` AS `no_identitas`,`tb_peserta`.`tempat_lahir` AS `tempat_lahir`,`tb_peserta`.`tgl_lahir` AS `tgl_lahir`,`tb_peserta`.`alamat` AS `alamat`,`tb_peserta`.`kel` AS `kel`,`tb_peserta`.`tlp_rumah` AS `tlp_rumah`,`tb_peserta`.`tlp_kantor` AS `tlp_kantor`,`tb_peserta`.`nohp` AS `nohp`,`tb_peserta`.`email` AS `email`,`tb_peserta`.`warga_negara` AS `warga_negara`,`tb_peserta`.`pekerjaan` AS `pekerjaan`,`tb_peserta`.`ukuran_baju` AS `ukuran_baju`,`tb_peserta`.`nama_ahliwaris` AS `nama_ahliwaris`,`tb_peserta`.`hubungan_ahliwaris` AS `hubungan_ahliwaris`,`tb_peserta`.`jk_ahliwaris` AS `jk_ahliwaris`,`tb_peserta`.`kode_pos` AS `kode_pos`,`tb_peserta`.`rt` AS `rt`,`tb_peserta`.`rw` AS `rw`,`tb_kota`.`nm_kota` AS `nm_kota`,`data_transaksi`.`nama_program` AS `nama_program`,`data_transaksi`.`nm_jenis` AS `nm_jenis` from (((`tb_peserta_transaksi` join `tb_peserta` on((`tb_peserta`.`id` = `tb_peserta_transaksi`.`id_peserta`))) join `tb_kota` on((`tb_peserta`.`tempat_lahir` = `tb_kota`.`id`))) join `data_transaksi` on((`tb_peserta_transaksi`.`id_transaksi` = `data_transaksi`.`id`)));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_peserta_transaksi` AS select `data_transaksi`.`id_program` AS `id_program`,`data_transaksi`.`id_jenis` AS `id_jenis`,`data_transaksi`.`total_bayar` AS `total_bayar`,`data_transaksi`.`sudah_dibayar` AS `sudah_dibayar`,`tb_peserta_transaksi`.`id` AS `id`,`tb_peserta_transaksi`.`id_peserta` AS `id_peserta`,`tb_peserta_transaksi`.`id_transaksi` AS `id_transaksi`,`tb_peserta_transaksi`.`status` AS `status`,`tb_peserta_transaksi`.`keterangan` AS `keterangan`,`tb_peserta`.`nama_lengkap` AS `nama_lengkap`,`tb_peserta`.`nama_panggilan` AS `nama_panggilan`,`tb_peserta`.`jenis_kelamin` AS `jenis_kelamin`,`tb_peserta`.`no_identitas` AS `no_identitas`,`tb_peserta`.`tempat_lahir` AS `tempat_lahir`,`tb_peserta`.`tgl_lahir` AS `tgl_lahir`,`tb_peserta`.`alamat` AS `alamat`,`tb_peserta`.`kel` AS `kel`,`tb_peserta`.`tlp_rumah` AS `tlp_rumah`,`tb_peserta`.`tlp_kantor` AS `tlp_kantor`,`tb_peserta`.`nohp` AS `nohp`,`tb_peserta`.`email` AS `email`,`tb_peserta`.`warga_negara` AS `warga_negara`,`tb_peserta`.`pekerjaan` AS `pekerjaan`,`tb_peserta`.`ukuran_baju` AS `ukuran_baju`,`tb_peserta`.`nama_ahliwaris` AS `nama_ahliwaris`,`tb_peserta`.`hubungan_ahliwaris` AS `hubungan_ahliwaris`,`tb_peserta`.`jk_ahliwaris` AS `jk_ahliwaris`,`tb_peserta`.`kode_pos` AS `kode_pos`,`tb_peserta`.`tgl_daftar` AS `tgl_daftar`,`tb_peserta`.`rt` AS `rt`,`tb_peserta`.`rw` AS `rw`,`tb_peserta`.`tempat_lahir` AS `nm_kota`,`data_transaksi`.`nama_program` AS `nama_program`,`data_transaksi`.`nm_jenis` AS `nm_jenis` from ((`tb_peserta_transaksi` join `tb_peserta` on((`tb_peserta`.`id` = `tb_peserta_transaksi`.`id_peserta`))) join `data_transaksi` on((`tb_peserta_transaksi`.`id_transaksi` = `data_transaksi`.`id`)));
 
 DROP TABLE IF EXISTS `data_transaksi`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_transaksi` AS select `tb_transaksi`.`id` AS `id`,`tb_transaksi`.`id_jenis` AS `id_jenis`,`tb_transaksi`.`dp` AS `dp`,`tb_transaksi`.`status` AS `status`,`tb_transaksi`.`id_pengguna` AS `id_pengguna`,ifnull(`angsuran_sudah_dibayar`.`sudah_dibayar`,0) AS `sudah_dibayar`,ifnull(`banyak_peserta_transaksi`.`banyak_peserta`,0) AS `total_peserta`,`tb_jenis_program`.`harga` AS `harga`,`tb_jenis_program`.`nm_jenis` AS `nm_jenis`,`tb_jenis_program`.`kuota` AS `kuota`,`tb_program`.`nama_program` AS `nama_program`,`tb_pengguna`.`username` AS `username`,`tb_pengguna`.`email` AS `email`,`tb_pengguna`.`nohp` AS `nohp`,(`tb_jenis_program`.`kuota` * `tb_jenis_program`.`harga`) AS `total_bayar`,`tb_jenis_program`.`id_program` AS `id_program` from (((((`tb_transaksi` left join `angsuran_sudah_dibayar` on((`angsuran_sudah_dibayar`.`id_transaksi` = `tb_transaksi`.`id`))) left join `banyak_peserta_transaksi` on((`banyak_peserta_transaksi`.`id_transaksi` = `tb_transaksi`.`id`))) join `tb_jenis_program` on((`tb_transaksi`.`id_jenis` = `tb_jenis_program`.`id`))) join `tb_program` on((`tb_jenis_program`.`id_program` = `tb_program`.`id`))) join `tb_pengguna` on((`tb_transaksi`.`id_pengguna` = `tb_pengguna`.`id`)));
 
--- 2019-09-18 09:46:00
+DROP TABLE IF EXISTS `laporan_data_transaksi`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `laporan_data_transaksi` AS select `tb_transaksi`.`id` AS `id`,`tb_transaksi`.`id_jenis` AS `id_jenis`,`tb_transaksi`.`dp` AS `dp`,`tb_transaksi`.`status` AS `status`,`tb_transaksi`.`id_pengguna` AS `id_pengguna`,ifnull(`angsuran_sudah_dibayar`.`sudah_dibayar`,0) AS `sudah_dibayar`,ifnull(`banyak_peserta_transaksi`.`banyak_peserta`,0) AS `total_peserta`,`tb_jenis_program`.`harga` AS `harga`,`tb_jenis_program`.`nm_jenis` AS `nm_jenis`,`tb_jenis_program`.`kuota` AS `kuota`,`tb_program`.`nama_program` AS `nama_program`,`tb_pengguna`.`username` AS `username`,`tb_pengguna`.`email` AS `email`,`tb_pengguna`.`nohp` AS `nohp`,(`tb_jenis_program`.`kuota` * `tb_jenis_program`.`harga`) AS `total_bayar`,`tb_jenis_program`.`id_program` AS `id_program`,`tb_angsuran`.`tgl_bayar` AS `tgl_bayar` from ((((((`tb_transaksi` left join `angsuran_sudah_dibayar` on((`angsuran_sudah_dibayar`.`id_transaksi` = `tb_transaksi`.`id`))) left join `banyak_peserta_transaksi` on((`banyak_peserta_transaksi`.`id_transaksi` = `tb_transaksi`.`id`))) join `tb_jenis_program` on((`tb_transaksi`.`id_jenis` = `tb_jenis_program`.`id`))) join `tb_program` on((`tb_jenis_program`.`id_program` = `tb_program`.`id`))) join `tb_pengguna` on((`tb_transaksi`.`id_pengguna` = `tb_pengguna`.`id`))) left join `tb_angsuran` on((`tb_transaksi`.`id` = `tb_angsuran`.`id_transaksi`))) where (`tb_angsuran`.`jenis_pembayaran` = 'DP');
+
+-- 2019-10-01 16:07:07
