@@ -20,17 +20,58 @@
 	      <button type="button" onclick="showModalTambah()" class="btn btn-primary">Tambah Transaksi</button>
 	    </div>
     @endif
-    <div class="col-sm-2 col-xs-12">
+    <div class="col-xs-12">
     	@if($_SESSION['level'] == "Direktur" || $_SESSION['level'] == "Admin")
-	      <div class="dropdown">
-	        <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Cetak Laporan
-	        <span class="caret"></span></button>
-	        <ul class="dropdown-menu">
-	          @foreach($data_master_program as $d)
-	            <li><a href="{{ site_url('laporan/transaksi?id_program='.$d['id']) }}" target="_blank">{{ $d['nama_program'] }}</a></li>
-	          @endforeach
-	        </ul>
-	      </div>
+	      <?php
+			  	$bulan = date("m");
+			  	$tahun = date("Y");
+			  ?>
+  	<div class="row">
+      <div class="col-xs-12">
+      	<form action="{{ site_url('laporan/transaksi') }}" target="_blank">
+      		<div class="form-group">
+      			<div class="col-xs-2">
+      				<label>Pilih Bulan</label>
+      				<select class="form-control" name="bulan">
+      					<option value="01">Januari</option>
+      					<option value="02">Februari</option>
+      					<option value="03">Maret</option>
+      					<option value="04">April</option>
+      					<option value="05">Mei</option>
+      					<option value="06">Juni</option>
+      					<option value="07">Juli</option>
+      					<option value="08">Agustus</option>
+      					<option value="09">September</option>
+      					<option value="10">Oktober</option>
+      					<option value="11">November</option>
+      					<option value="12">Desember</option>
+      				</select>
+      				<script>
+      					document.getElementsByName("bulan")[0].value = "<?=$bulan?>";
+      				</script>
+      			</div>
+      			<div class="col-xs-2">
+      				<label>Pilih Tahun</label>
+      				<input type="number" name="tahun" min="1900" max="2100" class="form-control" placeholder="Tahun" value="<?=$tahun?>" />
+      			</div>
+      			<div class="col-xs-2">
+      				<label>Pilih Program</label>
+      				<select class="form-control" name="id_program">
+      					<option>-- Pilih Program --</option>
+      					  @foreach($data_master_program as $d)
+			              <option value="{{ $d['id'] }}">{{ $d['nama_program'] }}</option>
+			            @endforeach
+      				</select>
+      			</div>
+      		</div>
+      		<div class="form-group">
+      			<button type="submit" class="btn btn-success" style="margin-top: 23px;">Cetak Laporan</button>
+      		</div>
+      	</form>
+      </div>
+    </div>
+    <br>
+    <br>
       @endif
     </div>
   </div>

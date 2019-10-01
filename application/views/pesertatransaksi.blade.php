@@ -28,7 +28,7 @@
     }
    ?>
   <div class="table-responsive">
-    <div style="overflow:auto; max-height:650px; margin:0px 0 0px 0;">
+    <div style="overflow:auto; height:650px; margin:0px 0 0px 0;">
       <table class="table table-bordered table-stripped">
       	<thead>
         <tr>
@@ -197,7 +197,7 @@
         </div>
       
         @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'no_identitas', 'class' => 'form-control', 'max' => 20, 'label' => 'No Identitas']])
-        @include('components.form.select', ['_data' => ['type' => 'text', 'name' => 'tempat_lahir', 'class' => 'form-control', 'label' => 'Tempat Lahir', 'val' => 'id', 'caption' => 'nm_kota', 'options' => $data_kota]])
+        @include('components.form.select', ['_data' => ['type' => 'text', 'id' => 'tempat_lahir', 'name' => 'tempat_lahir', 'class' => 'form-control', 'label' => 'Tempat Lahir', 'val' => 'id', 'caption' => 'nm_kota', 'options' => $data_kota]])
         @include('components.form.input', ['_data' => ['type' => 'text', 'id' => 'tgl_lahir', 'name' => 'tgl_lahir', 'class' => 'form-control', 'max' => 10, 'label' => 'Tanggal Lahir']])
         @include('components.form.textarea', ['_data' => ['type' => 'text', 'name' => 'alamat', 'class' => 'form-control', 'max' => 225, 'label' => 'Alamat']])
         @include('components.form.input', ['_data' => ['type' => 'text', 'name' => 'kel', 'class' => 'form-control', 'max' => 11, 'label' => 'Kelurahan']])
@@ -273,4 +273,16 @@
             format: 'YYYY-MM-DD'
         });
   </script>
+@endsection
+
+@section('script')
+<script>
+$(document).ready(function() {
+	document.getElementById("tempat_lahir").style.width = "100%";
+  $("#tempat_lahir").select2({
+	  tags: true,
+    width: "resolve"
+	});
+});
+</script>
 @endsection

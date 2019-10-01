@@ -29,7 +29,10 @@
 	</head>
 	<body>
 		<div class="judul">
-			LAPORAN DATA TRANSAKSI TOUR AND TRAVEL <br> AISYAH TOUR AND TRAVEL BUKITTINGGI
+			LAPORAN DATA TRANSAKSI TOUR AND TRAVEL <br> AISYAH TOUR AND TRAVEL BUKITTINGGI <br>
+			{{ $jenis }}
+			<br>
+			PERIODE {{ $judul }}
 		</div>
 		<hr style="width: 100%; border: 2px solid black">
     <table class="tabel_laporan">
@@ -37,7 +40,6 @@
         <th class="kolom_tabel_laporan" style="width: 10px;">No</th>
         <th class="kolom_tabel_laporan">Nama Peserta</th>
         <th class="kolom_tabel_laporan">Jenis Program</th>
-        <th class="kolom_tabel_laporan">DP</th>
         <th class="kolom_tabel_laporan">Total Bayar</th>
         <th class="kolom_tabel_laporan">Sisa Pembayaran</th>
         <th class="kolom_tabel_laporan">Status</th>
@@ -57,7 +59,6 @@
           <td class="kolom_tabel_laporan">{{ ($no+1) }}</td>
           <td class="kolom_tabel_laporan">{{ $data['username'] }}</td>
           <td class="kolom_tabel_laporan">{{ $data['nama_program']." ".$data['nm_jenis'] }}</td>
-          <td class="kolom_tabel_laporan">{{ rupiah($data['dp']) }}</td>
           <td class="kolom_tabel_laporan">{{ rupiah($data['total_bayar']) }}</td>
           <td class="kolom_tabel_laporan">{{ rupiah($data['total_bayar'] - $data['sudah_dibayar']) }}</td>
           <td class="kolom_tabel_laporan">{{ $data['status'] }}</td>
@@ -74,7 +75,6 @@
       ?>
       <tr>
       	<td colspan="3" style="text-align: right;font-weight: bold;" class="kolom_tabel_laporan">TOTAL</td>
-      	<td class="kolom_tabel_laporan"><?=rupiah($total_dp)?></td>
       	<td class="kolom_tabel_laporan"><?=rupiah($total_bayar)?></td>
       	<td class="kolom_tabel_laporan"><?=rupiah($total_sisa_pembayaran)?></td>
       	<td class="kolom_tabel_laporan" colspan="2"></td>

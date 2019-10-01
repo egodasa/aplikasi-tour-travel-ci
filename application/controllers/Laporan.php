@@ -16,14 +16,16 @@ class Laporan extends MY_Controller {
 	public function laporanPesertaKeberangkatan()
 	{
     $id_program = $this->input->get("id_program");
-    if($id_program)
-    {
-      $this->_dts['data_list'] = $this->peserta_keberangkatan->ambilDataDenganKondisi(['id_program' => $id_program]);
-    }
-    else
-    {
-      $this->_dts['data_list'] = $this->peserta_keberangkatan->ambilData();
-    }
+    $bulan = $this->input->get("bulan");
+    $tahun = $this->input->get("tahun");
+    $waktu = $tahun."-".$bulan;
+    $this->_dts['data_list'] = $this->db->query("SELECT * FROM data_peserta_keberangkatan WHERE
+    LEFT(tgl_berangkat, 7) = :waktu AND id_jenis = :id_program", [":waktu" => $waktu, "id_program" => $id_program])->fetchAll(PDO::FETCH_ASSOC);
+		
+		$this->_dts['judul'] = strtoupper(bulanIndo($bulan)." ".$tahun);
+		
+		$data_jenis = $this->db->get("data_jenis_program", "*", ["id" => $id_program]);
+    $this->_dts['jenis'] = strtoupper($data_jenis['nama_program']);
     
     $content = $this->renderView('laporan_peserta_keberangkatan', $this->_dts);
     $dompdf = new Dompdf();
@@ -39,15 +41,17 @@ class Laporan extends MY_Controller {
 	}
 	public function laporanPeserta()
 	{
-    $id_program = $this->input->get("id_program");
-    if($id_program)
-    {
-      $this->_dts['data_list'] = $this->peserta_transaksi->ambilDataDenganKondisi(['id_program' => $id_program]);
-    }
-    else
-    {
-      $this->_dts['data_list'] = $this->peserta_transaksi->ambilData();
-    }
+		$id_program = $this->input->get("id_program");
+    $bulan = $this->input->get("bulan");
+    $tahun = $this->input->get("tahun");
+    $waktu = $tahun."-".$bulan;
+    $this->_dts['data_list'] = $this->db->query("SELECT * FROM data_peserta_transaksi WHERE
+    LEFT(tgl_daftar, 7) = :waktu AND id_jenis = :id_program", [":waktu" => $waktu, "id_program" => $id_program])->fetchAll(PDO::FETCH_ASSOC);
+		
+		$this->_dts['judul'] = strtoupper(bulanIndo($bulan)." ".$tahun);
+     
+    $data_jenis = $this->db->get("data_jenis_program", "*", ["id" => $id_program]);
+    $this->_dts['jenis'] = strtoupper($data_jenis['nama_program']);
      
     $content = $this->renderView('laporan_peserta', $this->_dts);
     $dompdf = new Dompdf();
@@ -64,16 +68,18 @@ class Laporan extends MY_Controller {
 	}
 	public function laporanTransaksi()
 	{
-    $id_program = $this->input->get("id_program");
-    if($id_program)
-    {
-      $this->_dts['data_list'] = $this->transaksi->ambilDataDenganKondisi(['id_program' => $id_program]);
-    }
-    else
-    {
-      $this->_dts['data_list'] = $this->transaksi->ambilData();
-    }
-    
+		$id_program = $this->input->get("id_program");
+    $bulan = $this->input->get("bulan");
+    $tahun = $this->input->get("tahun");
+    $waktu = $tahun."-".$bulan;
+    $this->_dts['data_list'] = $this->db->query("SELECT * FROM laporan_data_transaksi WHERE
+    LEFT(tgl_bayar, 7) = :waktu AND id_jenis = :id_program", [":waktu" => $waktu, "id_program" => $id_program])->fetchAll(PDO::FETCH_ASSOC);
+		
+		$this->_dts['judul'] = strtoupper(bulanIndo($bulan)." ".$tahun);
+		
+		$data_jenis = $this->db->get("data_jenis_program", "*", ["id" => $id_program]);
+    $this->_dts['jenis'] = strtoupper($data_jenis['nama_program']);
+		
     $content = $this->renderView('laporan_transaksi', $this->_dts);
     
     $dompdf = new Dompdf();

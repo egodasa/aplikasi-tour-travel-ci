@@ -29,7 +29,10 @@
 	</head>
 	<body>
 		<div class="judul">
-			LAPORAN DATA PESERTA TOUR AND TRAVEL <br> AISYAH TOUR AND TRAVEL BUKITTINGGI
+			LAPORAN DATA PESERTA TOUR AND TRAVEL <br> AISYAH TOUR AND TRAVEL BUKITTINGGI <br>
+			{{ $jenis }}
+			<br>
+			PERIODE {{ $judul }}
 		</div>
 		<hr style="width: 100%; border: 2px solid black">
     <table class="tabel_laporan">

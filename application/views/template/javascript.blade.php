@@ -5,3 +5,4 @@
     <script src="<?php base_url();?>assets/js/bootstrap-hover-dropdown.js"></script>
     <script src="<?php base_url();?>assets/js/owl.carousel.min.js"></script>
     <script src="<?php base_url();?>assets/js/front.js"></script>
+		

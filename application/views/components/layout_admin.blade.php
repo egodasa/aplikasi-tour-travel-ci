@@ -29,6 +29,7 @@
     <link href="{{ base_url() }}assets/css/pnotify/pnotify.buttons.css" rel="stylesheet">
     <link href="{{ base_url() }}assets/css/pnotify/pnotify.nonblock.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/pikaday/pikaday.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
     @section('head')
       <!-- Custom Head -->
     @show
@@ -212,6 +213,7 @@
   </div>
     <!-- jQuery -->
     <script src="{{ base_url() }}assets/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
     <!-- Bootstrap -->
     <script src="{{ base_url() }}assets/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -224,6 +226,7 @@
     
     
     <script src="{{ base_url() }}assets/js/jquery.dataTables.min.js"></script>
+    
     <script src="{{ base_url() }}assets/js/dataTables.bootstrap.min.js"></script>
     <script src="{{ base_url() }}assets/js/dataTables.responsive.min.js"></script>
     
