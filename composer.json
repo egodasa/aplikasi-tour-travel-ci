@@ -7,7 +7,7 @@
 		"php": ">=5.3.7",
 		"philo/laravel-blade": "3.*",
 		"catfan/medoo": "^1.6",
-		"dompdf/dompdf": "^0.8.3",
+		"dompdf/dompdf": "^2.0.0",
 		"idexx/crypto-guard": "^0.1.1"
 	},
 	"suggest": {
